@@ -1,0 +1,42 @@
+# Environment files
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+venv/
+env/
+.Python
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Backtest output (regenerated on each run)
+results/
+
+# OS
+.DS_Store
+ehthumbs.db
+Thumbs.dbAndrew_accessKeys.csv
+.env
+*.pem
+
+# AWS Credentials
+*.csv
+Andrew_accessKeys.csv
+
+# AWS Credentials
+*.csv
+Andrew_accessKeys.csv

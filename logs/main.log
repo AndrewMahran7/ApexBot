@@ -1,0 +1,9 @@
+2026-04-17 09:25:21 [INFO] __main__: Apex starting — mode=paper
+2026-04-17 09:25:21 [INFO] analytics.engine: AnalyticsEngine initialised: initial_capital=25000.00
+2026-04-17 09:25:21 [INFO] strategy.prop_challenge: PropEquityTracker: start=25000.00 target=+1500.00 dd=-1000.00 trailing_dd_level=24000.00
+2026-04-17 09:25:21 [INFO] strategy.prop_challenge: PropRiskGate initialised: target=+1500.00, dd=-1000.00, daily_loss=300.00, daily_profit_lock=400.00, max_trades=4, allowed=('breakout',)
+2026-04-17 09:25:21 [INFO] __main__: PROP MODE: target=+$1500 dd=-$1000 daily_loss=$300
+2026-04-17 09:25:21 [INFO] strategy.risk_manager: RiskManager initialised: max_daily_loss=300.00, max_trades=4, max_concurrent=1, max_size=1.00, max_exposure=3.00
+2026-04-17 09:25:21 [INFO] strategy.paper_engine: PaperEngine initialised: capital=25000.00, slip_ticks=1.0, comm=0.62, instrument=MES
+2026-04-17 09:25:21 [INFO] strategy.hybrid_ema_ml: HybridEMAMLStrategy initialized: selection_strategy=priority, multi_candidate=True, ema_periods=(20, 50, 100), entry_types=('breakout',)
+2026-04-17 09:25:21 [INFO] strategy.strategy_engine: StrategyEngine initialised: multi_candidate=True, selection=priority, ema_periods=(20, 50, 100), entry_types=('breakout',)

@@ -1,0 +1,113 @@
+{
+  "pipeline_version": "2.0-audited",
+  "leakage_checks": {
+    "nan_fill_method": "train-only medians",
+    "split_overlap_errors": "PASS",
+    "feature_lookahead": "PASS \u2014 all f_* columns use lagged/current data only",
+    "label_lookahead": "PASS \u2014 labels scan strictly future bars (index > candidate ts)",
+    "backtest_alignment": {
+      "entry_price": "MATCH \u2014 both use bar open",
+      "sl_tp_fill_priority": "MATCH \u2014 SL checked before TP in both labeler and engine",
+      "eod_exit": "MATCH \u2014 same time cutoff"
+    }
+  },
+  "split_dates": {
+    "train": {
+      "name": "train",
+      "rows": 609,
+      "dates": 609,
+      "start": "2021-01-04",
+      "end": "2023-05-25"
+    },
+    "validation": {
+      "name": "validation",
+      "rows": 203,
+      "dates": 203,
+      "start": "2023-05-29",
+      "end": "2024-03-13"
+    },
+    "test": {
+      "name": "test",
+      "rows": 101,
+      "dates": 101,
+      "start": "2024-03-18",
+      "end": "2024-08-07"
+    },
+    "holdout": {
+      "name": "holdout",
+      "rows": 99,
+      "dates": 99,
+      "start": "2024-08-09",
+      "end": "2024-12-30"
+    }
+  },
+  "model_info": {
+    "type": "gradient_boosting",
+    "n_features": 36,
+    "features": [
+      "f_price_ema",
+      "f_price_ema_dist",
+      "f_price_ema_dist_pct",
+      "f_price_ema_slope",
+      "f_price_ret_12bar",
+      "f_price_bar_range",
+      "f_price_rolling_range",
+      "f_price_gap",
+      "f_price_gap_pct",
+      "f_vol_avg",
+      "f_vol_relative",
+      "f_vol_expansion",
+      "f_vola_tr",
+      "f_vola_atr",
+      "f_vola_atr_norm",
+      "f_vola_realized",
+      "f_time_minutes_since_open",
+      "f_time_minutes_since_range_close",
+      "f_time_minutes_to_close",
+      "f_time_weekday",
+      "f_range_high",
+      "f_range_low",
+      "f_range_size",
+      "f_range_dist_above",
+      "f_range_dist_below",
+      "f_range_size_vs_atr",
+      "f_regime_trend_strength",
+      "f_regime_trend_direction",
+      "f_regime_compression",
+      "f_regime_breakout_strength",
+      "f_regime_vol_trend",
+      "f_ema_distance",
+      "f_ema_distance_pct",
+      "f_risk_points",
+      "f_range_vs_atr",
+      "f_direction_long"
+    ],
+    "train_accuracy": 0.909688013136289,
+    "val_accuracy": 0.6157635467980296
+  },
+  "class_balance": {
+    "train_positive_rate": 0.4220032840722496,
+    "val_positive_rate": 0.32019704433497537
+  },
+  "top_features": {
+    "f_range_dist_below": 0.08228696550146501,
+    "f_regime_compression": 0.07255475155461252,
+    "f_price_ret_12bar": 0.0701981870202876,
+    "f_vol_avg": 0.05081727022812236,
+    "f_price_ema": 0.04663662559738032,
+    "f_regime_trend_strength": 0.046326774044137514,
+    "f_price_ema_dist": 0.04462013254905732,
+    "f_vol_expansion": 0.042251105376327515,
+    "f_vola_atr_norm": 0.03841866392609176,
+    "f_range_dist_above": 0.038335589662359275,
+    "f_vol_relative": 0.0369566029235637,
+    "f_risk_points": 0.036727560187483875,
+    "f_vola_realized": 0.03558149451941848,
+    "f_regime_breakout_strength": 0.03531694320834571,
+    "f_price_ema_dist_pct": 0.0282933811913678
+  },
+  "train_medians_saved": 36,
+  "warnings": [
+    "Class balance drift: train=0.422, val=0.320"
+  ]
+}

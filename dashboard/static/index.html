@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1117; color: #c9d1d9; padding: 16px;
+        }
+        h1 { color: #58a6ff; margin-bottom: 16px; font-size: 1.4em; }
+        h2 { color: #8b949e; font-size: 1em; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px; }
+
+        .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .card {
+            background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px;
+        }
+
+        /* PnL cards */
+        .metric { font-size: 2em; font-weight: 700; margin: 4px 0; }
+        .metric.positive { color: #3fb950; }
+        .metric.negative { color: #f85149; }
+        .label { color: #8b949e; font-size: 0.85em; }
+
+        /* Equity chart */
+        #chart-container { position: relative; height: 250px; }
+        canvas { width: 100% !important; height: 100% !important; }
+
+        /* Tables */
+        table { width: 100%; border-collapse: collapse; font-size: 0.85em; }
+        th { text-align: left; color: #8b949e; padding: 6px 8px; border-bottom: 1px solid #30363d; }
+        td { padding: 6px 8px; border-bottom: 1px solid #21262d; }
+        tr:hover { background: #1c2128; }
+        .pnl-positive { color: #3fb950; }
+        .pnl-negative { color: #f85149; }
+
+        /* Alerts */
+        .alert { padding: 8px 12px; margin-bottom: 4px; border-radius: 4px; font-size: 0.85em; }
+        .alert-warning { background: #2d1b00; border-left: 3px solid #d29922; }
+        .alert-critical { background: #2d0000; border-left: 3px solid #f85149; }
+        .alert-time { color: #8b949e; font-size: 0.8em; }
+
+        /* Status bar */
+        .status-bar {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 16px; font-size: 0.85em; color: #8b949e;
+        }
+        .status-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+        .status-dot.ok { background: #3fb950; }
+        .status-dot.killed { background: #f85149; }
+
+        /* Risk badge */
+        .risk-badge {
+            display: inline-block; padding: 2px 8px; border-radius: 4px;
+            font-size: 0.8em; font-weight: 600;
+        }
+        .risk-ok { background: #0d2818; color: #3fb950; }
+        .risk-killed { background: #2d0000; color: #f85149; }
+
+        .no-data { color: #484f58; font-style: italic; padding: 16px; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>Apex Monitoring Dashboard</h1>
+
+    <div class="status-bar">
+        <div>
+            <span id="status-dot" class="status-dot ok"></span>
+            <span id="status-text">Connecting...</span>
+        </div>
+        <div>
+            Risk: <span id="risk-badge" class="risk-badge risk-ok">OK</span>
+            &nbsp; Entries today: <span id="daily-entries">0</span>
+            &nbsp; Last update: <span id="last-update">—</span>
+        </div>
+    </div>
+
+    <!-- PnL Cards -->
+    <div class="grid">
+        <div class="card">
+            <div class="label">Equity</div>
+            <div id="equity" class="metric">$0.00</div>
+        </div>
+        <div class="card">
+            <div class="label">Unrealized P&L</div>
+            <div id="unrealized" class="metric">$0.00</div>
+        </div>
+        <div class="card">
+            <div class="label">Realized P&L</div>
+            <div id="realized" class="metric">$0.00</div>
+        </div>
+        <div class="card">
+            <div class="label">Drawdown</div>
+            <div id="drawdown" class="metric">$0.00</div>
+        </div>
+        <div class="card">
+            <div class="label">Peak Equity</div>
+            <div id="peak-equity" class="metric">$0.00</div>
+        </div>
+        <div class="card">
+            <div class="label">Open Positions</div>
+            <div id="open-count" class="metric">0</div>
+        </div>
+    </div>
+
+    <!-- Equity Chart -->
+    <div class="card" style="margin-bottom: 16px;">
+        <h2>Equity Curve</h2>
+        <div id="chart-container">
+            <canvas id="equity-chart"></canvas>
+        </div>
+    </div>
+
+    <!-- Open Positions + Alerts -->
+    <div class="grid-2">
+        <div class="card">
+            <h2>Open Positions</h2>
+            <div id="open-positions">
+                <div class="no-data">No open positions</div>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Alerts</h2>
+            <div id="alerts-container">
+                <div class="no-data">No alerts</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Trades -->
+    <div class="card">
+        <h2>Recent Trades</h2>
+        <div id="trades-container">
+            <div class="no-data">No trades yet</div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script>
+        // ---- Chart setup ----
+        const ctx = document.getElementById('equity-chart').getContext('2d');
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Equity',
+                    data: [],
+                    borderColor: '#58a6ff',
+                    backgroundColor: 'rgba(88,166,255,0.1)',
+                    fill: true,
+                    pointRadius: 0,
+                    borderWidth: 1.5,
+                    tension: 0.1,
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                animation: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: {
+                        display: true,
+                        ticks: { color: '#484f58', maxTicksLimit: 8, font: { size: 10 } },
+                        grid: { color: '#21262d' },
+                    },
+                    y: {
+                        ticks: { color: '#484f58', font: { size: 10 },
+                            callback: v => '$' + v.toLocaleString() },
+                        grid: { color: '#21262d' },
+                    }
+                }
+            }
+        });
+
+        // ---- Helpers ----
+        function fmt(n) { return '$' + n.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2}); }
+        function pnlClass(n) { return n >= 0 ? 'positive' : 'negative'; }
+        function pnlTdClass(n) { return n >= 0 ? 'pnl-positive' : 'pnl-negative'; }
+        function shortTime(ts) {
+            if (!ts) return '—';
+            // Take just time portion if it includes date
+            const parts = ts.split(' ');
+            return parts.length > 1 ? parts[1].substring(0, 8) : ts.substring(0, 19);
+        }
+
+        // ---- Update functions ----
+        function updatePnL(pnl) {
+            document.getElementById('equity').textContent = fmt(pnl.equity);
+            document.getElementById('equity').className = 'metric ' + pnlClass(pnl.equity);
+
+            document.getElementById('unrealized').textContent = fmt(pnl.unrealized_pnl);
+            document.getElementById('unrealized').className = 'metric ' + pnlClass(pnl.unrealized_pnl);
+
+            document.getElementById('realized').textContent = fmt(pnl.realized_pnl);
+            document.getElementById('realized').className = 'metric ' + pnlClass(pnl.realized_pnl);
+
+            document.getElementById('drawdown').textContent = fmt(pnl.drawdown);
+            document.getElementById('drawdown').className = 'metric negative';
+
+            document.getElementById('peak-equity').textContent = fmt(pnl.peak_equity);
+            document.getElementById('peak-equity').className = 'metric positive';
+
+            document.getElementById('open-count').textContent = pnl.open_position_count;
+
+            document.getElementById('last-update').textContent = shortTime(pnl.last_update);
+        }
+
+        function updateRisk(risk) {
+            const badge = document.getElementById('risk-badge');
+            if (risk.killed) {
+                badge.textContent = 'KILLED';
+                badge.className = 'risk-badge risk-killed';
+                document.getElementById('status-dot').className = 'status-dot killed';
+            } else {
+                badge.textContent = 'OK';
+                badge.className = 'risk-badge risk-ok';
+                document.getElementById('status-dot').className = 'status-dot ok';
+            }
+            document.getElementById('daily-entries').textContent = risk.daily_entries;
+        }
+
+        function updatePositions(positions) {
+            const el = document.getElementById('open-positions');
+            if (!positions || positions.length === 0) {
+                el.innerHTML = '<div class="no-data">No open positions</div>';
+                return;
+            }
+            let html = '<table><tr><th>ID</th><th>Dir</th><th>Entry</th><th>Time</th><th>Size</th><th>Strategy</th></tr>';
+            for (const p of positions) {
+                html += `<tr>
+                    <td>${p.position_id}</td>
+                    <td>${p.direction}</td>
+                    <td>${p.entry_price.toFixed(2)}</td>
+                    <td>${shortTime(p.entry_time)}</td>
+                    <td>${p.position_size}</td>
+                    <td>${p.strategy_type}</td>
+                </tr>`;
+            }
+            html += '</table>';
+            el.innerHTML = html;
+        }
+
+        function updateTrades(trades) {
+            const el = document.getElementById('trades-container');
+            if (!trades || trades.length === 0) {
+                el.innerHTML = '<div class="no-data">No trades yet</div>';
+                return;
+            }
+            // Show newest first
+            const reversed = [...trades].reverse();
+            let html = '<table><tr><th>Entry</th><th>Exit</th><th>Dir</th><th>Entry $</th><th>Exit $</th><th>P&L</th><th>Reason</th><th>Strategy</th></tr>';
+            for (const t of reversed.slice(0, 50)) {
+                html += `<tr>
+                    <td>${shortTime(t.entry_time)}</td>
+                    <td>${shortTime(t.exit_time)}</td>
+                    <td>${t.direction}</td>
+                    <td>${t.entry_price.toFixed(2)}</td>
+                    <td>${t.exit_price.toFixed(2)}</td>
+                    <td class="${pnlTdClass(t.net_pnl)}">${fmt(t.net_pnl)}</td>
+                    <td>${t.exit_reason}</td>
+                    <td>${t.strategy_type}</td>
+                </tr>`;
+            }
+            html += '</table>';
+            el.innerHTML = html;
+        }
+
+        function updateAlerts(alerts) {
+            const el = document.getElementById('alerts-container');
+            if (!alerts || alerts.length === 0) {
+                el.innerHTML = '<div class="no-data">No alerts</div>';
+                return;
+            }
+            const reversed = [...alerts].reverse();
+            let html = '';
+            for (const a of reversed.slice(0, 20)) {
+                html += `<div class="alert alert-${a.level}">
+                    <span class="alert-time">${shortTime(a.timestamp)}</span>
+                    <strong>[${a.category}]</strong> ${a.message}
+                </div>`;
+            }
+            el.innerHTML = html;
+        }
+
+        function updateChart(equityCurve) {
+            if (!equityCurve || equityCurve.length === 0) return;
+
+            // Downsample for chart performance (max 500 points)
+            let data = equityCurve;
+            if (data.length > 500) {
+                const step = Math.ceil(data.length / 500);
+                data = data.filter((_, i) => i % step === 0);
+            }
+
+            chart.data.labels = data.map(p => shortTime(p.timestamp));
+            chart.data.datasets[0].data = data.map(p => p.equity);
+            chart.update();
+        }
+
+        // ---- Polling loop ----
+        let pollErrors = 0;
+
+        async function poll() {
+            try {
+                const [snapRes, eqRes] = await Promise.all([
+                    fetch('/api/snapshot'),
+                    fetch('/api/equity?last=5000'),
+                ]);
+
+                if (!snapRes.ok || !eqRes.ok) {
+                    throw new Error(`HTTP ${snapRes.status} / ${eqRes.status}`);
+                }
+
+                const snap = await snapRes.json();
+                const eq = await eqRes.json();
+
+                updatePnL(snap.pnl);
+                updateRisk(snap.risk);
+                updatePositions(snap.open_positions);
+                updateTrades(snap.recent_trades);
+                updateAlerts(snap.alerts);
+                updateChart(eq.equity_curve);
+
+                document.getElementById('status-text').textContent = 'Connected';
+                pollErrors = 0;
+            } catch (err) {
+                pollErrors++;
+                document.getElementById('status-text').textContent =
+                    `Connection error (${pollErrors})`;
+                console.error('Poll error:', err);
+            }
+        }
+
+        // Poll every 2 seconds
+        setInterval(poll, 2000);
+        poll();
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+{
+  "n_folds": 5,
+  "total_oos_samples": 814,
+  "aggregate_accuracy": 0.6376,
+  "aggregate_roc_auc": 0.6068,
+  "aggregate_positive_rate": 0.36,
+  "mean_fold_auc": 0.5928,
+  "std_fold_auc": 0.0376,
+  "folds": [
+    {
+      "fold": 1,
+      "train_period": "2021-01-04 \u2192 2021-10-14",
+      "test_period": "2021-10-18 \u2192 2022-06-07",
+      "train_samples": 200,
+      "test_samples": 163,
+      "accuracy": 0.6196,
+      "roc_auc": 0.6378,
+      "test_positive_rate": 0.4233
+    },
+    {
+      "fold": 2,
+      "train_period": "2021-01-04 \u2192 2022-06-06",
+      "test_period": "2022-06-08 \u2192 2023-01-27",
+      "train_samples": 363,
+      "test_samples": 163,
+      "accuracy": 0.6196,
+      "roc_auc": 0.625,
+      "test_positive_rate": 0.4049
+    },
+    {
+      "fold": 3,
+      "train_period": "2021-01-04 \u2192 2023-01-26",
+      "test_period": "2023-01-30 \u2192 2023-09-19",
+      "train_samples": 526,
+      "test_samples": 163,
+      "accuracy": 0.6135,
+      "roc_auc": 0.5924,
+      "test_positive_rate": 0.3374
+    },
+    {
+      "fold": 4,
+      "train_period": "2021-01-04 \u2192 2023-09-18",
+      "test_period": "2023-09-20 \u2192 2024-05-10",
+      "train_samples": 689,
+      "test_samples": 163,
+      "accuracy": 0.6687,
+      "roc_auc": 0.5315,
+      "test_positive_rate": 0.2945
+    },
+    {
+      "fold": 5,
+      "train_period": "2021-01-04 \u2192 2024-05-09",
+      "test_period": "2024-05-13 \u2192 2024-12-30",
+      "train_samples": 852,
+      "test_samples": 162,
+      "accuracy": 0.6667,
+      "roc_auc": 0.5771,
+      "test_positive_rate": 0.3395
+    }
+  ]
+}

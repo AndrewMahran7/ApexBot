@@ -1,0 +1,32 @@
+{
+  "total_dates": 1015,
+  "purge_days": 1,
+  "train": {
+    "name": "train",
+    "rows": 609,
+    "dates": 609,
+    "start": "2021-01-04",
+    "end": "2023-05-25"
+  },
+  "validation": {
+    "name": "validation",
+    "rows": 203,
+    "dates": 203,
+    "start": "2023-05-29",
+    "end": "2024-03-13"
+  },
+  "test": {
+    "name": "test",
+    "rows": 101,
+    "dates": 101,
+    "start": "2024-03-18",
+    "end": "2024-08-07"
+  },
+  "holdout": {
+    "name": "holdout",
+    "rows": 99,
+    "dates": 99,
+    "start": "2024-08-09",
+    "end": "2024-12-30"
+  }
+}

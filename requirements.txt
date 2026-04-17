@@ -1,0 +1,28 @@
+# MES Futures ORB Backtesting Framework
+# ======================================
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Plotting (optional — backtest runs without it)
+matplotlib>=3.7.0
+
+# Timezone support
+pytz>=2023.3
+
+# Parquet support (optional)
+pyarrow>=12.0.0
+
+# .env file support
+python-dotenv>=1.0.0
+
+# Historical market data (Databento)
+databento>=0.39.0
+
+# ML pipeline
+scikit-learn>=1.3.0
+
+# Dashboard
+fastapi>=0.100.0
+uvicorn>=0.23.0

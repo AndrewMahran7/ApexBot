@@ -38,3 +38,4 @@ data/*.csv
 
 # ── Result artifacts (regenerated; keep JSON summaries via git add -f) ──
 results/*.csv
+results/*.png

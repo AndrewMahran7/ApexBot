@@ -1,0 +1,50 @@
+[
+  {
+    "name": "hybrid_ema_ml",
+    "final_equity": 46551.07,
+    "net_pnl": 21551.07,
+    "return_pct": 86.2,
+    "max_drawdown_dollars": 6069.3,
+    "max_drawdown_pct": 12.1,
+    "sharpe_ratio": 1.5126,
+    "trade_count": 3045,
+    "win_rate_pct": 38.56,
+    "profit_factor": 1.2397
+  },
+  {
+    "final_equity": 31495.41,
+    "net_pnl": 6495.41,
+    "return_pct": 25.98,
+    "max_drawdown_dollars": 3184.3,
+    "max_drawdown_pct": 11.3,
+    "sharpe_ratio": 0.7214,
+    "trade_count": null,
+    "win_rate_pct": null,
+    "profit_factor": null,
+    "name": "EMA Directional"
+  },
+  {
+    "final_equity": 25000.0,
+    "net_pnl": 0.0,
+    "return_pct": 0.0,
+    "max_drawdown_dollars": 0.0,
+    "max_drawdown_pct": 0.0,
+    "sharpe_ratio": 0.0,
+    "trade_count": null,
+    "win_rate_pct": null,
+    "profit_factor": null,
+    "name": "Flat (No Trade)"
+  },
+  {
+    "final_equity": -299946.1,
+    "net_pnl": -324946.1,
+    "return_pct": -1299.78,
+    "max_drawdown_dollars": 324948.64,
+    "max_drawdown_pct": 1299.79,
+    "sharpe_ratio": -0.3238,
+    "trade_count": null,
+    "win_rate_pct": null,
+    "profit_factor": null,
+    "name": "Always-Long"
+  }
+]

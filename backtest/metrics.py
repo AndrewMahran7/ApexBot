@@ -115,6 +115,8 @@ def export_trades_csv(trades: list[Trade], path: str):
         return
     rows = []
     for t in trades:
+        # Compute ticks from price move
+        pnl_ticks = t.pnl_points / 0.25 if t.pnl_points != 0 else 0.0
         rows.append({
             "entry_time": t.entry_time.isoformat(),
             "exit_time": t.exit_time.isoformat(),
@@ -125,6 +127,7 @@ def export_trades_csv(trades: list[Trade], path: str):
             "exit_price": t.exit_price,
             "stop_loss": t.stop_loss,
             "take_profit": t.take_profit,
+            "pnl_ticks": round(pnl_ticks, 1),
             "pnl_points": round(t.pnl_points, 2),
             "pnl_dollars": round(t.pnl_dollars, 2),
             "commission": round(t.commission, 2),

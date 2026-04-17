@@ -1416,6 +1416,7 @@ class HybridEMAMLStrategy:
         self.entry_price = entry_px
         self.sl = sl
         self.tp = tp
+        stype = f"ema{self.cfg.ema_length}_breakout"
         return Signal(
             signal_type=SignalType.LONG_ENTRY,
             price=entry_px,
@@ -1425,6 +1426,7 @@ class HybridEMAMLStrategy:
             stop_loss=sl,
             take_profit=tp,
             position_size=position_size,
+            strategy_type=stype,
         )
 
     def _enter_short(self, entry_px, sl, tp, ts, or_range, prob, position_size=1.0) -> Signal:
@@ -1434,6 +1436,7 @@ class HybridEMAMLStrategy:
         self.entry_price = entry_px
         self.sl = sl
         self.tp = tp
+        stype = f"ema{self.cfg.ema_length}_breakout"
         return Signal(
             signal_type=SignalType.SHORT_ENTRY,
             price=entry_px,
@@ -1443,9 +1446,11 @@ class HybridEMAMLStrategy:
             stop_loss=sl,
             take_profit=tp,
             position_size=position_size,
+            strategy_type=stype,
         )
 
     def _exit(self, price, ts, sig_type, reason) -> Signal:
+        stype = f"ema{self.cfg.ema_length}_breakout"
         sig = Signal(
             signal_type=sig_type,
             price=price,
@@ -1454,6 +1459,7 @@ class HybridEMAMLStrategy:
             entry_price=self.entry_price,
             stop_loss=self.sl,
             take_profit=self.tp,
+            strategy_type=stype,
         )
         self.in_position = False
         self.direction = None

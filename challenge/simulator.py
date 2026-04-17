@@ -158,7 +158,7 @@ def run_trial(
             last_trade = trades[-1]
             # Only notify on newly closed trades
             if len(trades) > len(dates_seen):
-                prop_gate.on_trade_closed(last_trade.net_pnl)
+                prop_gate.on_trade_closed(last_trade.net_pnl, strategy_type=getattr(last_trade, 'strategy_type', ''))
 
         dates_seen.add(str(ts.date()) if hasattr(ts, 'date') else str(ts)[:10])
 

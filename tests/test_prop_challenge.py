@@ -173,25 +173,25 @@ class TestPropEquityTracker:
 class TestPropPositionSizer:
     def test_small_tier(self):
         s = PropPositionSizer(_default_config())
-        assert s.compute(100.0) == 0.25
+        assert s.compute(100.0) == 1.0
 
     def test_medium_tier(self):
         s = PropPositionSizer(_default_config())
-        assert s.compute(700.0) == 0.50
+        assert s.compute(700.0) == 1.0
 
     def test_lock_in_tier(self):
         s = PropPositionSizer(_default_config())
-        assert s.compute(1300.0) == 0.35
+        assert s.compute(1300.0) == 0.75
 
     def test_negative_gain(self):
         s = PropPositionSizer(_default_config())
         # Below 0 — falls through tiers; last tier returned
-        assert s.compute(-100.0) == 0.35  # fallback to last
+        assert s.compute(-100.0) == 0.75  # fallback to last
 
     def test_at_boundary(self):
         s = PropPositionSizer(_default_config())
-        assert s.compute(500.0) == 0.50  # exactly at medium start
-        assert s.compute(1200.0) == 0.35  # exactly at lock-in start
+        assert s.compute(500.0) == 1.0  # exactly at medium start
+        assert s.compute(1200.0) == 0.75  # exactly at lock-in start
 
 
 # ---------------------------------------------------------------------------
@@ -387,7 +387,7 @@ class TestPropRiskGateSizing:
         gate.on_bar(_bar())
         gate.on_signal(_entry_signal(size=1.0))
         assert len(approved) == 1
-        assert approved[0].position_size == pytest.approx(0.25)
+        assert approved[0].position_size == pytest.approx(1.0)
 
     def test_medium_size_in_mid_stage(self):
         approved = []
@@ -400,7 +400,7 @@ class TestPropRiskGateSizing:
         gate.on_bar(_bar())
         gate.on_signal(_entry_signal(size=1.0))
         assert len(approved) == 1
-        assert approved[0].position_size == pytest.approx(0.50)
+        assert approved[0].position_size == pytest.approx(1.0)
 
     def test_lock_in_size_near_target(self):
         approved = []
@@ -413,7 +413,7 @@ class TestPropRiskGateSizing:
         gate.on_bar(_bar())
         gate.on_signal(_entry_signal(size=1.0))
         assert len(approved) == 1
-        assert approved[0].position_size == pytest.approx(0.35)
+        assert approved[0].position_size == pytest.approx(0.375)
 
 
 # ---------------------------------------------------------------------------

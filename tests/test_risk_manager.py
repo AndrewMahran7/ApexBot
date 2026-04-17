@@ -531,7 +531,7 @@ class TestIntegration:
 
         paper = PaperEngine(
             _inst(),
-            PaperConfig(slippage_ticks=0.0, commission_per_side=0.0),
+            PaperConfig(slippage_ticks=0.0, commission_per_side=0.0, max_contracts=1),
         )
         rm = _make_risk(
             on_approved=paper.on_signal,
@@ -554,7 +554,7 @@ class TestIntegration:
 
         paper = PaperEngine(
             _inst(),
-            PaperConfig(slippage_ticks=0.0, commission_per_side=0.0),
+            PaperConfig(slippage_ticks=0.0, commission_per_side=0.0, max_contracts=1),
         )
         rm = _make_risk(
             on_approved=paper.on_signal,
@@ -573,7 +573,7 @@ class TestIntegration:
 
         paper = PaperEngine(
             _inst(),
-            PaperConfig(slippage_ticks=0.0, commission_per_side=0.0),
+            PaperConfig(slippage_ticks=0.0, commission_per_side=0.0, max_contracts=1),
         )
         rm = _make_risk(
             on_approved=paper.on_signal,

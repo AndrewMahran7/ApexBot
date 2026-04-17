@@ -60,6 +60,7 @@ class LiveSignal:
     position_id: str = ""
     ml_prob: float = 0.0
     percentile: float = 0.0
+    quality_score: float = 0.0
 
     @property
     def is_entry(self) -> bool:
@@ -103,6 +104,7 @@ def _signal_to_live(sig: Signal) -> LiveSignal:
         strategy_type=sig.strategy_type,
         reason=sig.reason,
         position_id=sig.position_id,
+        quality_score=getattr(sig, 'quality_score', 0.0),
     )
 
 

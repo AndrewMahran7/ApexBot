@@ -1,0 +1,213 @@
+{
+  "overall": {
+    "total_trades": 34,
+    "win_count": 22,
+    "loss_count": 12,
+    "win_rate": 64.71,
+    "profit_factor": 3.1897,
+    "sharpe_ratio": 7.3731,
+    "total_pnl": 311.96,
+    "avg_pnl": 9.18,
+    "largest_win": 52.97,
+    "largest_loss": -36.87,
+    "max_drawdown": -36.87
+  },
+  "direction": {
+    "long_trades": 22,
+    "long_win_rate": 68.18,
+    "long_pnl": 156.93,
+    "short_trades": 12,
+    "short_win_rate": 58.33,
+    "short_pnl": 155.03
+  },
+  "by_strategy": [
+    {
+      "strategy_type": "ema100_breakout",
+      "trade_count": 18,
+      "win_count": 9,
+      "loss_count": 9,
+      "win_rate": 50.0,
+      "total_pnl": 67.54,
+      "avg_pnl": 3.75,
+      "profit_factor": 1.6551,
+      "largest_win": 37.03,
+      "largest_loss": -36.87
+    },
+    {
+      "strategy_type": "ema20_breakout",
+      "trade_count": 5,
+      "win_count": 4,
+      "loss_count": 1,
+      "win_rate": 80.0,
+      "total_pnl": 50.33,
+      "avg_pnl": 10.07,
+      "profit_factor": 2.5194,
+      "largest_win": 30.0,
+      "largest_loss": -33.12
+    },
+    {
+      "strategy_type": "ema50_breakout",
+      "trade_count": 11,
+      "win_count": 9,
+      "loss_count": 2,
+      "win_rate": 81.82,
+      "total_pnl": 194.09,
+      "avg_pnl": 17.64,
+      "profit_factor": 32.0793,
+      "largest_win": 52.97,
+      "largest_loss": -5.31
+    }
+  ],
+  "signals": {
+    "total_signals": 6090,
+    "entry_signals": 3045,
+    "exit_signals": 3045,
+    "risk_blocked": 51,
+    "risk_capped": 0,
+    "risk_kill_switches": 0,
+    "signal_to_trade_rate": 1.12
+  },
+  "daily": {
+    "trading_days": 34,
+    "winning_days": 22,
+    "losing_days": 12,
+    "daily_pnl": [
+      {
+        "date": "2021-01-05",
+        "pnl": 14.06
+      },
+      {
+        "date": "2021-01-06",
+        "pnl": 37.97
+      },
+      {
+        "date": "2021-01-07",
+        "pnl": 20.63
+      },
+      {
+        "date": "2021-01-18",
+        "pnl": 3.75
+      },
+      {
+        "date": "2021-01-19",
+        "pnl": -11.87
+      },
+      {
+        "date": "2021-01-20",
+        "pnl": 12.66
+      },
+      {
+        "date": "2021-01-22",
+        "pnl": 6.57
+      },
+      {
+        "date": "2021-01-25",
+        "pnl": -2.5
+      },
+      {
+        "date": "2021-01-27",
+        "pnl": 30.0
+      },
+      {
+        "date": "2021-01-28",
+        "pnl": 1.56
+      },
+      {
+        "date": "2021-02-01",
+        "pnl": 18.75
+      },
+      {
+        "date": "2021-02-02",
+        "pnl": 21.57
+      },
+      {
+        "date": "2021-02-04",
+        "pnl": 11.72
+      },
+      {
+        "date": "2021-02-08",
+        "pnl": -5.93
+      },
+      {
+        "date": "2021-02-09",
+        "pnl": 15.0
+      },
+      {
+        "date": "2021-02-15",
+        "pnl": -0.94
+      },
+      {
+        "date": "2021-02-23",
+        "pnl": -33.12
+      },
+      {
+        "date": "2021-03-01",
+        "pnl": 19.69
+      },
+      {
+        "date": "2021-03-02",
+        "pnl": 23.91
+      },
+      {
+        "date": "2021-03-03",
+        "pnl": 37.03
+      },
+      {
+        "date": "2021-03-04",
+        "pnl": 40.31
+      },
+      {
+        "date": "2021-03-05",
+        "pnl": 52.97
+      },
+      {
+        "date": "2021-03-08",
+        "pnl": -36.87
+      },
+      {
+        "date": "2021-03-09",
+        "pnl": 19.69
+      },
+      {
+        "date": "2021-03-10",
+        "pnl": -11.56
+      },
+      {
+        "date": "2021-03-15",
+        "pnl": 14.53
+      },
+      {
+        "date": "2021-03-16",
+        "pnl": -7.5
+      },
+      {
+        "date": "2021-03-18",
+        "pnl": -5.31
+      },
+      {
+        "date": "2021-03-22",
+        "pnl": 15.47
+      },
+      {
+        "date": "2021-03-31",
+        "pnl": 19.69
+      },
+      {
+        "date": "2021-04-05",
+        "pnl": 16.88
+      },
+      {
+        "date": "2021-04-06",
+        "pnl": -10.0
+      },
+      {
+        "date": "2021-04-08",
+        "pnl": -9.69
+      },
+      {
+        "date": "2021-04-12",
+        "pnl": -7.18
+      }
+    ]
+  }
+}

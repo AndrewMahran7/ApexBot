@@ -34,6 +34,8 @@ from config.settings import InstrumentConfig, BacktestConfig
 from data.loader import load_bars
 from strategy.hybrid_ema_ml import HybridEMAMLConfig
 from strategy.strategy_engine import StrategyEngine, LiveSignal
+from strategy.multi_strategy_engine import MultiStrategyEngine
+from strategy.intraday_strategies import IntradayConfig
 from strategy.paper_engine import PaperEngine, PaperConfig, PnLUpdate
 from strategy.risk_manager import RiskManager, RiskConfig
 from strategy.tradovate_client import TradovateClient, TradovateConfig
@@ -165,6 +167,7 @@ def build_pipeline(
     dashboard_state: DashboardState | None = None,
     analytics: AnalyticsEngine | None = None,
     prop_gate: PropRiskGate | None = None,
+    **kwargs,
 ) -> dict:
     """
     Wire the signal pipeline for the requested mode.
@@ -209,10 +212,25 @@ def build_pipeline(
         signal_cb = _make_dashboard_signal_callback(signal_cb, dashboard_state)
     if analytics is not None:
         signal_cb = _make_analytics_signal_callback(signal_cb, analytics)
-    engine = StrategyEngine(
-        config=strategy_cfg,
-        on_signal=signal_cb,
-    )
+
+    # Use MultiStrategyEngine when intraday strategies are enabled
+    intraday_cfg = kwargs.get("intraday_cfg")
+    enable_hybrid = kwargs.get("enable_hybrid", True)
+    max_intra_bar = kwargs.get("max_intraday_per_bar", 2)
+    if intraday_cfg is not None:
+        engine = MultiStrategyEngine(
+            strategy_cfg=strategy_cfg,
+            intraday_cfg=intraday_cfg,
+            on_signal=signal_cb,
+            enable_hybrid=enable_hybrid,
+            enable_intraday=True,
+            max_intraday_entries_per_bar=max_intra_bar,
+        )
+    else:
+        engine = StrategyEngine(
+            config=strategy_cfg,
+            on_signal=signal_cb,
+        )
 
     return {
         "engine": engine,
@@ -380,7 +398,10 @@ def _sync_prop_trades(
     global _prop_trade_cursor
     trades = paper.trades
     for t in trades[_prop_trade_cursor:]:
-        prop.on_trade_closed(t.net_pnl)
+        prop.on_trade_closed(
+            t.net_pnl,
+            strategy_type=getattr(t, 'strategy_type', ''),
+        )
     _prop_trade_cursor = len(trades)
 
 
@@ -473,9 +494,9 @@ def _print_prop_summary(prop: PropRiskGate) -> None:
     print("=" * 60)
 
     if t.passed:
-        print("  OUTCOME: PASSED ✓")
+        print("  OUTCOME: PASSED")
     elif t.failed:
-        print("  OUTCOME: FAILED ✗")
+        print("  OUTCOME: FAILED")
     else:
         print("  OUTCOME: INCOMPLETE")
 
@@ -512,10 +533,10 @@ def _print_analytics(analytics: AnalyticsEngine) -> None:
     print(f"  Signals: {r.total_signals}  Decisions: "
           f"{r.risk_blocked + r.risk_capped + r.risk_kill_switches}")
     if r.total_signals > 0:
-        print(f"  Signal\u2192Trade rate: {r.signal_to_trade_rate:.1f}%")
+        print(f"  Signal->Trade rate: {r.signal_to_trade_rate:.1f}%")
 
     for s in r.by_strategy:
-        print(f"  [{s['strategy_type']}] {s['total_trades']} trades, "
+        print(f"  [{s['strategy_type']}] {s['trade_count']} trades, "
               f"{s['win_rate']:.1f}% WR, PF {s['profit_factor']:.2f}, "
               f"PnL ${s['total_pnl']:,.2f}")
 
@@ -609,6 +630,37 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
                    help="Daily profit lock in prop mode")
     p.add_argument("--prop-max-trades", type=int, default=4,
                    help="Max trades per day in prop mode")
+    p.add_argument("--prop-allowed-entries", nargs="+",
+                   default=["breakout", "vwap_bounce", "intraday_momentum", "mean_reversion"],
+                   help="Allowed entry types in prop mode (e.g. breakout momentum)")
+    p.add_argument("--prop-consecutive-losses", type=int, default=5,
+                   help="Max consecutive losses before halting for the day")
+    p.add_argument("--prop-min-ml-prob", type=float, default=0.55,
+                   help="Minimum ML probability for prop mode entry")
+
+    # Multi-strategy (intraday)
+    p.add_argument("--multi-strategy", action="store_true",
+                   help="Enable intraday strategies (VWAP Bounce, Momentum, Mean Reversion)")
+    p.add_argument("--disable-hybrid", action="store_true",
+                   help="Disable the original EMA/ML strategy in multi-strategy mode")
+    p.add_argument("--vwap-band-mult", type=float, default=0.3,
+                   help="VWAP band width in ATR multiples")
+    p.add_argument("--momentum-lookback", type=int, default=3,
+                   help="Bars for intraday momentum range")
+    p.add_argument("--rsi-oversold", type=float, default=30.0,
+                   help="RSI oversold threshold for mean reversion")
+    p.add_argument("--rsi-overbought", type=float, default=70.0,
+                   help="RSI overbought threshold for mean reversion")
+    p.add_argument("--intraday-entry-start", default="10:00",
+                   help="Earliest intraday entry time (HH:MM ET)")
+    p.add_argument("--intraday-entry-end", default="15:30",
+                   help="Latest intraday entry time (HH:MM ET)")
+    p.add_argument("--intraday-cooldown", type=int, default=6,
+                   help="Min bars between intraday entries per strategy")
+    p.add_argument("--min-quality-score", type=float, default=0.5,
+                   help="Minimum quality score for intraday entries (0.0-1.0)")
+    p.add_argument("--max-intraday-per-bar", type=int, default=2,
+                   help="Max intraday entries per bar in multi-strategy mode")
 
     return p.parse_args(argv)
 
@@ -669,13 +721,17 @@ def main(argv: list[str] | None = None) -> int:
             daily_loss_limit=args.prop_daily_loss,
             daily_profit_lock=args.prop_daily_lock,
             max_trades_per_day=args.prop_max_trades,
+            allowed_entry_types=tuple(args.prop_allowed_entries),
+            max_consecutive_losses=args.prop_consecutive_losses,
+            min_ml_prob=args.prop_min_ml_prob,
         )
         prop_gate = PropRiskGate(config=prop_cfg)
         # Override risk config to match prop constraints
         risk_cfg = RiskConfig(
             max_daily_loss=args.prop_daily_loss,
             max_trades_per_day=args.prop_max_trades,
-            max_concurrent_positions=1,
+            max_concurrent_positions=args.max_concurrent,
+            max_per_direction=2,
         )
         # Force prop capital
         paper_cfg = PaperConfig(
@@ -694,6 +750,29 @@ def main(argv: list[str] | None = None) -> int:
     global _prop_trade_cursor
     _prop_trade_cursor = 0
 
+    # Build intraday config if multi-strategy is enabled
+    intraday_cfg = None
+    enable_hybrid = True
+    if args.multi_strategy:
+        intraday_cfg = IntradayConfig(
+            vwap_band_mult=args.vwap_band_mult,
+            momentum_lookback=args.momentum_lookback,
+            rsi_oversold=args.rsi_oversold,
+            rsi_overbought=args.rsi_overbought,
+            entry_start=args.intraday_entry_start,
+            entry_end=args.intraday_entry_end,
+            entry_cooldown_bars=args.intraday_cooldown,
+            min_quality_score=args.min_quality_score,
+        )
+        enable_hybrid = not args.disable_hybrid
+        logger.info(
+            "MULTI-STRATEGY: hybrid=%s, vwap_band=%.2f, momentum_lb=%d, "
+            "rsi=[%.0f,%.0f], entry=%s-%s",
+            enable_hybrid, args.vwap_band_mult, args.momentum_lookback,
+            args.rsi_oversold, args.rsi_overbought,
+            args.intraday_entry_start, args.intraday_entry_end,
+        )
+
     pipeline = build_pipeline(
         mode=args.mode,
         instrument=instrument,
@@ -704,6 +783,9 @@ def main(argv: list[str] | None = None) -> int:
         dashboard_state=dashboard_state,
         analytics=analytics,
         prop_gate=prop_gate,
+        intraday_cfg=intraday_cfg,
+        enable_hybrid=enable_hybrid,
+        max_intraday_per_bar=getattr(args, 'max_intraday_per_bar', 2),
     )
 
     # Wire prop gate equity callback now that paper engine exists
@@ -732,6 +814,16 @@ def main(argv: list[str] | None = None) -> int:
 
         run_bar_loop(bars, pipeline)
         print_summary(pipeline, args.mode)
+
+        # Export paper trades to CSV
+        paper_engine: Optional[PaperEngine] = pipeline.get("paper")
+        if paper_engine is not None and paper_engine.trades:
+            from backtest.metrics import export_trades_csv
+            out_dir = Path("results")
+            out_dir.mkdir(parents=True, exist_ok=True)
+            export_trades_csv(paper_engine.trades, str(out_dir / "trades.csv"))
+            logger.info("Paper trades exported to results/trades.csv (%d trades)",
+                        len(paper_engine.trades))
 
         # Prop challenge summary
         if prop_gate is not None:

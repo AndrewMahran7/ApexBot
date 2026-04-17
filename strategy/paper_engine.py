@@ -35,7 +35,7 @@ from dataclasses import dataclass, field
 from typing import Callable, Optional
 
 from backtest.engine import Trade, EquityPoint
-from config.settings import InstrumentConfig, BacktestConfig
+from config.settings import InstrumentConfig, BacktestConfig, compute_contracts
 from strategy.orb import SignalType
 from strategy.strategy_engine import LiveSignal
 
@@ -52,6 +52,8 @@ class PaperConfig:
     slippage_ticks: float = 1.0
     commission_per_side: float = 0.62
     initial_capital: float = 10_000.0
+    risk_per_trade: float = 0.01   # 1% of equity risked per trade
+    max_contracts: int = 5         # hard cap on contract count
 
     @classmethod
     def from_backtest_config(cls, bt: BacktestConfig) -> "PaperConfig":
@@ -147,20 +149,17 @@ class PaperEngine:
         self._last_bar: Optional[dict] = None
         self._bar_count: int = 0
 
-        # Pre-compute per-side costs
-        self._slip_per_side = (
-            self._inst.tick_size
-            * self._cfg.slippage_ticks
-            * self._inst.point_value
-        )
-
         logger.info(
             "PaperEngine initialised: capital=%.2f, slip_ticks=%.1f, "
-            "comm=%.2f, instrument=%s",
+            "comm=%.2f, instrument=%s (tick_value=$%.2f), "
+            "risk_per_trade=%.1f%%, max_contracts=%d",
             self._cfg.initial_capital,
             self._cfg.slippage_ticks,
             self._cfg.commission_per_side,
             self._inst.symbol,
+            self._inst.tick_value,
+            self._cfg.risk_per_trade * 100,
+            self._cfg.max_contracts,
         )
 
     # ------------------------------------------------------------------
@@ -318,10 +317,22 @@ class PaperEngine:
             )
             return
 
-        contracts = self._inst.contract_size
-        pos_size = sig.position_size
-        entry_slip = self._slip_per_side * contracts * pos_size
-        entry_comm = self._cfg.commission_per_side * contracts * pos_size
+        # Risk-based contract sizing
+        stop_distance = abs(sig.entry - sig.stop) if sig.stop else 0.0
+        stop_ticks = stop_distance / self._inst.tick_size if self._inst.tick_size > 0 else 0.0
+        contracts = compute_contracts(
+            equity=self._equity + self._unrealized_pnl(
+                float(self._last_bar["close"]) if self._last_bar else sig.entry,
+            ),
+            risk_per_trade=self._cfg.risk_per_trade,
+            stop_ticks=stop_ticks,
+            tick_value=self._inst.tick_value,
+            max_contracts=self._cfg.max_contracts,
+        )
+
+        # Per-contract costs
+        entry_slip = self._cfg.slippage_ticks * self._inst.tick_value * contracts
+        entry_comm = self._cfg.commission_per_side * contracts
 
         # Deduct entry costs from equity immediately
         self._equity -= (entry_slip + entry_comm)
@@ -332,16 +343,17 @@ class PaperEngine:
             "direction": sig.direction,
             "sl": sig.stop,
             "tp": sig.take_profit,
-            "position_size": pos_size,
+            "contracts": contracts,
+            "position_size": sig.position_size,
             "entry_slip": entry_slip,
             "entry_comm": entry_comm,
             "strategy_type": sig.strategy_type,
         }
 
         logger.info(
-            "PAPER ENTRY %s %s @ %.2f (sl=%.2f tp=%.2f size=%.2f) [%s]",
-            pos_id, sig.direction, sig.entry,
-            sig.stop, sig.take_profit, pos_size,
+            "PAPER ENTRY %s %s contracts=%d @ %.2f (sl=%.2f tp=%.2f) [%s]",
+            pos_id, sig.direction, contracts, sig.entry,
+            sig.stop, sig.take_profit,
             sig.strategy_type,
         )
 
@@ -368,19 +380,19 @@ class PaperEngine:
             return
 
         pos = self._open_positions.pop(pos_id)
-        contracts = self._inst.contract_size
-        pos_size = pos["position_size"]
+        contracts = pos["contracts"]
         fill_price = sig.entry  # exit price carried in LiveSignal.entry
 
-        exit_slip = self._slip_per_side * contracts * pos_size
-        exit_comm = self._cfg.commission_per_side * contracts * pos_size
+        exit_slip = self._cfg.slippage_ticks * self._inst.tick_value * contracts
+        exit_comm = self._cfg.commission_per_side * contracts
 
         if pos["direction"] == "short":
-            pnl_points = pos["entry_price"] - fill_price
+            ticks = (pos["entry_price"] - fill_price) / self._inst.tick_size
         else:
-            pnl_points = fill_price - pos["entry_price"]
+            ticks = (fill_price - pos["entry_price"]) / self._inst.tick_size
 
-        pnl_dollars = pnl_points * self._inst.point_value * contracts * pos_size
+        pnl_points = ticks * self._inst.tick_size  # price-space move
+        pnl_dollars = ticks * self._inst.tick_value * contracts
         total_commission = pos["entry_comm"] + exit_comm
         total_slippage = pos["entry_slip"] + exit_slip
         net_pnl = pnl_dollars - total_slippage - total_commission
@@ -405,15 +417,16 @@ class PaperEngine:
             net_pnl=net_pnl,
             exit_reason=exit_reason,
             contracts=contracts,
-            position_size=pos_size,
+            position_size=pos["position_size"],
             strategy_type=pos["strategy_type"],
         )
         self._trades.append(trade)
 
         logger.info(
-            "PAPER EXIT %s %s @ %.2f -> %.2f  pnl=%.2f net=%.2f [%s]",
-            pos_id, exit_reason,
-            pos["entry_price"], fill_price, pnl_dollars, net_pnl,
+            "PAPER EXIT %s %s contracts=%d @ %.2f -> %.2f  "
+            "ticks=%.0f pnl=$%.2f net=$%.2f [%s]",
+            pos_id, exit_reason, contracts,
+            pos["entry_price"], fill_price, ticks, pnl_dollars, net_pnl,
             pos["strategy_type"],
         )
 
@@ -522,13 +535,12 @@ class PaperEngine:
     def _unrealized_pnl(self, current_price: float) -> float:
         """Sum unrealized PnL across all open positions."""
         total = 0.0
-        contracts = self._inst.contract_size
         for pos in self._open_positions.values():
             if pos["direction"] == "long":
-                pts = current_price - pos["entry_price"]
+                ticks = (current_price - pos["entry_price"]) / self._inst.tick_size
             else:
-                pts = pos["entry_price"] - current_price
-            total += pts * self._inst.point_value * contracts * pos["position_size"]
+                ticks = (pos["entry_price"] - current_price) / self._inst.tick_size
+            total += ticks * self._inst.tick_value * pos["contracts"]
         return total
 
     def _emit_update(self, ts: datetime.datetime) -> None:

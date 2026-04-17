@@ -52,6 +52,8 @@ class Signal:
     # Multi-position tracking
     position_id: str = ""       # Identifies position (for multi-position exit matching)
     strategy_type: str = ""     # e.g. "ema50_breakout"
+    # Quality scoring (0.0 = unscored, higher = better)
+    quality_score: float = 0.0
 
 
 class ORBStrategy:

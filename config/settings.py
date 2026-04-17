@@ -19,6 +19,11 @@ class InstrumentConfig:
     contract_size: int = 1         # number of contracts to trade
     description: str = "Micro E-mini S&P 500"
 
+    @property
+    def tick_value(self) -> float:
+        """Dollar value of one tick = tick_size * point_value."""
+        return self.tick_size * self.point_value
+
 
 @dataclass
 class StrategyConfig:
@@ -157,3 +162,51 @@ class EvalConfig:
     profit_target: float = 1_500.0
     max_drawdown: float = 1_000.0
     drawdown_type: str = "trailing_intraday"  # 'trailing_intraday'
+
+
+# ------------------------------------------------------------------
+# Instrument registry for multi-symbol support
+# ------------------------------------------------------------------
+
+INSTRUMENT_REGISTRY: dict[str, InstrumentConfig] = {
+    "MES": InstrumentConfig(
+        symbol="MES",
+        tick_size=0.25,
+        point_value=5.0,
+        contract_size=1,
+        description="Micro E-mini S&P 500",
+    ),
+    "MNQ": InstrumentConfig(
+        symbol="MNQ",
+        tick_size=0.25,
+        point_value=2.0,
+        contract_size=1,
+        description="Micro E-mini Nasdaq-100",
+    ),
+    "RTY": InstrumentConfig(
+        symbol="RTY",
+        tick_size=0.10,
+        point_value=5.0,
+        contract_size=1,
+        description="Micro E-mini Russell 2000",
+    ),
+}
+
+
+def compute_contracts(
+    equity: float,
+    risk_per_trade: float,
+    stop_ticks: float,
+    tick_value: float,
+    max_contracts: int = 5,
+) -> int:
+    """Risk-based contract sizing.
+
+    contracts = floor(risk_dollars / (stop_ticks * tick_value))
+    Clamped to [1, max_contracts].
+    """
+    if stop_ticks <= 0 or tick_value <= 0:
+        return 1
+    risk_dollars = equity * risk_per_trade
+    raw = risk_dollars / (stop_ticks * tick_value)
+    return max(1, min(max_contracts, int(raw)))

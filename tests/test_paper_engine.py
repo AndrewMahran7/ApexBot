@@ -39,7 +39,10 @@ def _inst() -> InstrumentConfig:
 
 
 def _cfg(capital=10_000.0, slip=1.0, comm=0.62) -> PaperConfig:
-    return PaperConfig(slippage_ticks=slip, commission_per_side=comm, initial_capital=capital)
+    return PaperConfig(
+        slippage_ticks=slip, commission_per_side=comm,
+        initial_capital=capital, max_contracts=1,
+    )
 
 
 def _entry_signal(
@@ -121,8 +124,8 @@ class TestEntrySimulation:
         eng = PaperEngine(_inst(), _cfg(capital=10_000.0, slip=1.0, comm=0.62))
         initial = eng.equity
         eng.on_signal(_entry_signal(size=1.0))
-        # slippage = 0.25 * 1.0 * 5.0 * 1 * 1.0 = 1.25
-        # commission = 0.62 * 1 * 1.0 = 0.62
+        # slippage = 1.0 * tick_value(1.25) * 1 contract = 1.25
+        # commission = 0.62 * 1 contract = 0.62
         expected_cost = 1.25 + 0.62
         assert eng.equity == pytest.approx(initial - expected_cost, abs=0.01)
 
@@ -133,13 +136,80 @@ class TestEntrySimulation:
         assert eng.open_position_count == 1
 
     def test_entry_with_fractional_size(self):
+        """Fractional position_size (ML quality) does not affect risk-based sizing."""
         eng = PaperEngine(_inst(), _cfg(capital=10_000.0))
         eng.on_signal(_entry_signal(size=0.5))
-        # Costs should scale with size
-        # slippage = 0.25 * 1.0 * 5.0 * 1 * 0.5 = 0.625
-        # commission = 0.62 * 1 * 0.5 = 0.31
-        expected_cost = 0.625 + 0.31
+        # Risk-based sizing ignores position_size; contracts = 1 (max_contracts=1)
+        # slippage = 1.0 * 1.25 * 1 = 1.25
+        # commission = 0.62 * 1 = 0.62
+        expected_cost = 1.25 + 0.62
         assert eng.equity == pytest.approx(10_000.0 - expected_cost, abs=0.01)
+
+
+# ---------------------------------------------------------------------------
+# Risk-based contract sizing
+# ---------------------------------------------------------------------------
+
+class TestRiskBasedSizing:
+    def test_multi_contract_sizing(self):
+        """With max_contracts=5, risk formula should compute >1 contract."""
+        cfg = PaperConfig(
+            slippage_ticks=0.0, commission_per_side=0.0,
+            initial_capital=10_000.0, max_contracts=5,
+        )
+        eng = PaperEngine(_inst(), cfg)
+        # stop distance = 10 pts = 40 ticks; tick_value = 1.25
+        # risk_dollars = 10000 * 0.01 = 100
+        # contracts = floor(100 / (40 * 1.25)) = floor(2.0) = 2
+        eng.on_signal(_entry_signal(entry=5000.0, stop=4990.0))
+        eng.on_signal(_exit_signal(price=5010.0))
+
+        t = eng.trades[0]
+        assert t.contracts == 2
+        assert t.pnl_dollars == pytest.approx(100.0)  # 40 ticks * 1.25 * 2
+
+    def test_max_contracts_clamped(self):
+        """Contract count should not exceed max_contracts."""
+        cfg = PaperConfig(
+            slippage_ticks=0.0, commission_per_side=0.0,
+            initial_capital=100_000.0, max_contracts=3,
+        )
+        eng = PaperEngine(_inst(), cfg)
+        # risk_dollars = 100000 * 0.01 = 1000
+        # raw = 1000 / (40 * 1.25) = 20 → clamped to 3
+        eng.on_signal(_entry_signal(entry=5000.0, stop=4990.0))
+        eng.on_signal(_exit_signal(price=5010.0))
+
+        assert eng.trades[0].contracts == 3
+
+    def test_min_one_contract(self):
+        """Even with tiny equity, at least 1 contract is opened."""
+        cfg = PaperConfig(
+            slippage_ticks=0.0, commission_per_side=0.0,
+            initial_capital=100.0, max_contracts=5,
+        )
+        eng = PaperEngine(_inst(), cfg)
+        eng.on_signal(_entry_signal(entry=5000.0, stop=4990.0))
+        eng.on_signal(_exit_signal(price=5010.0))
+
+        assert eng.trades[0].contracts == 1
+
+    def test_multi_contract_costs(self):
+        """Slippage and commission scale with contract count."""
+        cfg = PaperConfig(
+            slippage_ticks=1.0, commission_per_side=0.62,
+            initial_capital=10_000.0, max_contracts=5,
+        )
+        eng = PaperEngine(_inst(), cfg)
+        eng.on_signal(_entry_signal(entry=5000.0, stop=4990.0))
+        eng.on_signal(_exit_signal(price=5015.0))
+
+        t = eng.trades[0]
+        assert t.contracts == 2
+        # Entry: slip=1.0*1.25*2=2.50, comm=0.62*2=1.24
+        # Exit:  slip=1.0*1.25*2=2.50, comm=0.62*2=1.24
+        assert t.slippage_cost == pytest.approx(5.0)
+        assert t.commission == pytest.approx(2.48)
 
 
 # ---------------------------------------------------------------------------
@@ -160,7 +230,7 @@ class TestExitSimulation:
         assert t.entry_price == 5000.0
         assert t.exit_price == 5015.0
         assert t.pnl_points == 15.0
-        # pnl_dollars = 15 * 5 * 1 * 1.0 = 75
+        # pnl_dollars = 60 ticks * tick_value(1.25) * 1 contract = 75
         assert t.pnl_dollars == pytest.approx(75.0)
         assert t.exit_reason == "Take Profit"
 
@@ -232,7 +302,7 @@ class TestPositionTracking:
     def test_equity_after_winning_trade(self):
         eng = PaperEngine(_inst(), _cfg(capital=10_000.0, slip=0.0, comm=0.0))
         eng.on_signal(_entry_signal(entry=5000.0, size=1.0))
-        eng.on_signal(_exit_signal(price=5010.0))  # +10pts = +$50
+        eng.on_signal(_exit_signal(price=5010.0))  # +10pts = 40 ticks * 1.25 * 1 = +$50
         assert eng.equity == pytest.approx(10_050.0)
 
     def test_equity_after_losing_trade(self):
@@ -245,7 +315,7 @@ class TestPositionTracking:
         eng = PaperEngine(_inst(), _cfg(capital=10_000.0, slip=0.0, comm=0.0))
         eng.on_signal(_entry_signal(entry=5000.0))
         eng.on_bar(_bar(_ts(10, 0), 5005, 5010, 5003, 5008))
-        # unrealized: (5008-5000)*5*1*1 = 40
+        # unrealized: (5008-5000)/0.25 = 32 ticks * 1.25 * 1 = $40
         assert eng.mark_to_market_equity == pytest.approx(10_040.0)
 
     def test_equity_curve_populated(self):
@@ -624,11 +694,13 @@ class TestEdgeCases:
         assert eng.mark_to_market_equity == eng.equity
 
     def test_zero_size_trade(self):
-        eng = PaperEngine(_inst(), _cfg())
+        """position_size=0 is ignored; risk-based sizing still computes 1 contract."""
+        eng = PaperEngine(_inst(), _cfg(slip=0.0, comm=0.0))
         eng.on_signal(_entry_signal(size=0.0))
         eng.on_signal(_exit_signal(price=5010.0))
         t = eng.trades[0]
-        assert t.pnl_dollars == 0.0
+        # 1 contract, +10pts = 40 ticks * 1.25 = $50
+        assert t.pnl_dollars == pytest.approx(50.0)
         assert t.commission == 0.0
 
     def test_peak_equity_tracks_unrealized(self):

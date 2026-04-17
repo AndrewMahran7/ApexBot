@@ -1,8 +1,10 @@
-# Environment files
+# ── Environment & Secrets ──
 .env
 .env.*
+*.pem
+*.key
 
-# Python
+# ── Python ──
 __pycache__/
 *.py[cod]
 *$py.class
@@ -14,29 +16,25 @@ build/
 venv/
 env/
 .Python
+.pytest_cache/
 
-# IDE
+# ── IDE ──
 .vscode/
 .idea/
 *.swp
 *~
-.DS_Store
-Thumbs.db
 
-# Backtest output (regenerated on each run)
-results/
-
-# OS
+# ── OS ──
 .DS_Store
 ehthumbs.db
-Thumbs.dbAndrew_accessKeys.csv
-.env
-*.pem
+Thumbs.db
 
-# AWS Credentials
-*.csv
-Andrew_accessKeys.csv
+# ── Logs (regenerated on each run) ──
+logs/*.log
+logs/diag/
 
-# AWS Credentials
-*.csv
-Andrew_accessKeys.csv
+# ── Large data files (not versioned; download separately) ──
+data/*.csv
+
+# ── Result artifacts (regenerated; keep JSON summaries via git add -f) ──
+results/*.csv

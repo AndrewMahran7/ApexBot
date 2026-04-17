@@ -59,6 +59,9 @@ class RiskConfig:
     max_total_exposure: float = 3.0
     """Sum of position_size across all open positions must not exceed this."""
 
+    max_per_direction: int = 2
+    """Maximum open positions in a single direction (long or short)."""
+
     kill_switch_close_positions: bool = True
     """When kill switch triggers, emit EXIT_EOD for every open position."""
 
@@ -126,10 +129,11 @@ class RiskManager:
 
         logger.info(
             "RiskManager initialised: max_daily_loss=%.2f, max_trades=%d, "
-            "max_concurrent=%d, max_size=%.2f, max_exposure=%.2f",
+            "max_concurrent=%d, max_per_dir=%d, max_size=%.2f, max_exposure=%.2f",
             config.max_daily_loss,
             config.max_trades_per_day,
             config.max_concurrent_positions,
+            config.max_per_direction,
             config.max_position_size,
             config.max_total_exposure,
         )
@@ -201,6 +205,15 @@ class RiskManager:
 
         if len(self._open_positions) >= self._cfg.max_concurrent_positions:
             self._block(signal, "max_concurrent_positions")
+            return
+
+        # Directional exposure limit
+        dir_count = sum(
+            1 for p in self._open_positions.values()
+            if p["direction"] == signal.direction
+        )
+        if dir_count >= self._cfg.max_per_direction:
+            self._block(signal, f"max_per_direction_{signal.direction}")
             return
 
         # Position size cap
@@ -292,7 +305,7 @@ class RiskManager:
         """Roll counters for a new trading day."""
         if self._current_date is not None:
             logger.info(
-                "Day rollover %s → %s: entries=%d realized=%.2f",
+                "Day rollover %s -> %s: entries=%d realized=%.2f",
                 self._current_date, new_date,
                 self._daily_entries, self._daily_realized_pnl,
             )
@@ -358,17 +371,13 @@ class RiskManager:
                 position_id=pos_id,
             )
 
-            # Compute PnL for daily loss tracking
+            # Compute PnL for daily loss tracking (tick-based)
             if pos["direction"] == "short":
-                pnl_points = pos["entry_price"] - close_price
+                ticks = (pos["entry_price"] - close_price) / self._inst.tick_size
             else:
-                pnl_points = close_price - pos["entry_price"]
-            pnl_dollars = (
-                pnl_points
-                * self._inst.point_value
-                * self._inst.contract_size
-                * pos["position_size"]
-            )
+                ticks = (close_price - pos["entry_price"]) / self._inst.tick_size
+            contracts = pos.get("contracts", 1)
+            pnl_dollars = ticks * self._inst.tick_value * contracts
             self._daily_realized_pnl += pnl_dollars
 
             logger.warning(
@@ -388,6 +397,7 @@ class RiskManager:
             "direction": sig.direction,
             "entry_price": sig.entry,
             "position_size": sig.position_size,
+            "contracts": max(1, int(sig.position_size)),
             "entry_time": sig.timestamp,
             "strategy_type": sig.strategy_type,
         }
@@ -412,15 +422,11 @@ class RiskManager:
 
             fill_price = sig.entry  # exit price carried in LiveSignal.entry
             if pos["direction"] == "short":
-                pnl_points = pos["entry_price"] - fill_price
+                ticks = (pos["entry_price"] - fill_price) / self._inst.tick_size
             else:
-                pnl_points = fill_price - pos["entry_price"]
-            pnl_dollars = (
-                pnl_points
-                * self._inst.point_value
-                * self._inst.contract_size
-                * pos["position_size"]
-            )
+                ticks = (fill_price - pos["entry_price"]) / self._inst.tick_size
+            contracts = pos.get("contracts", 1)
+            pnl_dollars = ticks * self._inst.tick_value * contracts
             self._daily_realized_pnl += pnl_dollars
 
             logger.info(
@@ -474,7 +480,7 @@ class RiskManager:
         )
         self._events.append(event)
         logger.info(
-            "RISK CAPPED %s size %.2f → %.2f (limit=%.2f)",
+            "RISK CAPPED %s size %.2f -> %.2f (limit=%.2f)",
             sig.position_id or "_single",
             sig.position_size, new_size,
             self._cfg.max_position_size,
@@ -499,15 +505,11 @@ class RiskManager:
         total = 0.0
         for pos in self._open_positions.values():
             if pos["direction"] == "long":
-                pts = current_price - pos["entry_price"]
+                ticks = (current_price - pos["entry_price"]) / self._inst.tick_size
             else:
-                pts = pos["entry_price"] - current_price
-            total += (
-                pts
-                * self._inst.point_value
-                * self._inst.contract_size
-                * pos["position_size"]
-            )
+                ticks = (pos["entry_price"] - current_price) / self._inst.tick_size
+            contracts = pos.get("contracts", 1)
+            total += ticks * self._inst.tick_value * contracts
         return total
 
     def _forward(self, signal: LiveSignal) -> None:

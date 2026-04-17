@@ -1048,6 +1048,6 @@ Parameter optimization is a powerful tool but also the most common way to fool y
 3. If performance degrades significantly, the parameters are overfit
 4. Prefer parameter sets that are "good enough" across many combinations over the single best one
 5. Use evaluation mode (`--eval`) to test if a parameter set can pass a simulated prop-firm account
-#   A p e x B o t  
- #   A p e x B o t  
+
+ 
  

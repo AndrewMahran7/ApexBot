@@ -11,7 +11,7 @@ from dashboard.state import DashboardState, MAX_EQUITY_POINTS
 from strategy.orb import SignalType
 from strategy.strategy_engine import LiveSignal
 from strategy.paper_engine import PnLUpdate
-from strategy.risk_manager import RiskEvent
+from risk.risk_manager import RiskEvent
 
 
 # ---------------------------------------------------------------------------
@@ -362,10 +362,10 @@ class TestFastAPIApp:
 
 class TestMainDashboardWiring:
     def test_build_pipeline_with_dashboard(self):
-        from main import build_pipeline
+        from scripts.run_live import build_pipeline
         from config.settings import InstrumentConfig
         from strategy.hybrid_ema_ml import HybridEMAMLConfig
-        from strategy.risk_manager import RiskConfig
+        from risk.risk_manager import RiskConfig
         from strategy.paper_engine import PaperConfig
 
         state = DashboardState()
@@ -380,10 +380,10 @@ class TestMainDashboardWiring:
         assert pipeline["dashboard_state"] is state
 
     def test_build_pipeline_without_dashboard(self):
-        from main import build_pipeline
+        from scripts.run_live import build_pipeline
         from config.settings import InstrumentConfig
         from strategy.hybrid_ema_ml import HybridEMAMLConfig
-        from strategy.risk_manager import RiskConfig
+        from risk.risk_manager import RiskConfig
 
         pipeline = build_pipeline(
             mode="paper",
@@ -394,13 +394,13 @@ class TestMainDashboardWiring:
         assert pipeline["dashboard_state"] is None
 
     def test_dashboard_cli_flag(self):
-        from main import parse_args
+        from scripts.run_live import parse_args
         args = parse_args(["--mode", "paper", "--dashboard", "--dashboard-port", "9999"])
         assert args.dashboard is True
         assert args.dashboard_port == 9999
 
     def test_dashboard_disabled_by_default(self):
-        from main import parse_args
+        from scripts.run_live import parse_args
         args = parse_args(["--mode", "paper"])
         assert args.dashboard is False
         assert args.dashboard_port == 8501

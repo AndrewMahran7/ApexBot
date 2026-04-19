@@ -27,7 +27,7 @@ def _ts(hour=10, minute=35) -> datetime.datetime:
 
 
 # ---------------------------------------------------------------------------
-# TelegramAlerter — disabled mode
+# TelegramAlerter â€” disabled mode
 # ---------------------------------------------------------------------------
 
 
@@ -68,7 +68,7 @@ class TestDisabledAlerter:
 
 
 # ---------------------------------------------------------------------------
-# TelegramAlerter — enabled mode (mocked HTTP)
+# TelegramAlerter â€” enabled mode (mocked HTTP)
 # ---------------------------------------------------------------------------
 
 
@@ -359,18 +359,18 @@ class TestHelpers:
 
 class TestCLIFlags:
     def test_test_telegram_flag(self):
-        from run_paper_live import parse_args
+        from scripts.run_paper import parse_args
         args = parse_args(["--test-telegram"])
         assert args.test_telegram is True
 
     def test_default_no_test_telegram(self):
-        from run_paper_live import parse_args
+        from scripts.run_paper import parse_args
         args = parse_args([])
         assert args.test_telegram is False
 
 
 # ---------------------------------------------------------------------------
-# Entry alert in execution tracker — integration
+# Entry alert in execution tracker â€” integration
 # ---------------------------------------------------------------------------
 
 
@@ -382,8 +382,8 @@ class TestMultiSymbolRouterTelegram:
         from unittest.mock import MagicMock, patch as _patch
         from strategy.orb import SignalType
         from strategy.strategy_engine import LiveSignal
-        from strategy.portfolio_risk import PortfolioRiskManager, PortfolioRiskConfig
-        from run_paper_live import MultiSymbolRouter, SymbolPipeline
+        from risk.portfolio_risk import PortfolioRiskManager, PortfolioRiskConfig
+        from scripts.run_paper import MultiSymbolRouter, SymbolPipeline
         from config.settings import InstrumentConfig
 
         # Minimal mock pipeline
@@ -442,8 +442,8 @@ class TestMultiSymbolRouterTelegram:
         """Exit signals should NOT trigger entry alerts."""
         from strategy.orb import SignalType
         from strategy.strategy_engine import LiveSignal
-        from strategy.portfolio_risk import PortfolioRiskManager, PortfolioRiskConfig
-        from run_paper_live import MultiSymbolRouter, SymbolPipeline
+        from risk.portfolio_risk import PortfolioRiskManager, PortfolioRiskConfig
+        from scripts.run_paper import MultiSymbolRouter, SymbolPipeline
         from config.settings import InstrumentConfig
 
         mock_paper = MagicMock()

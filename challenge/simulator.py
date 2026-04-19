@@ -14,7 +14,7 @@ Usage:
     python -m challenge.simulator --data data/mes_4y.csv
     python -m challenge.simulator --data data/mes_4y.csv --windows 50
 
-No lookahead bias — each window starts fresh and processes bars
+No lookahead bias â€” each window starts fresh and processes bars
 sequentially using the same pipeline as a live run.
 """
 
@@ -32,9 +32,9 @@ import pandas as pd
 from config.settings import InstrumentConfig
 from strategy.hybrid_ema_ml import HybridEMAMLConfig
 from strategy.paper_engine import PaperEngine, PaperConfig
-from strategy.risk_manager import RiskManager, RiskConfig
+from risk.risk_manager import RiskManager, RiskConfig
 from strategy.strategy_engine import StrategyEngine, LiveSignal
-from strategy.prop_challenge import PropConfig, PropRiskGate
+from risk.prop_challenge import PropConfig, PropRiskGate
 from strategy.orb import SignalType
 
 logger = logging.getLogger(__name__)
@@ -285,7 +285,7 @@ def run_simulation(
             continue
 
         logger.info(
-            "Trial %d/%d: %s → %s (%d bars)",
+            "Trial %d/%d: %s â†’ %s (%d bars)",
             i + 1, num_windows,
             str(start_date.date()), str(end_date.date()),
             len(window_bars),

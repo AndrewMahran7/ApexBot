@@ -20,7 +20,7 @@ from typing import Optional, Sequence
 
 import numpy as np
 
-from strategy.prop_risk_layer import (
+from risk.prop_risk_layer import (
     PropRiskConfig,
     PropRiskLayer,
     AccountMode,
@@ -240,7 +240,7 @@ def run_dynamic_monte_carlo(
         starting_capital=risk_config.starting_capital,
         profit_target=risk_config.profit_target,
         max_drawdown=risk_config.max_drawdown,
-        position_scale=1.0,  # dynamic — no single scale
+        position_scale=1.0,  # dynamic â€” no single scale
         block_size=block_size,
         dd_buffer=dd_buffer,
         n_sample_paths=n_sample_paths,

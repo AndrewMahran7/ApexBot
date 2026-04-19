@@ -7,7 +7,7 @@ import pytest
 from config.settings import InstrumentConfig
 from strategy.orb import SignalType
 from strategy.strategy_engine import LiveSignal
-from strategy.risk_manager import RiskManager, RiskConfig, RiskEvent
+from risk.risk_manager import RiskManager, RiskConfig, RiskEvent
 
 
 # ---------------------------------------------------------------------------

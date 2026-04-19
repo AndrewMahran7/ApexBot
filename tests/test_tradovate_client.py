@@ -10,7 +10,7 @@ import pytest
 from config.settings import InstrumentConfig
 from strategy.orb import SignalType
 from strategy.strategy_engine import LiveSignal
-from strategy.tradovate_client import (
+from execution.tradovate_client import (
     TradovateClient,
     TradovateConfig,
     TrackedOrder,
@@ -140,7 +140,7 @@ class TestSimOnlyGuard:
     def test_sim_only_allows_demo(self):
         cfg = _make_config(environment="demo", sim_only=True)
         client = TradovateClient(_make_instrument(), cfg)
-        with patch("strategy.tradovate_client.httpx.Client") as MockHTTP:
+        with patch("execution.tradovate_client.httpx.Client") as MockHTTP:
             mock_http = _mock_http_client()
             MockHTTP.return_value = mock_http
 
@@ -160,7 +160,7 @@ class TestSimOnlyGuard:
     def test_live_allowed_when_sim_only_false(self):
         cfg = _make_config(environment="live", sim_only=False)
         client = TradovateClient(_make_instrument(), cfg)
-        with patch("strategy.tradovate_client.httpx.Client") as MockHTTP:
+        with patch("execution.tradovate_client.httpx.Client") as MockHTTP:
             mock_http = _mock_http_client()
             MockHTTP.return_value = mock_http
 
@@ -195,7 +195,7 @@ class TestAuthentication:
         cfg = _make_config()
         client = TradovateClient(_make_instrument(), cfg)
 
-        with patch("strategy.tradovate_client.httpx.Client") as MockHTTP:
+        with patch("execution.tradovate_client.httpx.Client") as MockHTTP:
             mock_http = _mock_http_client()
             MockHTTP.return_value = mock_http
 
@@ -217,7 +217,7 @@ class TestAuthentication:
         cfg = _make_config()
         client = TradovateClient(_make_instrument(), cfg)
 
-        with patch("strategy.tradovate_client.httpx.Client") as MockHTTP:
+        with patch("execution.tradovate_client.httpx.Client") as MockHTTP:
             mock_http = _mock_http_client()
             MockHTTP.return_value = mock_http
 
@@ -234,7 +234,7 @@ class TestAuthentication:
         cfg = _make_config()
         client = TradovateClient(_make_instrument(), cfg)
 
-        with patch("strategy.tradovate_client.httpx.Client") as MockHTTP:
+        with patch("execution.tradovate_client.httpx.Client") as MockHTTP:
             mock_http = _mock_http_client()
             MockHTTP.return_value = mock_http
 
@@ -270,7 +270,7 @@ class TestContractResolution:
         cfg = _make_config()
         client = TradovateClient(_make_instrument(), cfg)
 
-        with patch("strategy.tradovate_client.httpx.Client") as MockHTTP:
+        with patch("execution.tradovate_client.httpx.Client") as MockHTTP:
             mock_http = _mock_http_client()
             MockHTTP.return_value = mock_http
 
@@ -289,7 +289,7 @@ class TestContractResolution:
         cfg = _make_config()
         client = TradovateClient(_make_instrument(), cfg)
 
-        with patch("strategy.tradovate_client.httpx.Client") as MockHTTP:
+        with patch("execution.tradovate_client.httpx.Client") as MockHTTP:
             mock_http = _mock_http_client()
             MockHTTP.return_value = mock_http
 
@@ -306,7 +306,7 @@ class TestContractResolution:
 
 
 # ---------------------------------------------------------------------------
-# Entry Signal → Bracket Order
+# Entry Signal â†’ Bracket Order
 # ---------------------------------------------------------------------------
 
 
@@ -452,7 +452,7 @@ class TestEntrySignal:
 
 
 # ---------------------------------------------------------------------------
-# Exit Signal → Cancel + Flatten
+# Exit Signal â†’ Cancel + Flatten
 # ---------------------------------------------------------------------------
 
 

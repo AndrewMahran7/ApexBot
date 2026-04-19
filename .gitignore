@@ -1,6 +1,7 @@
 # ── Environment & Secrets ──
 .env
 .env.*
+!.env.example
 *.pem
 *.key
 
@@ -39,3 +40,7 @@ data/*.csv
 # ── Result artifacts (regenerated; keep JSON summaries via git add -f) ──
 results/*.csv
 results/*.png
+
+# ── Screenshots / local artifacts ──
+screenshots/
+*.png.tmp

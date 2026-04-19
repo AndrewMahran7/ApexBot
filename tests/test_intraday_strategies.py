@@ -70,7 +70,7 @@ class TestIndicatorState:
         ind.update(b1)
         vwap_day1 = ind.vwap
 
-        # Day 2 — different price level
+        # Day 2 â€” different price level
         b2 = _bar(_ts(9, 30, day=3), 200, 202, 199, 201, 1000)
         ind.update(b2)
         vwap_day2 = ind.vwap
@@ -347,7 +347,7 @@ class TestMeanReversion:
         ind = _IndicatorState(atr_period=3, rsi_period=3)
         strat = MeanReversion(cfg, ind)
 
-        # Flat market — RSI should be neutral
+        # Flat market â€” RSI should be neutral
         for i in range(15):
             h = 10 + (i * 5) // 60
             m = (i * 5) % 60
@@ -365,13 +365,13 @@ class TestMeanReversion:
 class TestPropEntryType:
 
     def test_intraday_types_pass_through(self):
-        from strategy.prop_challenge import PropRiskGate
+        from risk.prop_challenge import PropRiskGate
         assert PropRiskGate._extract_entry_type("vwap_bounce") == "vwap_bounce"
         assert PropRiskGate._extract_entry_type("intraday_momentum") == "intraday_momentum"
         assert PropRiskGate._extract_entry_type("mean_reversion") == "mean_reversion"
 
     def test_legacy_types_still_work(self):
-        from strategy.prop_challenge import PropRiskGate
+        from risk.prop_challenge import PropRiskGate
         assert PropRiskGate._extract_entry_type("ema50_breakout") == "breakout"
         assert PropRiskGate._extract_entry_type("ema20_momentum") == "momentum"
 

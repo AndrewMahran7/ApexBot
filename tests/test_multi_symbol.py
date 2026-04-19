@@ -16,9 +16,9 @@ from config.settings import InstrumentConfig, INSTRUMENT_REGISTRY
 from strategy.hybrid_ema_ml import HybridEMAMLConfig
 from strategy.strategy_engine import StrategyEngine, LiveSignal
 from strategy.paper_engine import PaperEngine, PaperConfig
-from strategy.risk_manager import RiskManager, RiskConfig
-from strategy.portfolio_risk import PortfolioRiskManager, PortfolioRiskConfig
-from run_multi_symbol import (
+from risk.risk_manager import RiskManager, RiskConfig
+from risk.portfolio_risk import PortfolioRiskManager, PortfolioRiskConfig
+from scripts.run_multi_symbol import (
     SymbolPipeline,
     MultiSymbolRouter,
     build_multi_symbol_pipeline,

@@ -16,7 +16,7 @@ import pytest
 
 from strategy.orb import SignalType
 from strategy.strategy_engine import LiveSignal
-from strategy.portfolio_risk import (
+from risk.portfolio_risk import (
     PortfolioRiskManager,
     PortfolioRiskConfig,
 )

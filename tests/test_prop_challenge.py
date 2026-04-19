@@ -1,10 +1,10 @@
-"""Tests for strategy.prop_challenge — PropConfig, PropEquityTracker, PropRiskGate, PropPositionSizer."""
+"""Tests for risk.prop_challenge â€” PropConfig, PropEquityTracker, PropRiskGate, PropPositionSizer."""
 
 import datetime
 
 import pytest
 
-from strategy.prop_challenge import (
+from risk.prop_challenge import (
     PropConfig,
     PropEquityTracker,
     PropRiskGate,
@@ -160,7 +160,7 @@ class TestPropEquityTracker:
     def test_dd_buffer_remaining(self):
         cfg = _default_config()
         t = PropEquityTracker(cfg)
-        # equity 25k, dd_level 24k → buffer = 1000
+        # equity 25k, dd_level 24k â†’ buffer = 1000
         assert t.dd_buffer_remaining == 1_000.0
         t.update(24_500.0, _ts())
         assert t.dd_buffer_remaining == 500.0
@@ -185,7 +185,7 @@ class TestPropPositionSizer:
 
     def test_negative_gain(self):
         s = PropPositionSizer(_default_config())
-        # Below 0 — falls through tiers; last tier returned
+        # Below 0 â€” falls through tiers; last tier returned
         assert s.compute(-100.0) == 0.75  # fallback to last
 
     def test_at_boundary(self):
@@ -195,7 +195,7 @@ class TestPropPositionSizer:
 
 
 # ---------------------------------------------------------------------------
-# PropRiskGate — entry filtering
+# PropRiskGate â€” entry filtering
 # ---------------------------------------------------------------------------
 
 class TestPropRiskGateFiltering:
@@ -252,7 +252,7 @@ class TestPropRiskGateFiltering:
 
 
 # ---------------------------------------------------------------------------
-# PropRiskGate — daily controls
+# PropRiskGate â€” daily controls
 # ---------------------------------------------------------------------------
 
 class TestPropRiskGateDailyControls:
@@ -307,13 +307,13 @@ class TestPropRiskGateDailyControls:
         )
         gate.on_bar(_bar(day=2))  # day stopped: daily = 24600 - 25000 = -400
         assert gate.day_stopped is True
-        # New day — equity stays the same but daily PnL resets to 0
+        # New day â€” equity stays the same but daily PnL resets to 0
         gate.on_bar(_bar(day=3))  # new day: day_start = 24600, daily = 0
         assert gate.day_stopped is False
 
 
 # ---------------------------------------------------------------------------
-# PropRiskGate — halt conditions
+# PropRiskGate â€” halt conditions
 # ---------------------------------------------------------------------------
 
 class TestPropRiskGateHalt:
@@ -373,7 +373,7 @@ class TestPropRiskGateHalt:
 
 
 # ---------------------------------------------------------------------------
-# PropRiskGate — position sizing
+# PropRiskGate â€” position sizing
 # ---------------------------------------------------------------------------
 
 class TestPropRiskGateSizing:
@@ -382,7 +382,7 @@ class TestPropRiskGateSizing:
         gate = PropRiskGate(
             config=_default_config(),
             on_approved=lambda s: approved.append(s),
-            get_equity=lambda: 25_200.0,  # gain = 200 → small tier
+            get_equity=lambda: 25_200.0,  # gain = 200 â†’ small tier
         )
         gate.on_bar(_bar())
         gate.on_signal(_entry_signal(size=1.0))
@@ -395,7 +395,7 @@ class TestPropRiskGateSizing:
         gate = PropRiskGate(
             config=cfg,
             on_approved=lambda s: approved.append(s),
-            get_equity=lambda: 25_700.0,  # gain = 700 → medium
+            get_equity=lambda: 25_700.0,  # gain = 700 â†’ medium
         )
         gate.on_bar(_bar())
         gate.on_signal(_entry_signal(size=1.0))
@@ -408,7 +408,7 @@ class TestPropRiskGateSizing:
         gate = PropRiskGate(
             config=cfg,
             on_approved=lambda s: approved.append(s),
-            get_equity=lambda: 26_300.0,  # gain = 1300 → lock-in
+            get_equity=lambda: 26_300.0,  # gain = 1300 â†’ lock-in
         )
         gate.on_bar(_bar())
         gate.on_signal(_entry_signal(size=1.0))
@@ -417,7 +417,7 @@ class TestPropRiskGateSizing:
 
 
 # ---------------------------------------------------------------------------
-# PropRiskGate — exit tightening
+# PropRiskGate â€” exit tightening
 # ---------------------------------------------------------------------------
 
 class TestPropRiskGateExitTightening:
@@ -455,7 +455,7 @@ class TestPropRiskGateExitTightening:
 
 
 # ---------------------------------------------------------------------------
-# PropRiskGate — DD buffer
+# PropRiskGate â€” DD buffer
 # ---------------------------------------------------------------------------
 
 class TestPropRiskGateDDBuffer:
@@ -474,7 +474,7 @@ class TestPropRiskGateDDBuffer:
 
 
 # ---------------------------------------------------------------------------
-# PropRiskGate — entry type extraction
+# PropRiskGate â€” entry type extraction
 # ---------------------------------------------------------------------------
 
 class TestExtractEntryType:
@@ -504,39 +504,39 @@ class TestPropEvent:
 
 
 # ---------------------------------------------------------------------------
-# main.py wiring — CLI and build_pipeline
+# main.py wiring â€” CLI and build_pipeline
 # ---------------------------------------------------------------------------
 
 class TestMainPropWiring:
     def test_prop_mode_flag(self):
-        from main import parse_args
+        from scripts.run_live import parse_args
         args = parse_args(["--mode", "replay", "--prop-mode"])
         assert args.prop_mode is True
 
     def test_prop_mode_defaults(self):
-        from main import parse_args
+        from scripts.run_live import parse_args
         args = parse_args(["--mode", "replay"])
         assert args.prop_mode is False
 
     def test_prop_target_arg(self):
-        from main import parse_args
+        from scripts.run_live import parse_args
         args = parse_args(["--mode", "replay", "--prop-mode",
                            "--prop-target", "2000"])
         assert args.prop_target == 2000.0
 
     def test_prop_daily_loss_arg(self):
-        from main import parse_args
+        from scripts.run_live import parse_args
         args = parse_args(["--mode", "replay", "--prop-mode",
                            "--prop-daily-loss", "250"])
         assert args.prop_daily_loss == 250.0
 
     @pytest.mark.filterwarnings("ignore::DeprecationWarning")
     def test_build_pipeline_with_prop(self):
-        from main import build_pipeline
+        from scripts.run_live import build_pipeline
         from config.settings import InstrumentConfig
         from strategy.hybrid_ema_ml import HybridEMAMLConfig
         from strategy.paper_engine import PaperConfig
-        from strategy.risk_manager import RiskConfig
+        from risk.risk_manager import RiskConfig
 
         inst = InstrumentConfig(
             symbol="MES", tick_size=0.25, point_value=5.0, contract_size=1,
@@ -557,11 +557,11 @@ class TestMainPropWiring:
 
     @pytest.mark.filterwarnings("ignore::DeprecationWarning")
     def test_build_pipeline_without_prop(self):
-        from main import build_pipeline
+        from scripts.run_live import build_pipeline
         from config.settings import InstrumentConfig
         from strategy.hybrid_ema_ml import HybridEMAMLConfig
         from strategy.paper_engine import PaperConfig
-        from strategy.risk_manager import RiskConfig
+        from risk.risk_manager import RiskConfig
 
         inst = InstrumentConfig(
             symbol="MES", tick_size=0.25, point_value=5.0, contract_size=1,

@@ -9,8 +9,8 @@ import pytest
 from config.settings import InstrumentConfig, INSTRUMENT_REGISTRY
 from strategy.orb import SignalType
 from strategy.strategy_engine import LiveSignal
-from strategy.tradovate_client import TradovateConfig, TradovateClient
-from strategy.tradovate_multi import (
+from execution.tradovate_client import TradovateConfig, TradovateClient
+from execution.tradovate_multi import (
     MultiSymbolTradovateAdapter,
     load_tradovate_config,
     SYMBOL_TO_TRADOVATE,
@@ -276,7 +276,7 @@ class TestLoadConfig:
         }
         with patch.dict(os.environ, env, clear=True):
             # Patch load_dotenv to avoid file IO
-            with patch("strategy.tradovate_multi.load_dotenv"):
+            with patch("execution.tradovate_multi.load_dotenv"):
                 cfg = load_tradovate_config()
                 assert cfg.username == "user"
                 assert cfg.environment == "demo"
@@ -291,7 +291,7 @@ class TestLoadConfig:
             "TRADOVATE_APP_ID": "MyApp",
         }
         with patch.dict(os.environ, env, clear=True):
-            with patch("strategy.tradovate_multi.load_dotenv"):
+            with patch("execution.tradovate_multi.load_dotenv"):
                 cfg = load_tradovate_config()
                 assert cfg.app_id == "MyApp"
 
@@ -318,18 +318,18 @@ class TestSymbolMapping:
 
 class TestCLIFlags:
     def test_tradovate_sim_flag(self):
-        from run_paper_live import parse_args
+        from scripts.run_paper import parse_args
         args = parse_args(["--symbols", "MES", "MNQ", "--tradovate-sim"])
         assert args.tradovate_sim is True
         assert args.tradovate_dry_run is False
 
     def test_tradovate_dry_run_flag(self):
-        from run_paper_live import parse_args
+        from scripts.run_paper import parse_args
         args = parse_args(["--symbols", "MES", "MNQ", "--tradovate-dry-run"])
         assert args.tradovate_dry_run is True
 
     def test_tradovate_contract_overrides(self):
-        from run_paper_live import parse_args
+        from scripts.run_paper import parse_args
         args = parse_args([
             "--symbols", "MES", "MNQ",
             "--tradovate-contract-MES", "MESZ4",
@@ -339,7 +339,7 @@ class TestCLIFlags:
         assert args.tradovate_contract_MNQ == "MNQZ4"
 
     def test_default_no_tradovate(self):
-        from run_paper_live import parse_args
+        from scripts.run_paper import parse_args
         args = parse_args(["--symbols", "MES", "MNQ"])
         assert args.tradovate_sim is False
         assert args.tradovate_dry_run is False

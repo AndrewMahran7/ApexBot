@@ -46,6 +46,8 @@ _ALERT_MAP: dict[str, tuple[str, str]] = {
     "kill_switch_activated": (AlertLevel.CRITICAL, "KILL SWITCH"),
     "cooldown_active":      (AlertLevel.INFO,     "Cooldown active"),
     "error":                (AlertLevel.CRITICAL, "Error"),
+    "reconciliation_mismatch": (AlertLevel.CRITICAL, "Reconciliation mismatch"),
+    "reconciliation_failure":  (AlertLevel.CRITICAL, "Reconciliation failure"),
 }
 
 

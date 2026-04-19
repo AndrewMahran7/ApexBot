@@ -12,4 +12,5 @@ Modules:
     fail_safes      — Kill switch, cooldown, duplicate suppression, dry-run
     audit_logger    — Structured JSON logging and screenshot capture
     prop_sizing     — Mode-aware trade gating and contract sizing via PropRiskLayer
+    reconciliation  — Continuous position reconciliation loop (read-only monitoring)
 """

@@ -20,7 +20,7 @@ from analytics.engine import (
     _daily_pnl,
 )
 from strategy.strategy_engine import LiveSignal
-from strategy.risk_manager import RiskEvent
+from risk.risk_manager import RiskEvent
 from strategy.orb import SignalType
 
 
@@ -490,27 +490,27 @@ class TestThreadSafety:
 
 class TestMainAnalyticsWiring:
     def test_analytics_cli_flag(self):
-        from main import parse_args
+        from scripts.run_live import parse_args
         args = parse_args(["--mode", "replay", "--analytics"])
         assert args.analytics is True
 
     def test_analytics_output_default(self):
-        from main import parse_args
+        from scripts.run_live import parse_args
         args = parse_args(["--mode", "replay"])
         assert args.analytics_output == "results/analytics.json"
 
     def test_analytics_output_custom(self):
-        from main import parse_args
+        from scripts.run_live import parse_args
         args = parse_args(["--mode", "replay", "--analytics-output", "out.json"])
         assert args.analytics_output == "out.json"
 
     @pytest.mark.filterwarnings("ignore::DeprecationWarning")
     def test_build_pipeline_with_analytics(self):
-        from main import build_pipeline
+        from scripts.run_live import build_pipeline
         from config.settings import InstrumentConfig
         from strategy.hybrid_ema_ml import HybridEMAMLConfig
         from strategy.paper_engine import PaperConfig
-        from strategy.risk_manager import RiskConfig
+        from risk.risk_manager import RiskConfig
 
         inst = InstrumentConfig(
             symbol="MES", tick_size=0.25, point_value=5.0, contract_size=1,
@@ -536,11 +536,11 @@ class TestMainAnalyticsWiring:
         assert pipeline["analytics"] is ana
 
     def test_build_pipeline_without_analytics(self):
-        from main import build_pipeline
+        from scripts.run_live import build_pipeline
         from config.settings import InstrumentConfig
         from strategy.hybrid_ema_ml import HybridEMAMLConfig
         from strategy.paper_engine import PaperConfig
-        from strategy.risk_manager import RiskConfig
+        from risk.risk_manager import RiskConfig
 
         inst = InstrumentConfig(
             symbol="MES", tick_size=0.25, point_value=5.0, contract_size=1,

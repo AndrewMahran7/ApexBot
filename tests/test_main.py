@@ -1,4 +1,4 @@
-"""Tests for main.py — system runner pipeline wiring and CLI."""
+"""Tests for main.py â€” system runner pipeline wiring and CLI."""
 
 import datetime
 import logging
@@ -9,11 +9,11 @@ import pytest
 from config.settings import InstrumentConfig
 from strategy.hybrid_ema_ml import HybridEMAMLConfig
 from strategy.paper_engine import PaperConfig
-from strategy.risk_manager import RiskConfig
+from risk.risk_manager import RiskConfig
 from strategy.strategy_engine import LiveSignal
-from strategy.tradovate_client import TradovateConfig
+from execution.tradovate_client import TradovateConfig
 from strategy.orb import SignalType
-from main import (
+from scripts.run_live import (
     build_pipeline,
     parse_args,
     setup_logging,
@@ -490,7 +490,7 @@ class TestPrintSummary:
 
 class TestMainIntegration:
     def test_replay_with_sample_data(self, tmp_path):
-        """Full replay run with a tiny CSV — no errors."""
+        """Full replay run with a tiny CSV â€” no errors."""
         csv_path = tmp_path / "test_bars.csv"
         csv_path.write_text(
             "timestamp,open,high,low,close,volume\n"

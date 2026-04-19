@@ -1,0 +1,58 @@
+{
+  "year": 2023,
+  "symbol": "MNQ",
+  "metrics": {
+    "total_trades": 158,
+    "winning_trades": 72,
+    "losing_trades": 86,
+    "win_rate_pct": 45.57,
+    "total_pnl_dollars": 1817.5,
+    "total_pnl_points": 1343.25,
+    "total_return_pct": 7.27,
+    "gross_profit": 13105.0,
+    "gross_loss": 11287.5,
+    "profit_factor": 1.161,
+    "avg_win": 182.01,
+    "avg_loss": -131.25,
+    "expectancy": 11.5,
+    "largest_win": 503.5,
+    "largest_loss": -333.0,
+    "max_drawdown_dollars": 1500.25,
+    "max_drawdown_pct": 5.81,
+    "sharpe_ratio": 0.7471,
+    "avg_trade_duration_min": 208.4,
+    "total_commission": 711.0,
+    "total_slippage": 158.0,
+    "initial_capital": 25000.0,
+    "final_equity": 26814.75,
+    "bars_processed": 70329,
+    "pnl_by_weekday": {
+      "Tuesday": 167.5,
+      "Wednesday": 849.5,
+      "Thursday": 1191.5,
+      "Monday": -557.0,
+      "Friday": 166.0
+    },
+    "long_trades": 84,
+    "short_trades": 74,
+    "long_win_rate_pct": 50.0,
+    "short_win_rate_pct": 40.54,
+    "long_pnl_dollars": 1606.5,
+    "short_pnl_dollars": 211.0
+  },
+  "selectivity": {
+    "entry_attempts": 11380,
+    "regime_blocks": 11120,
+    "filter_blocks": 101,
+    "entries_taken": 159,
+    "days_with_range": 253,
+    "days_traded": 159
+  },
+  "regime_breakdown": {
+    "NO_RANGE": 57,
+    "BREAKOUT": 18,
+    "TREND": 141,
+    "RANGE": 32,
+    "DEAD": 61
+  }
+}

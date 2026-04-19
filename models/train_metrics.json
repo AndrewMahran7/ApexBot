@@ -1,10 +1,10 @@
 {
-  "train_accuracy": 0.909688013136289,
-  "val_accuracy": 0.6157635467980296,
+  "train_accuracy": 0.9047619047619048,
+  "val_accuracy": 0.5911330049261084,
   "train_samples": 609,
   "val_samples": 203,
-  "train_positive_rate": 0.4220032840722496,
-  "val_positive_rate": 0.32019704433497537,
+  "train_positive_rate": 0.3793103448275862,
+  "val_positive_rate": 0.3251231527093596,
   "model_type": "gradient_boosting",
   "n_features": 36
 }

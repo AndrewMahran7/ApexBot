@@ -1,0 +1,53 @@
+======================================================================
+  YEAR 2022  —  Bear market, volatile, frequent reversals
+======================================================================
+
+--- MES 2022 ---
+  Bars loaded: 70466
+  Date range: 2022-01-02 18:00:00-05:00 to 2022-12-30 16:55:00-05:00
+  Trades:        95
+  Win Rate:      55.8%
+  Avg Trade:     $28.04
+  Total PnL:     $2663.75
+  Profit Factor: 1.46
+  Max Drawdown:  $666.50
+  Final Equity:  $27663.75
+  Peak Equity:   $27680.50
+  Sharpe:        1.47
+  Long trades:   42, win 61.9%
+  Short trades:  53, win 50.94%
+  Regimes: {'NO_RANGE': 56, 'DEAD': 68, 'RANGE': 90, 'BREAKOUT': 40, 'TREND': 55}
+  Selectivity:
+    Days with range: 254
+    Days traded:     95
+    Entry attempts:  18663
+    Regime blocks:   18482
+    Filter blocks:   86
+    Entries taken:   95
+    Trade rate:      37.4% of range-days
+  Trades saved: results\adaptive_regime_refined_validation\2022_mes_trades.csv
+
+--- MNQ 2022 ---
+  Bars loaded: 70467
+  Date range: 2022-01-02 18:00:00-05:00 to 2022-12-30 16:55:00-05:00
+  Trades:        196
+  Win Rate:      41.3%
+  Avg Trade:     $-1.26
+  Total PnL:     $-246.00
+  Profit Factor: 0.99
+  Max Drawdown:  $3000.75
+  Final Equity:  $24754.00
+  Peak Equity:   $25000.00
+  Sharpe:        0.02
+  Long trades:   94, win 39.36%
+  Short trades:  102, win 43.14%
+  Regimes: {'NO_RANGE': 56, 'RANGE': 27, 'DEAD': 30, 'TREND': 190, 'BREAKOUT': 6}
+  Selectivity:
+    Days with range: 254
+    Days traded:     196
+    Entry attempts:  7103
+    Regime blocks:   6803
+    Filter blocks:   104
+    Entries taken:   196
+    Trade rate:      77.2% of range-days
+  Trades saved: results\adaptive_regime_refined_validation\2022_mnq_trades.csv

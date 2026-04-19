@@ -288,3 +288,21 @@ def _add_regime_features(df: pd.DataFrame, cfg: FeatureConfig):
 
     # Volume-weighted trend proxy
     df["f_regime_vol_trend"] = df["f_vol_relative"] * df["f_regime_trend_direction"]
+
+    # --- Volatility regime (ATR percentile over rolling window) ---
+    atr = df["f_vola_atr"]
+    atr_roll_50 = atr.rolling(50, min_periods=20).median()
+    # ATR ratio: current ATR vs recent median — >1 = high vol, <1 = low vol
+    df["f_regime_atr_ratio"] = atr / atr_roll_50.replace(0, np.nan)
+    # ATR percentile rank (0-1) over trailing 50 bars (vectorized)
+    atr_roll_min = atr.rolling(50, min_periods=20).min()
+    atr_roll_max = atr.rolling(50, min_periods=20).max()
+    atr_range = (atr_roll_max - atr_roll_min).replace(0, np.nan)
+    df["f_regime_atr_percentile"] = (atr - atr_roll_min) / atr_range
+
+    # --- Trend regime (EMA slope magnitude percentile, vectorized) ---
+    abs_slope = slope.abs()
+    slope_roll_min = abs_slope.rolling(50, min_periods=20).min()
+    slope_roll_max = abs_slope.rolling(50, min_periods=20).max()
+    slope_range = (slope_roll_max - slope_roll_min).replace(0, np.nan)
+    df["f_regime_trend_percentile"] = (abs_slope - slope_roll_min) / slope_range

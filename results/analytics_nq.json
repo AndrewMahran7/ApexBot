@@ -1,0 +1,65 @@
+{
+  "overall": {
+    "total_trades": 3,
+    "win_count": 2,
+    "loss_count": 1,
+    "win_rate": 66.67,
+    "profit_factor": 1.9592,
+    "sharpe_ratio": 3.5325,
+    "total_pnl": 81.65,
+    "avg_pnl": 27.22,
+    "largest_win": 157.51,
+    "largest_loss": -85.12,
+    "max_drawdown": -85.12
+  },
+  "direction": {
+    "long_trades": 0,
+    "long_win_rate": 0.0,
+    "long_pnl": 0.0,
+    "short_trades": 3,
+    "short_win_rate": 66.67,
+    "short_pnl": 81.65
+  },
+  "by_strategy": [
+    {
+      "strategy_type": "ema50_breakout",
+      "trade_count": 3,
+      "win_count": 2,
+      "loss_count": 1,
+      "win_rate": 66.67,
+      "total_pnl": 81.65,
+      "avg_pnl": 27.22,
+      "profit_factor": 1.9592,
+      "largest_win": 157.51,
+      "largest_loss": -85.12
+    }
+  ],
+  "signals": {
+    "total_signals": 6,
+    "entry_signals": 3,
+    "exit_signals": 3,
+    "risk_blocked": 0,
+    "risk_capped": 0,
+    "risk_kill_switches": 0,
+    "signal_to_trade_rate": 100.0
+  },
+  "daily": {
+    "trading_days": 3,
+    "winning_days": 2,
+    "losing_days": 1,
+    "daily_pnl": [
+      {
+        "date": "2024-12-26",
+        "pnl": 157.51
+      },
+      {
+        "date": "2024-12-27",
+        "pnl": 9.26
+      },
+      {
+        "date": "2024-12-30",
+        "pnl": -85.12
+      }
+    ]
+  }
+}

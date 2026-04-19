@@ -221,6 +221,13 @@ class HybridEMAMLStrategy:
         self._prob_window_long: deque = deque(maxlen=lookback)
         self._prob_window_short: deque = deque(maxlen=lookback)
 
+        # --- Pending entry state (causal execution) ---
+        # Signals are generated on bar t using bar t's close.
+        # Actual entry occurs on bar t+1 at that bar's open.
+        # These hold the deferred entry info between bars.
+        self._pending_entry: dict | None = None          # single-candidate mode
+        self._pending_candidates: list[TradeCandidate] = []  # multi-candidate mode
+
         # Diagnostics
         self.ml_decisions: list[dict] = []
 
@@ -350,50 +357,102 @@ class HybridEMAMLStrategy:
         if self.cfg.multi_candidate:
             return self._on_bar_multi(bar, ts, bar_time, close, high, low, open_px, volume)
 
-        # Exit logic (before entry)
-        if self.in_position:
-            if bar_time >= self._eod_exit:
-                return self._exit(close, ts, SignalType.EXIT_EOD, "End-of-day exit")
+        signals: list[Signal] = []
 
-            if self.direction == "long":
+        # ----------------------------------------------------------
+        # Execute pending entry from the PREVIOUS bar's decision.
+        # Entry fills at the CURRENT bar's open (causal: direction
+        # was determined by bar t's close, entry at bar t+1 open).
+        # ----------------------------------------------------------
+        if self._pending_entry is not None:
+            pending = self._pending_entry
+            self._pending_entry = None
+            actual_entry = open_px
+            tp_distance = pending["tp_distance"]
+            if pending["direction"] == "long":
+                actual_tp = actual_entry + tp_distance
+                entry_sig = self._enter_long(
+                    actual_entry, pending["sl"], actual_tp, ts,
+                    pending["or_range"], pending["prob"],
+                    pending["position_size"],
+                    decision_time=pending["decision_time"],
+                )
+            else:
+                actual_tp = actual_entry - tp_distance
+                entry_sig = self._enter_short(
+                    actual_entry, pending["sl"], actual_tp, ts,
+                    pending["or_range"], pending["prob"],
+                    pending["position_size"],
+                    decision_time=pending["decision_time"],
+                )
+            signals.append(entry_sig)
+            logger.info(
+                "CAUSAL ENTRY: decision=%s entry=%s dir=%s "
+                "decision_close=%.2f actual_entry=%.2f tp=%.2f sl=%.2f",
+                pending["decision_time"], ts, pending["direction"],
+                pending["decision_close"], actual_entry, actual_tp,
+                pending["sl"],
+            )
+
+        # ----------------------------------------------------------
+        # Exit logic — runs AFTER pending entry so same-bar SL/TP
+        # hits on the entry bar are caught (realistic: intrabar fill).
+        # ----------------------------------------------------------
+        if self.in_position:
+            exit_sig = None
+            if bar_time >= self._eod_exit:
+                exit_sig = self._exit(close, ts, SignalType.EXIT_EOD,
+                                      "End-of-day exit")
+            elif self.direction == "long":
                 if self.sl is not None and low <= self.sl:
-                    return self._exit(self.sl, ts, SignalType.EXIT_SL,
-                                      f"Stop loss hit ({self.sl:.2f})")
-                if self.tp is not None and high >= self.tp:
-                    return self._exit(self.tp, ts, SignalType.EXIT_TP,
-                                      f"Take profit hit ({self.tp:.2f})")
+                    exit_sig = self._exit(self.sl, ts, SignalType.EXIT_SL,
+                                          f"Stop loss hit ({self.sl:.2f})")
+                elif self.tp is not None and high >= self.tp:
+                    exit_sig = self._exit(self.tp, ts, SignalType.EXIT_TP,
+                                          f"Take profit hit ({self.tp:.2f})")
             else:  # short
                 if self.sl is not None and high >= self.sl:
-                    return self._exit(self.sl, ts, SignalType.EXIT_SL,
-                                      f"Stop loss hit ({self.sl:.2f})")
-                if self.tp is not None and low <= self.tp:
-                    return self._exit(self.tp, ts, SignalType.EXIT_TP,
-                                      f"Take profit hit ({self.tp:.2f})")
+                    exit_sig = self._exit(self.sl, ts, SignalType.EXIT_SL,
+                                          f"Stop loss hit ({self.sl:.2f})")
+                elif self.tp is not None and low <= self.tp:
+                    exit_sig = self._exit(self.tp, ts, SignalType.EXIT_TP,
+                                          f"Take profit hit ({self.tp:.2f})")
+            if exit_sig is not None:
+                signals.append(exit_sig)
 
-        # Entry logic: first bar after range close, once per day
+        # ----------------------------------------------------------
+        # Entry logic: first bar after range close, once per day.
+        # Signal is STORED as pending — actual entry happens on the
+        # NEXT bar's open (causal entry).
+        # ----------------------------------------------------------
         if self._can_enter() and not self._decided_today and bar_time >= self._range_end:
             self._decided_today = True
 
             snap = self._features.snapshot
             if snap.ema is None:
+                if signals:
+                    return signals if len(signals) > 1 else signals[0]
                 return _no_signal(close, ts)
 
             or_range = self.opening_high - self.opening_low
             if or_range <= 0:
+                if signals:
+                    return signals if len(signals) > 1 else signals[0]
                 return _no_signal(close, ts)
 
-            # EMA directional signal
+            # EMA directional signal (uses bar CLOSE — causal because
+            # entry is deferred to the next bar's OPEN).
             if close > snap.ema:
                 direction = "long"
-                entry_px = open_px
                 sl = self.opening_low
-                tp = entry_px + self.cfg.reward_risk * or_range
+                tp_distance = self.cfg.reward_risk * or_range
             elif close < snap.ema and self.cfg.allow_shorts:
                 direction = "short"
-                entry_px = open_px
                 sl = self.opening_high
-                tp = entry_px - self.cfg.reward_risk * or_range
+                tp_distance = self.cfg.reward_risk * or_range
             else:
+                if signals:
+                    return signals if len(signals) > 1 else signals[0]
                 return _no_signal(close, ts)
 
             # ML filter
@@ -443,11 +502,24 @@ class HybridEMAMLStrategy:
                 self._prob_window_short.append(prob)
 
             if accepted:
-                if direction == "long":
-                    return self._enter_long(entry_px, sl, tp, ts, or_range, prob, position_size)
-                else:
-                    return self._enter_short(entry_px, sl, tp, ts, or_range, prob, position_size)
+                self._pending_entry = {
+                    "direction": direction,
+                    "sl": sl,
+                    "tp_distance": tp_distance,
+                    "or_range": or_range,
+                    "prob": prob,
+                    "position_size": position_size,
+                    "decision_time": ts,
+                    "decision_close": close,
+                }
+                logger.debug(
+                    "PENDING ENTRY stored: dir=%s decision=%s close=%.2f "
+                    "sl=%.2f tp_dist=%.2f prob=%.3f",
+                    direction, ts, close, sl, tp_distance, prob,
+                )
 
+        if signals:
+            return signals if len(signals) > 1 else signals[0]
         return _no_signal(close, ts)
 
     def reset(self):
@@ -476,6 +548,8 @@ class HybridEMAMLStrategy:
         self._prob_window_all.clear()
         self._prob_window_long.clear()
         self._prob_window_short.clear()
+        self._pending_entry = None
+        self._pending_candidates = []
         self.ml_decisions = []
 
     # ------------------------------------------------------------------
@@ -676,6 +750,57 @@ class HybridEMAMLStrategy:
         """Multi-candidate path: multiple positions, candidate ranking."""
         signals: list[Signal] = []
 
+        # ----------------------------------------------------------
+        # Execute pending candidates from the PREVIOUS bar's decision.
+        # Each candidate enters at the CURRENT bar's open (causal).
+        # ----------------------------------------------------------
+        if self._pending_candidates:
+            for cand in self._pending_candidates:
+                actual_entry = open_px
+                tp_distance = abs(cand.take_profit - cand.entry_price)
+                if cand.direction == "long":
+                    actual_tp = actual_entry + tp_distance
+                else:
+                    actual_tp = actual_entry - tp_distance
+                pos_id = f"{cand.strategy_type}_{ts.date().isoformat()}"
+                sig_type = (
+                    SignalType.LONG_ENTRY if cand.direction == "long"
+                    else SignalType.SHORT_ENTRY
+                )
+                sig = Signal(
+                    signal_type=sig_type,
+                    price=actual_entry,
+                    timestamp=ts,
+                    reason=(
+                        f"Multi {cand.strategy_type} "
+                        f"(prob={cand.ml_prob:.3f}, size={cand.position_size:.2f})"
+                    ),
+                    entry_price=actual_entry,
+                    stop_loss=cand.stop_loss,
+                    take_profit=actual_tp,
+                    position_size=cand.position_size,
+                    position_id=pos_id,
+                    strategy_type=cand.strategy_type,
+                    decision_time=cand.timestamp,
+                )
+                signals.append(sig)
+                self._open_positions[pos_id] = {
+                    "direction": cand.direction,
+                    "entry_price": actual_entry,
+                    "sl": cand.stop_loss,
+                    "tp": actual_tp,
+                    "position_size": cand.position_size,
+                    "strategy_type": cand.strategy_type,
+                }
+                logger.info(
+                    "CAUSAL ENTRY (multi): decision=%s entry=%s dir=%s "
+                    "actual_entry=%.2f tp=%.2f sl=%.2f [%s]",
+                    cand.timestamp, ts, cand.direction,
+                    actual_entry, actual_tp, cand.stop_loss,
+                    cand.strategy_type,
+                )
+            self._pending_candidates = []
+
         # --- Exit checks for all open positions ---
         for pos_id in list(self._open_positions):
             pos = self._open_positions[pos_id]
@@ -685,6 +810,8 @@ class HybridEMAMLStrategy:
                 del self._open_positions[pos_id]
 
         # --- Entry: generate + rank candidates on decision bar ---
+        # Selected candidates are STORED as pending — actual entry
+        # happens on the NEXT bar's open (causal entry).
         if (
             not self._decided_today
             and bar_time >= self._range_end
@@ -707,36 +834,12 @@ class HybridEMAMLStrategy:
                 self.cfg.selection_strategy,
             )
 
-            for cand in selected:
-                pos_id = f"{cand.strategy_type}_{ts.date().isoformat()}"
-                sig_type = (
-                    SignalType.LONG_ENTRY if cand.direction == "long"
-                    else SignalType.SHORT_ENTRY
+            if selected:
+                self._pending_candidates = selected
+                logger.debug(
+                    "PENDING ENTRIES (multi): %d candidates stored for next-bar entry",
+                    len(selected),
                 )
-                sig = Signal(
-                    signal_type=sig_type,
-                    price=cand.entry_price,
-                    timestamp=ts,
-                    reason=(
-                        f"Multi {cand.strategy_type} "
-                        f"(prob={cand.ml_prob:.3f}, size={cand.position_size:.2f})"
-                    ),
-                    entry_price=cand.entry_price,
-                    stop_loss=cand.stop_loss,
-                    take_profit=cand.take_profit,
-                    position_size=cand.position_size,
-                    position_id=pos_id,
-                    strategy_type=cand.strategy_type,
-                )
-                signals.append(sig)
-                self._open_positions[pos_id] = {
-                    "direction": cand.direction,
-                    "entry_price": cand.entry_price,
-                    "sl": cand.stop_loss,
-                    "tp": cand.take_profit,
-                    "position_size": cand.position_size,
-                    "strategy_type": cand.strategy_type,
-                }
 
         return signals or [_no_signal(close, ts)]
 
@@ -1376,6 +1479,10 @@ class HybridEMAMLStrategy:
         self.range_set = False
         self.trade_taken = False
         self._decided_today = False
+        # Discard any pending entry that didn't execute — signals don't
+        # carry across sessions (different opening range).
+        self._pending_entry = None
+        self._pending_candidates = []
         if self.in_position:
             self.in_position = False
             self.direction = None
@@ -1409,7 +1516,7 @@ class HybridEMAMLStrategy:
             return False
         return True
 
-    def _enter_long(self, entry_px, sl, tp, ts, or_range, prob, position_size=1.0) -> Signal:
+    def _enter_long(self, entry_px, sl, tp, ts, or_range, prob, position_size=1.0, decision_time=None) -> Signal:
         self.in_position = True
         self.trade_taken = True
         self.direction = "long"
@@ -1427,9 +1534,10 @@ class HybridEMAMLStrategy:
             take_profit=tp,
             position_size=position_size,
             strategy_type=stype,
+            decision_time=decision_time,
         )
 
-    def _enter_short(self, entry_px, sl, tp, ts, or_range, prob, position_size=1.0) -> Signal:
+    def _enter_short(self, entry_px, sl, tp, ts, or_range, prob, position_size=1.0, decision_time=None) -> Signal:
         self.in_position = True
         self.trade_taken = True
         self.direction = "short"
@@ -1447,6 +1555,7 @@ class HybridEMAMLStrategy:
             take_profit=tp,
             position_size=position_size,
             strategy_type=stype,
+            decision_time=decision_time,
         )
 
     def _exit(self, price, ts, sig_type, reason) -> Signal:

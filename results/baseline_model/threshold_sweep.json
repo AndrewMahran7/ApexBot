@@ -1,0 +1,132 @@
+[
+  {
+    "threshold": 0.3,
+    "n_trades": 117,
+    "win_rate": 0.3162,
+    "avg_pnl": -20.25,
+    "total_pnl": -2369.75,
+    "profit_factor": 0.523,
+    "max_drawdown": 2428.07,
+    "pct_rejected": 53.9
+  },
+  {
+    "threshold": 0.35,
+    "n_trades": 77,
+    "win_rate": 0.3766,
+    "avg_pnl": -14.78,
+    "total_pnl": -1137.9,
+    "profit_factor": 0.64,
+    "max_drawdown": 1680.2,
+    "pct_rejected": 69.7
+  },
+  {
+    "threshold": 0.4,
+    "n_trades": 56,
+    "win_rate": 0.375,
+    "avg_pnl": -13.66,
+    "total_pnl": -764.84,
+    "profit_factor": 0.681,
+    "max_drawdown": 1147.38,
+    "pct_rejected": 78.0
+  },
+  {
+    "threshold": 0.45,
+    "n_trades": 23,
+    "win_rate": 0.3478,
+    "avg_pnl": -34.94,
+    "total_pnl": -803.59,
+    "profit_factor": 0.409,
+    "max_drawdown": 721.45,
+    "pct_rejected": 90.9
+  },
+  {
+    "threshold": 0.5,
+    "n_trades": 12,
+    "win_rate": 0.3333,
+    "avg_pnl": -38.49,
+    "total_pnl": -461.93,
+    "profit_factor": 0.397,
+    "max_drawdown": 419.71,
+    "pct_rejected": 95.3
+  },
+  {
+    "threshold": 0.55,
+    "n_trades": 6,
+    "win_rate": 0.3333,
+    "avg_pnl": -53.29,
+    "total_pnl": -319.71,
+    "profit_factor": 0.283,
+    "max_drawdown": 263.03,
+    "pct_rejected": 97.6
+  },
+  {
+    "threshold": 0.6,
+    "n_trades": 5,
+    "win_rate": 0.4,
+    "avg_pnl": -50.26,
+    "total_pnl": -251.32,
+    "profit_factor": 0.335,
+    "max_drawdown": 158.39,
+    "pct_rejected": 98.0
+  },
+  {
+    "threshold": 0.65,
+    "n_trades": 3,
+    "win_rate": 0.3333,
+    "avg_pnl": -64.64,
+    "total_pnl": -193.92,
+    "profit_factor": 0.116,
+    "max_drawdown": 114.64,
+    "pct_rejected": 98.8
+  },
+  {
+    "threshold": 0.7,
+    "n_trades": 1,
+    "win_rate": 1.0,
+    "avg_pnl": 25.36,
+    "total_pnl": 25.36,
+    "profit_factor": Infinity,
+    "max_drawdown": 0.0,
+    "pct_rejected": 99.6
+  },
+  {
+    "threshold": 0.75,
+    "n_trades": 1,
+    "win_rate": 1.0,
+    "avg_pnl": 25.36,
+    "total_pnl": 25.36,
+    "profit_factor": Infinity,
+    "max_drawdown": 0.0,
+    "pct_rejected": 99.6
+  },
+  {
+    "threshold": 0.8,
+    "n_trades": 0,
+    "win_rate": 0,
+    "avg_pnl": 0,
+    "total_pnl": 0,
+    "profit_factor": 0,
+    "max_drawdown": 0,
+    "pct_rejected": 100.0
+  },
+  {
+    "threshold": 0.85,
+    "n_trades": 0,
+    "win_rate": 0,
+    "avg_pnl": 0,
+    "total_pnl": 0,
+    "profit_factor": 0,
+    "max_drawdown": 0,
+    "pct_rejected": 100.0
+  },
+  {
+    "threshold": 0.9,
+    "n_trades": 0,
+    "win_rate": 0,
+    "avg_pnl": 0,
+    "total_pnl": 0,
+    "profit_factor": 0,
+    "max_drawdown": 0,
+    "pct_rejected": 100.0
+  }
+]

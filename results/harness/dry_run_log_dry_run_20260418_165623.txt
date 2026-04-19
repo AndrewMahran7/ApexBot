@@ -1,0 +1,42 @@
+Apex Execution Validation Harness
+Stage: 0 (dry_run)
+Timestamp: 2026-04-18T23:56:23.225794+00:00
+
+============================================================
+SUMMARY: Stage 0 (DRY_RUN): 7/7 passed
+============================================================
+
+[PASS] valid_mnq_buy
+  Expected: executed=False, events_contain=['signal_received', 'validation_failed']
+  Actual:   executed=False, events=['signal_received', 'validation_failed', 'screenshot_saved']
+  Description: Standard MNQ long entry at 0.35x sizing. Without OpenClaw: validation fails. With Tradovate open: processes to dry-run.
+
+[PASS] valid_mes_sell
+  Expected: executed=False, events_contain=['signal_received', 'validation_failed']
+  Actual:   executed=False, events=['signal_received', 'validation_failed', 'screenshot_saved']
+  Description: Standard MES short entry at 0.50x. Without OpenClaw: validation fails. With Tradovate open: processes to dry-run.
+
+[PASS] stale_signal
+  Expected: executed=False, events_contain=['signal_received', 'signal_expired']
+  Actual:   executed=False, events=['signal_received', 'signal_expired']
+  Description: Signal is 120s old (TTL=30s). Should be rejected as expired.
+
+[PASS] blocked_by_sizing
+  Expected: executed=False, events_contain=['signal_received']
+  Actual:   executed=False, events=['signal_received']
+  Description: PropRiskLayer returned size_mult=0.0. Should be blocked at bridge conversion (0 contracts).
+
+[PASS] duplicate_signal
+  Expected: executed=False, events_contain=['signal_received', 'validation_failed']
+  Actual:   executed=False, events=['signal_received', 'validation_failed', 'screenshot_saved', 'signal_received', 'validation_failed', 'screenshot_saved']
+  Description: Same signal sent twice. Without OpenClaw: both fail at validation (dedup unreachable). With Tradovate: second call rejected as duplicate.
+
+[PASS] wrong_tab_selected
+  Expected: executed=False, events_contain=['signal_received', 'validation_failed']
+  Actual:   executed=False, events=['signal_received', 'validation_failed', 'screenshot_saved']
+  Description: UI has wrong symbol active (simulated via OpenClaw not installed). Pre-trade validation should catch symbol mismatch.
+
+[PASS] account_mismatch
+  Expected: executed=False, events_contain=['signal_received', 'validation_failed']
+  Actual:   executed=False, events=['signal_received', 'validation_failed', 'screenshot_saved']
+  Description: Expected account label not found in UI. Pre-trade validation should fail on account check.

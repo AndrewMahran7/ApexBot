@@ -1,0 +1,880 @@
+{
+  "stage": 0,
+  "stage_name": "dry_run",
+  "timestamp": "2026-04-18T23:56:23.225794+00:00",
+  "total_scenarios": 7,
+  "passed": 7,
+  "failed": 0,
+  "results": [
+    {
+      "name": "valid_mnq_buy",
+      "passed": true,
+      "expected_outcome": "executed=False, events_contain=['signal_received', 'validation_failed']",
+      "actual_outcome": "executed=False, events=['signal_received', 'validation_failed', 'screenshot_saved']",
+      "events": [
+        {
+          "timestamp": "2026-04-18T23:56:23.226794+00:00",
+          "event_type": "signal_received",
+          "signal_id": "71a8761c-da58-4d77-bff4-813a32f774ea",
+          "symbol": "MNQ",
+          "side": "BUY",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "test_scenario",
+          "details": {
+            "signal_id": "71a8761c-da58-4d77-bff4-813a32f774ea",
+            "timestamp": "2026-04-18T23:56:23.225794+00:00",
+            "symbol": "MNQ",
+            "side": "BUY",
+            "contracts": 1,
+            "mode": "challenge",
+            "stop_loss": 20950.0,
+            "take_profit": 21100.0,
+            "reason": "test_scenario",
+            "strategy_type": "ema50_breakout",
+            "confidence": 0.7,
+            "position_size_mult": 0.35,
+            "entry_price": 21000.0,
+            "ttl_seconds": 30,
+            "atm_template": "",
+            "expires_at": "2026-04-18T23:56:53.225794+00:00",
+            "fingerprint": "af59269206244560",
+            "metadata": {
+              "ml_prob": 0.7,
+              "percentile": 0.75,
+              "quality_score": 0.65,
+              "position_size_raw": 1.0,
+              "size_mult_applied": 0.35
+            }
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.227794+00:00",
+          "event_type": "validation_failed",
+          "signal_id": "71a8761c-da58-4d77-bff4-813a32f774ea",
+          "symbol": "MNQ",
+          "side": "BUY",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors",
+          "details": {
+            "passed": false,
+            "summary": "FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors",
+            "checks": [
+              {
+                "name": "window_present",
+                "passed": false,
+                "detail": "Tradovate window not found"
+              },
+              {
+                "name": "correct_account",
+                "passed": true,
+                "detail": "no account filter configured"
+              },
+              {
+                "name": "correct_symbol",
+                "passed": false,
+                "detail": "expected=MNQ, found=None"
+              },
+              {
+                "name": "symbol_allowed",
+                "passed": true,
+                "detail": "symbol=MNQ, allowed={'ES', 'MES', 'NQ', 'RTY', 'MNQ'}"
+              },
+              {
+                "name": "correct_quantity",
+                "passed": false,
+                "detail": "expected=1, found=None"
+              },
+              {
+                "name": "no_unexpected_position",
+                "passed": true,
+                "detail": "open_position=False, side=None, size=0"
+              },
+              {
+                "name": "no_pending_orders",
+                "passed": true,
+                "detail": "pending_orders=0"
+              },
+              {
+                "name": "signal_fresh",
+                "passed": true,
+                "detail": "expires_at=2026-04-18T23:56:53.225794+00:00, now=2026-04-18T23:56:23.226794+00:00"
+              },
+              {
+                "name": "action_button_visible",
+                "passed": false,
+                "detail": "BUY button visibility"
+              },
+              {
+                "name": "no_read_errors",
+                "passed": false,
+                "detail": "OpenClaw not available or Tradovate window not found"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.228795+00:00",
+          "event_type": "screenshot_saved",
+          "signal_id": "",
+          "symbol": "",
+          "side": "",
+          "contracts": 0,
+          "mode": "",
+          "reason": "pre_validation_fail_71a8761c",
+          "details": {
+            "path": "C:\\Users\\andre\\AppData\\Local\\Temp\\tmpi8vcjt3l\\screenshot_20260418_235623_pre_validation_fail_71a8761c.png"
+          }
+        }
+      ],
+      "details": {
+        "description": "Standard MNQ long entry at 0.35x sizing. Without OpenClaw: validation fails. With Tradovate open: processes to dry-run.",
+        "size_mult": 0.35,
+        "symbol": "MNQ",
+        "result_bool": false,
+        "outcome_match": true,
+        "events_match": true,
+        "missing_events": []
+      }
+    },
+    {
+      "name": "valid_mes_sell",
+      "passed": true,
+      "expected_outcome": "executed=False, events_contain=['signal_received', 'validation_failed']",
+      "actual_outcome": "executed=False, events=['signal_received', 'validation_failed', 'screenshot_saved']",
+      "events": [
+        {
+          "timestamp": "2026-04-18T23:56:23.229794+00:00",
+          "event_type": "signal_received",
+          "signal_id": "31bcb322-4eea-4c78-a0f4-bb80bc06c15a",
+          "symbol": "MES",
+          "side": "SELL",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "test_scenario",
+          "details": {
+            "signal_id": "31bcb322-4eea-4c78-a0f4-bb80bc06c15a",
+            "timestamp": "2026-04-18T23:56:23.225794+00:00",
+            "symbol": "MES",
+            "side": "SELL",
+            "contracts": 1,
+            "mode": "challenge",
+            "stop_loss": 5100.0,
+            "take_profit": 5000.0,
+            "reason": "test_scenario",
+            "strategy_type": "ema50_breakout",
+            "confidence": 0.7,
+            "position_size_mult": 0.5,
+            "entry_price": 5050.0,
+            "ttl_seconds": 30,
+            "atm_template": "",
+            "expires_at": "2026-04-18T23:56:53.225794+00:00",
+            "fingerprint": "ea4a7547898780d6",
+            "metadata": {
+              "ml_prob": 0.7,
+              "percentile": 0.75,
+              "quality_score": 0.65,
+              "position_size_raw": 1.0,
+              "size_mult_applied": 0.5
+            }
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.230794+00:00",
+          "event_type": "validation_failed",
+          "signal_id": "31bcb322-4eea-4c78-a0f4-bb80bc06c15a",
+          "symbol": "MES",
+          "side": "SELL",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors",
+          "details": {
+            "passed": false,
+            "summary": "FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors",
+            "checks": [
+              {
+                "name": "window_present",
+                "passed": false,
+                "detail": "Tradovate window not found"
+              },
+              {
+                "name": "correct_account",
+                "passed": true,
+                "detail": "no account filter configured"
+              },
+              {
+                "name": "correct_symbol",
+                "passed": false,
+                "detail": "expected=MES, found=None"
+              },
+              {
+                "name": "symbol_allowed",
+                "passed": true,
+                "detail": "symbol=MES, allowed={'ES', 'MES', 'NQ', 'RTY', 'MNQ'}"
+              },
+              {
+                "name": "correct_quantity",
+                "passed": false,
+                "detail": "expected=1, found=None"
+              },
+              {
+                "name": "no_unexpected_position",
+                "passed": true,
+                "detail": "open_position=False, side=None, size=0"
+              },
+              {
+                "name": "no_pending_orders",
+                "passed": true,
+                "detail": "pending_orders=0"
+              },
+              {
+                "name": "signal_fresh",
+                "passed": true,
+                "detail": "expires_at=2026-04-18T23:56:53.225794+00:00, now=2026-04-18T23:56:23.229794+00:00"
+              },
+              {
+                "name": "action_button_visible",
+                "passed": false,
+                "detail": "SELL button visibility"
+              },
+              {
+                "name": "no_read_errors",
+                "passed": false,
+                "detail": "OpenClaw not available or Tradovate window not found"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.230794+00:00",
+          "event_type": "screenshot_saved",
+          "signal_id": "",
+          "symbol": "",
+          "side": "",
+          "contracts": 0,
+          "mode": "",
+          "reason": "pre_validation_fail_31bcb322",
+          "details": {
+            "path": "C:\\Users\\andre\\AppData\\Local\\Temp\\tmptssf3jgd\\screenshot_20260418_235623_pre_validation_fail_31bcb322.png"
+          }
+        }
+      ],
+      "details": {
+        "description": "Standard MES short entry at 0.50x. Without OpenClaw: validation fails. With Tradovate open: processes to dry-run.",
+        "size_mult": 0.5,
+        "symbol": "MES",
+        "result_bool": false,
+        "outcome_match": true,
+        "events_match": true,
+        "missing_events": []
+      }
+    },
+    {
+      "name": "stale_signal",
+      "passed": true,
+      "expected_outcome": "executed=False, events_contain=['signal_received', 'signal_expired']",
+      "actual_outcome": "executed=False, events=['signal_received', 'signal_expired']",
+      "events": [
+        {
+          "timestamp": "2026-04-18T23:56:23.232795+00:00",
+          "event_type": "signal_received",
+          "signal_id": "7c89f5b2-d5bf-434a-bec7-4390e0af40bd",
+          "symbol": "MNQ",
+          "side": "BUY",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "test_scenario",
+          "details": {
+            "signal_id": "7c89f5b2-d5bf-434a-bec7-4390e0af40bd",
+            "timestamp": "2026-04-18T23:54:23.225794+00:00",
+            "symbol": "MNQ",
+            "side": "BUY",
+            "contracts": 1,
+            "mode": "challenge",
+            "stop_loss": 20950.0,
+            "take_profit": 21100.0,
+            "reason": "test_scenario",
+            "strategy_type": "ema50_breakout",
+            "confidence": 0.7,
+            "position_size_mult": 0.35,
+            "entry_price": 21000.0,
+            "ttl_seconds": 30,
+            "atm_template": "",
+            "expires_at": "2026-04-18T23:54:53.225794+00:00",
+            "fingerprint": "af59269206244560",
+            "metadata": {
+              "ml_prob": 0.7,
+              "percentile": 0.75,
+              "quality_score": 0.65,
+              "position_size_raw": 1.0,
+              "size_mult_applied": 0.35
+            }
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.232795+00:00",
+          "event_type": "signal_expired",
+          "signal_id": "7c89f5b2-d5bf-434a-bec7-4390e0af40bd",
+          "symbol": "MNQ",
+          "side": "BUY",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "signal expired at 2026-04-18T23:54:53.225794+00:00"
+        }
+      ],
+      "details": {
+        "description": "Signal is 120s old (TTL=30s). Should be rejected as expired.",
+        "size_mult": 0.35,
+        "symbol": "MNQ",
+        "result_bool": false,
+        "outcome_match": true,
+        "events_match": true,
+        "missing_events": []
+      }
+    },
+    {
+      "name": "blocked_by_sizing",
+      "passed": true,
+      "expected_outcome": "executed=False, events_contain=['signal_received']",
+      "actual_outcome": "executed=False, events=['signal_received']",
+      "events": [
+        {
+          "timestamp": "2026-04-18T23:56:23.234795+00:00",
+          "event_type": "signal_received",
+          "signal_id": "",
+          "symbol": "",
+          "side": "",
+          "contracts": 0,
+          "mode": "",
+          "reason": "blocked by sizing (0 contracts)",
+          "details": {
+            "size_mult": 0.0
+          }
+        }
+      ],
+      "details": {
+        "description": "PropRiskLayer returned size_mult=0.0. Should be blocked at bridge conversion (0 contracts).",
+        "size_mult": 0.0,
+        "symbol": "MNQ",
+        "result_bool": false,
+        "outcome_match": true,
+        "events_match": true,
+        "missing_events": []
+      }
+    },
+    {
+      "name": "duplicate_signal",
+      "passed": true,
+      "expected_outcome": "executed=False, events_contain=['signal_received', 'validation_failed']",
+      "actual_outcome": "executed=False, events=['signal_received', 'validation_failed', 'screenshot_saved', 'signal_received', 'validation_failed', 'screenshot_saved']",
+      "events": [
+        {
+          "timestamp": "2026-04-18T23:56:23.236794+00:00",
+          "event_type": "signal_received",
+          "signal_id": "4082c4ba-ce15-4ea0-ad06-48bc2b9e7dba",
+          "symbol": "MNQ",
+          "side": "BUY",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "dup_test",
+          "details": {
+            "signal_id": "4082c4ba-ce15-4ea0-ad06-48bc2b9e7dba",
+            "timestamp": "2026-04-18T23:56:23.225794+00:00",
+            "symbol": "MNQ",
+            "side": "BUY",
+            "contracts": 1,
+            "mode": "challenge",
+            "stop_loss": 20950.0,
+            "take_profit": 21100.0,
+            "reason": "dup_test",
+            "strategy_type": "ema50_breakout",
+            "confidence": 0.7,
+            "position_size_mult": 0.35,
+            "entry_price": 21000.0,
+            "ttl_seconds": 30,
+            "atm_template": "",
+            "expires_at": "2026-04-18T23:56:53.225794+00:00",
+            "fingerprint": "af59269206244560",
+            "metadata": {
+              "ml_prob": 0.7,
+              "percentile": 0.75,
+              "quality_score": 0.65,
+              "position_size_raw": 1.0,
+              "size_mult_applied": 0.35
+            }
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.236794+00:00",
+          "event_type": "validation_failed",
+          "signal_id": "4082c4ba-ce15-4ea0-ad06-48bc2b9e7dba",
+          "symbol": "MNQ",
+          "side": "BUY",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors",
+          "details": {
+            "passed": false,
+            "summary": "FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors",
+            "checks": [
+              {
+                "name": "window_present",
+                "passed": false,
+                "detail": "Tradovate window not found"
+              },
+              {
+                "name": "correct_account",
+                "passed": true,
+                "detail": "no account filter configured"
+              },
+              {
+                "name": "correct_symbol",
+                "passed": false,
+                "detail": "expected=MNQ, found=None"
+              },
+              {
+                "name": "symbol_allowed",
+                "passed": true,
+                "detail": "symbol=MNQ, allowed={'ES', 'MES', 'NQ', 'RTY', 'MNQ'}"
+              },
+              {
+                "name": "correct_quantity",
+                "passed": false,
+                "detail": "expected=1, found=None"
+              },
+              {
+                "name": "no_unexpected_position",
+                "passed": true,
+                "detail": "open_position=False, side=None, size=0"
+              },
+              {
+                "name": "no_pending_orders",
+                "passed": true,
+                "detail": "pending_orders=0"
+              },
+              {
+                "name": "signal_fresh",
+                "passed": true,
+                "detail": "expires_at=2026-04-18T23:56:53.225794+00:00, now=2026-04-18T23:56:23.236794+00:00"
+              },
+              {
+                "name": "action_button_visible",
+                "passed": false,
+                "detail": "BUY button visibility"
+              },
+              {
+                "name": "no_read_errors",
+                "passed": false,
+                "detail": "OpenClaw not available or Tradovate window not found"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.237794+00:00",
+          "event_type": "screenshot_saved",
+          "signal_id": "",
+          "symbol": "",
+          "side": "",
+          "contracts": 0,
+          "mode": "",
+          "reason": "pre_validation_fail_4082c4ba",
+          "details": {
+            "path": "C:\\Users\\andre\\AppData\\Local\\Temp\\tmpg3_dlh52\\screenshot_20260418_235623_pre_validation_fail_4082c4ba.png"
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.238795+00:00",
+          "event_type": "signal_received",
+          "signal_id": "0f241620-f03b-4d54-87e3-894ac19d7dc2",
+          "symbol": "MNQ",
+          "side": "BUY",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "dup_test",
+          "details": {
+            "signal_id": "0f241620-f03b-4d54-87e3-894ac19d7dc2",
+            "timestamp": "2026-04-18T23:56:23.225794+00:00",
+            "symbol": "MNQ",
+            "side": "BUY",
+            "contracts": 1,
+            "mode": "challenge",
+            "stop_loss": 20950.0,
+            "take_profit": 21100.0,
+            "reason": "dup_test",
+            "strategy_type": "ema50_breakout",
+            "confidence": 0.7,
+            "position_size_mult": 0.35,
+            "entry_price": 21000.0,
+            "ttl_seconds": 30,
+            "atm_template": "",
+            "expires_at": "2026-04-18T23:56:53.225794+00:00",
+            "fingerprint": "af59269206244560",
+            "metadata": {
+              "ml_prob": 0.7,
+              "percentile": 0.75,
+              "quality_score": 0.65,
+              "position_size_raw": 1.0,
+              "size_mult_applied": 0.35
+            }
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.238795+00:00",
+          "event_type": "validation_failed",
+          "signal_id": "0f241620-f03b-4d54-87e3-894ac19d7dc2",
+          "symbol": "MNQ",
+          "side": "BUY",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors",
+          "details": {
+            "passed": false,
+            "summary": "FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors",
+            "checks": [
+              {
+                "name": "window_present",
+                "passed": false,
+                "detail": "Tradovate window not found"
+              },
+              {
+                "name": "correct_account",
+                "passed": true,
+                "detail": "no account filter configured"
+              },
+              {
+                "name": "correct_symbol",
+                "passed": false,
+                "detail": "expected=MNQ, found=None"
+              },
+              {
+                "name": "symbol_allowed",
+                "passed": true,
+                "detail": "symbol=MNQ, allowed={'ES', 'MES', 'NQ', 'RTY', 'MNQ'}"
+              },
+              {
+                "name": "correct_quantity",
+                "passed": false,
+                "detail": "expected=1, found=None"
+              },
+              {
+                "name": "no_unexpected_position",
+                "passed": true,
+                "detail": "open_position=False, side=None, size=0"
+              },
+              {
+                "name": "no_pending_orders",
+                "passed": true,
+                "detail": "pending_orders=0"
+              },
+              {
+                "name": "signal_fresh",
+                "passed": true,
+                "detail": "expires_at=2026-04-18T23:56:53.225794+00:00, now=2026-04-18T23:56:23.238795+00:00"
+              },
+              {
+                "name": "action_button_visible",
+                "passed": false,
+                "detail": "BUY button visibility"
+              },
+              {
+                "name": "no_read_errors",
+                "passed": false,
+                "detail": "OpenClaw not available or Tradovate window not found"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.238795+00:00",
+          "event_type": "screenshot_saved",
+          "signal_id": "",
+          "symbol": "",
+          "side": "",
+          "contracts": 0,
+          "mode": "",
+          "reason": "pre_validation_fail_0f241620",
+          "details": {
+            "path": "C:\\Users\\andre\\AppData\\Local\\Temp\\tmpg3_dlh52\\screenshot_20260418_235623_pre_validation_fail_0f241620.png"
+          }
+        }
+      ],
+      "details": {
+        "description": "Same signal sent twice. Without OpenClaw: both fail at validation (dedup unreachable). With Tradovate: second call rejected as duplicate.",
+        "size_mult": 0.35,
+        "symbol": "MNQ",
+        "result_bool": false,
+        "outcome_match": true,
+        "events_match": true,
+        "missing_events": []
+      }
+    },
+    {
+      "name": "wrong_tab_selected",
+      "passed": true,
+      "expected_outcome": "executed=False, events_contain=['signal_received', 'validation_failed']",
+      "actual_outcome": "executed=False, events=['signal_received', 'validation_failed', 'screenshot_saved']",
+      "events": [
+        {
+          "timestamp": "2026-04-18T23:56:23.241226+00:00",
+          "event_type": "signal_received",
+          "signal_id": "579d879b-e7b2-4fb6-8a3e-41362545a485",
+          "symbol": "MNQ",
+          "side": "BUY",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "test_scenario",
+          "details": {
+            "signal_id": "579d879b-e7b2-4fb6-8a3e-41362545a485",
+            "timestamp": "2026-04-18T23:56:23.225794+00:00",
+            "symbol": "MNQ",
+            "side": "BUY",
+            "contracts": 1,
+            "mode": "challenge",
+            "stop_loss": 20950.0,
+            "take_profit": 21100.0,
+            "reason": "test_scenario",
+            "strategy_type": "ema50_breakout",
+            "confidence": 0.7,
+            "position_size_mult": 0.35,
+            "entry_price": 21000.0,
+            "ttl_seconds": 30,
+            "atm_template": "",
+            "expires_at": "2026-04-18T23:56:53.225794+00:00",
+            "fingerprint": "af59269206244560",
+            "metadata": {
+              "ml_prob": 0.7,
+              "percentile": 0.75,
+              "quality_score": 0.65,
+              "position_size_raw": 1.0,
+              "size_mult_applied": 0.35
+            }
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.241226+00:00",
+          "event_type": "validation_failed",
+          "signal_id": "579d879b-e7b2-4fb6-8a3e-41362545a485",
+          "symbol": "MNQ",
+          "side": "BUY",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors",
+          "details": {
+            "passed": false,
+            "summary": "FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors",
+            "checks": [
+              {
+                "name": "window_present",
+                "passed": false,
+                "detail": "Tradovate window not found"
+              },
+              {
+                "name": "correct_account",
+                "passed": true,
+                "detail": "no account filter configured"
+              },
+              {
+                "name": "correct_symbol",
+                "passed": false,
+                "detail": "expected=MNQ, found=None"
+              },
+              {
+                "name": "symbol_allowed",
+                "passed": true,
+                "detail": "symbol=MNQ, allowed={'ES', 'MES', 'NQ', 'RTY', 'MNQ'}"
+              },
+              {
+                "name": "correct_quantity",
+                "passed": false,
+                "detail": "expected=1, found=None"
+              },
+              {
+                "name": "no_unexpected_position",
+                "passed": true,
+                "detail": "open_position=False, side=None, size=0"
+              },
+              {
+                "name": "no_pending_orders",
+                "passed": true,
+                "detail": "pending_orders=0"
+              },
+              {
+                "name": "signal_fresh",
+                "passed": true,
+                "detail": "expires_at=2026-04-18T23:56:53.225794+00:00, now=2026-04-18T23:56:23.240221+00:00"
+              },
+              {
+                "name": "action_button_visible",
+                "passed": false,
+                "detail": "BUY button visibility"
+              },
+              {
+                "name": "no_read_errors",
+                "passed": false,
+                "detail": "OpenClaw not available or Tradovate window not found"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.241226+00:00",
+          "event_type": "screenshot_saved",
+          "signal_id": "",
+          "symbol": "",
+          "side": "",
+          "contracts": 0,
+          "mode": "",
+          "reason": "pre_validation_fail_579d879b",
+          "details": {
+            "path": "C:\\Users\\andre\\AppData\\Local\\Temp\\tmp9kwkb4j6\\screenshot_20260418_235623_pre_validation_fail_579d879b.png"
+          }
+        }
+      ],
+      "details": {
+        "description": "UI has wrong symbol active (simulated via OpenClaw not installed). Pre-trade validation should catch symbol mismatch.",
+        "size_mult": 0.35,
+        "symbol": "MNQ",
+        "result_bool": false,
+        "outcome_match": true,
+        "events_match": true,
+        "missing_events": []
+      }
+    },
+    {
+      "name": "account_mismatch",
+      "passed": true,
+      "expected_outcome": "executed=False, events_contain=['signal_received', 'validation_failed']",
+      "actual_outcome": "executed=False, events=['signal_received', 'validation_failed', 'screenshot_saved']",
+      "events": [
+        {
+          "timestamp": "2026-04-18T23:56:23.243731+00:00",
+          "event_type": "signal_received",
+          "signal_id": "52cda3be-0383-4798-afb0-95083ff520bd",
+          "symbol": "MNQ",
+          "side": "BUY",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "test_scenario",
+          "details": {
+            "signal_id": "52cda3be-0383-4798-afb0-95083ff520bd",
+            "timestamp": "2026-04-18T23:56:23.225794+00:00",
+            "symbol": "MNQ",
+            "side": "BUY",
+            "contracts": 1,
+            "mode": "challenge",
+            "stop_loss": 20950.0,
+            "take_profit": 21100.0,
+            "reason": "test_scenario",
+            "strategy_type": "ema50_breakout",
+            "confidence": 0.7,
+            "position_size_mult": 0.35,
+            "entry_price": 21000.0,
+            "ttl_seconds": 30,
+            "atm_template": "",
+            "expires_at": "2026-04-18T23:56:53.225794+00:00",
+            "fingerprint": "af59269206244560",
+            "metadata": {
+              "ml_prob": 0.7,
+              "percentile": 0.75,
+              "quality_score": 0.65,
+              "position_size_raw": 1.0,
+              "size_mult_applied": 0.35
+            }
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.243731+00:00",
+          "event_type": "validation_failed",
+          "signal_id": "52cda3be-0383-4798-afb0-95083ff520bd",
+          "symbol": "MNQ",
+          "side": "BUY",
+          "contracts": 1,
+          "mode": "challenge",
+          "reason": "FAILED: window_present, correct_account, correct_symbol, correct_quantity, action_button_visible, no_read_errors",
+          "details": {
+            "passed": false,
+            "summary": "FAILED: window_present, correct_account, correct_symbol, correct_quantity, action_button_visible, no_read_errors",
+            "checks": [
+              {
+                "name": "window_present",
+                "passed": false,
+                "detail": "Tradovate window not found"
+              },
+              {
+                "name": "correct_account",
+                "passed": false,
+                "detail": "expected 'APEX-12345' in 'None'"
+              },
+              {
+                "name": "correct_symbol",
+                "passed": false,
+                "detail": "expected=MNQ, found=None"
+              },
+              {
+                "name": "symbol_allowed",
+                "passed": true,
+                "detail": "symbol=MNQ, allowed={'ES', 'MES', 'NQ', 'RTY', 'MNQ'}"
+              },
+              {
+                "name": "correct_quantity",
+                "passed": false,
+                "detail": "expected=1, found=None"
+              },
+              {
+                "name": "no_unexpected_position",
+                "passed": true,
+                "detail": "open_position=False, side=None, size=0"
+              },
+              {
+                "name": "no_pending_orders",
+                "passed": true,
+                "detail": "pending_orders=0"
+              },
+              {
+                "name": "signal_fresh",
+                "passed": true,
+                "detail": "expires_at=2026-04-18T23:56:53.225794+00:00, now=2026-04-18T23:56:23.242725+00:00"
+              },
+              {
+                "name": "action_button_visible",
+                "passed": false,
+                "detail": "BUY button visibility"
+              },
+              {
+                "name": "no_read_errors",
+                "passed": false,
+                "detail": "OpenClaw not available or Tradovate window not found"
+              }
+            ]
+          }
+        },
+        {
+          "timestamp": "2026-04-18T23:56:23.244733+00:00",
+          "event_type": "screenshot_saved",
+          "signal_id": "",
+          "symbol": "",
+          "side": "",
+          "contracts": 0,
+          "mode": "",
+          "reason": "pre_validation_fail_52cda3be",
+          "details": {
+            "path": "C:\\Users\\andre\\AppData\\Local\\Temp\\tmps75hrqiu\\screenshot_20260418_235623_pre_validation_fail_52cda3be.png"
+          }
+        }
+      ],
+      "details": {
+        "description": "Expected account label not found in UI. Pre-trade validation should fail on account check.",
+        "size_mult": 0.35,
+        "symbol": "MNQ",
+        "result_bool": false,
+        "outcome_match": true,
+        "events_match": true,
+        "missing_events": []
+      }
+    }
+  ],
+  "ui_check": null,
+  "summary": "Stage 0 (DRY_RUN): 7/7 passed"
+}

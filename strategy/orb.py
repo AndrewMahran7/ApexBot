@@ -54,6 +54,8 @@ class Signal:
     strategy_type: str = ""     # e.g. "ema50_breakout"
     # Quality scoring (0.0 = unscored, higher = better)
     quality_score: float = 0.0
+    # Causal audit trail — when was the direction decided?
+    decision_time: Optional[datetime.datetime] = None
 
 
 class ORBStrategy:

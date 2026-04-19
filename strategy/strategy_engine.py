@@ -61,6 +61,7 @@ class LiveSignal:
     ml_prob: float = 0.0
     percentile: float = 0.0
     quality_score: float = 0.0
+    decision_time: Optional[datetime.datetime] = None
 
     @property
     def is_entry(self) -> bool:
@@ -105,6 +106,7 @@ def _signal_to_live(sig: Signal) -> LiveSignal:
         reason=sig.reason,
         position_id=sig.position_id,
         quality_score=getattr(sig, 'quality_score', 0.0),
+        decision_time=getattr(sig, 'decision_time', None),
     )
 
 

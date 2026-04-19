@@ -82,32 +82,30 @@
       "f_range_vs_atr",
       "f_direction_long"
     ],
-    "train_accuracy": 0.909688013136289,
-    "val_accuracy": 0.6157635467980296
+    "train_accuracy": 0.9047619047619048,
+    "val_accuracy": 0.5911330049261084
   },
   "class_balance": {
-    "train_positive_rate": 0.4220032840722496,
-    "val_positive_rate": 0.32019704433497537
+    "train_positive_rate": 0.3793103448275862,
+    "val_positive_rate": 0.3251231527093596
   },
   "top_features": {
-    "f_range_dist_below": 0.08228696550146501,
-    "f_regime_compression": 0.07255475155461252,
-    "f_price_ret_12bar": 0.0701981870202876,
-    "f_vol_avg": 0.05081727022812236,
-    "f_price_ema": 0.04663662559738032,
-    "f_regime_trend_strength": 0.046326774044137514,
-    "f_price_ema_dist": 0.04462013254905732,
-    "f_vol_expansion": 0.042251105376327515,
-    "f_vola_atr_norm": 0.03841866392609176,
-    "f_range_dist_above": 0.038335589662359275,
-    "f_vol_relative": 0.0369566029235637,
-    "f_risk_points": 0.036727560187483875,
-    "f_vola_realized": 0.03558149451941848,
-    "f_regime_breakout_strength": 0.03531694320834571,
-    "f_price_ema_dist_pct": 0.0282933811913678
+    "f_price_ret_12bar": 0.08823494685263358,
+    "f_risk_points": 0.07831669036899382,
+    "f_regime_compression": 0.07556822912701804,
+    "f_vola_realized": 0.06068020719497429,
+    "f_vol_expansion": 0.05823647531439237,
+    "f_vol_avg": 0.055046203100825766,
+    "f_range_size": 0.04581411534037895,
+    "f_price_ema": 0.04352941721149902,
+    "f_range_dist_below": 0.04207049732709164,
+    "f_vol_relative": 0.04026202523964045,
+    "f_regime_breakout_strength": 0.03178726403109735,
+    "f_price_bar_range": 0.03136332225494857,
+    "f_vola_atr_norm": 0.03070731031453566,
+    "f_regime_trend_strength": 0.030330639631624412,
+    "f_range_low": 0.029527743616140925
   },
   "train_medians_saved": 36,
-  "warnings": [
-    "Class balance drift: train=0.422, val=0.320"
-  ]
+  "warnings": []
 }

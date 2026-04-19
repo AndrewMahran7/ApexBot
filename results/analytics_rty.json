@@ -1,0 +1,129 @@
+{
+  "overall": {
+    "total_trades": 19,
+    "win_count": 6,
+    "loss_count": 13,
+    "win_rate": 31.58,
+    "profit_factor": 0.7684,
+    "sharpe_ratio": -1.8176,
+    "total_pnl": -141.06,
+    "avg_pnl": -7.42,
+    "largest_win": 104.26,
+    "largest_loss": -84.74,
+    "max_drawdown": -261.65
+  },
+  "direction": {
+    "long_trades": 10,
+    "long_win_rate": 30.0,
+    "long_pnl": -99.4,
+    "short_trades": 9,
+    "short_win_rate": 33.33,
+    "short_pnl": -41.66
+  },
+  "by_strategy": [
+    {
+      "strategy_type": "ema50_breakout",
+      "trade_count": 19,
+      "win_count": 6,
+      "loss_count": 13,
+      "win_rate": 31.58,
+      "total_pnl": -141.06,
+      "avg_pnl": -7.42,
+      "profit_factor": 0.7684,
+      "largest_win": 104.26,
+      "largest_loss": -84.74
+    }
+  ],
+  "signals": {
+    "total_signals": 40,
+    "entry_signals": 20,
+    "exit_signals": 20,
+    "risk_blocked": 0,
+    "risk_capped": 0,
+    "risk_kill_switches": 0,
+    "signal_to_trade_rate": 95.0
+  },
+  "daily": {
+    "trading_days": 19,
+    "winning_days": 6,
+    "losing_days": 13,
+    "daily_pnl": [
+      {
+        "date": "2024-11-26",
+        "pnl": -53.24
+      },
+      {
+        "date": "2024-11-27",
+        "pnl": -75.74
+      },
+      {
+        "date": "2024-11-28",
+        "pnl": 14.26
+      },
+      {
+        "date": "2024-12-02",
+        "pnl": -66.24
+      },
+      {
+        "date": "2024-12-03",
+        "pnl": 85.51
+      },
+      {
+        "date": "2024-12-04",
+        "pnl": -58.24
+      },
+      {
+        "date": "2024-12-06",
+        "pnl": -7.74
+      },
+      {
+        "date": "2024-12-09",
+        "pnl": -20.74
+      },
+      {
+        "date": "2024-12-10",
+        "pnl": -64.74
+      },
+      {
+        "date": "2024-12-11",
+        "pnl": -22.24
+      },
+      {
+        "date": "2024-12-12",
+        "pnl": -45.74
+      },
+      {
+        "date": "2024-12-16",
+        "pnl": 96.01
+      },
+      {
+        "date": "2024-12-17",
+        "pnl": 88.51
+      },
+      {
+        "date": "2024-12-18",
+        "pnl": -26.74
+      },
+      {
+        "date": "2024-12-19",
+        "pnl": 104.26
+      },
+      {
+        "date": "2024-12-24",
+        "pnl": -43.24
+      },
+      {
+        "date": "2024-12-26",
+        "pnl": 79.51
+      },
+      {
+        "date": "2024-12-27",
+        "pnl": -39.74
+      },
+      {
+        "date": "2024-12-30",
+        "pnl": -84.74
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+======================================================================
+  YEAR 2017  —  Low vol, grind higher, difficult breakout year
+======================================================================
+
+--- MES 2017 ---
+  Bars loaded: 69452
+  Date range: 2017-01-02 18:00:00-05:00 to 2017-12-29 16:55:00-05:00
+  Trades:        61
+  Win Rate:      49.2%
+  Avg Trade:     $0.19
+  Total PnL:     $11.75
+  Profit Factor: 1.02
+  Max Drawdown:  $403.75
+  Final Equity:  $25011.75
+  Peak Equity:   $25023.75
+  Sharpe:        0.05
+  Long trades:   32, win 50.0%
+  Short trades:  29, win 48.28%
+  Regimes: {'NO_RANGE': 56, 'BREAKOUT': 71, 'RANGE': 127, 'DEAD': 54}
+  Selectivity:
+    Days with range: 253
+    Days traded:     61
+    Entry attempts:  16140
+    Regime blocks:   15750
+    Filter blocks:   329
+    Entries taken:   61
+    Trade rate:      24.1% of range-days
+  Trades saved: results\adaptive_regime_refined_validation\2017_mes_trades.csv
+
+--- MNQ 2017 ---
+  Bars loaded: 69322
+  Date range: 2017-01-02 18:00:00-05:00 to 2017-12-29 16:55:00-05:00
+  Trades:        146
+  Win Rate:      41.1%
+  Avg Trade:     $-3.81
+  Total PnL:     $-556.50
+  Profit Factor: 0.81
+  Max Drawdown:  $847.25
+  Final Equity:  $24443.50
+  Peak Equity:   $25021.50
+  Sharpe:        -0.91
+  Long trades:   73, win 43.84%
+  Short trades:  73, win 38.36%
+  Regimes: {'NO_RANGE': 56, 'BREAKOUT': 113, 'TREND': 34, 'RANGE': 86, 'DEAD': 19}
+  Selectivity:
+    Days with range: 253
+    Days traded:     146
+    Entry attempts:  10619
+    Regime blocks:   10421
+    Filter blocks:   52
+    Entries taken:   146
+    Trade rate:      57.7% of range-days
+  Trades saved: results\adaptive_regime_refined_validation\2017_mnq_trades.csv

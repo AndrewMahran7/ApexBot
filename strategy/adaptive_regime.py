@@ -153,6 +153,16 @@ class AdaptiveRegimeStrategy:
         # Direction priority (set per-session during regime classification)
         self._preferred_directions: list[str] = ["long", "short"]
 
+        # Selectivity counters (for diagnostic reporting)
+        self.selectivity = {
+            "entry_attempts": 0,        # total breakout signals evaluated
+            "regime_blocks": 0,         # blocked by regime filter
+            "filter_blocks": 0,         # passed regime but failed score/strength
+            "entries_taken": 0,         # actual trades entered
+            "days_with_range": 0,       # days where range was set
+            "days_traded": 0,           # days that produced a trade
+        }
+
     # ------------------------------------------------------------------
     # Public interface
     # ------------------------------------------------------------------
@@ -232,7 +242,10 @@ class AdaptiveRegimeStrategy:
             for direction in self._preferred_directions:
                 if direction == "long" and self.cfg.allow_long and high > (self.opening_high + buf_long):
                     bdist = high - (self.opening_high + buf_long)
+                    self.selectivity["entry_attempts"] += 1
                     filt = self._evaluate_filters("long", or_range, features, bar_time, bdist)
+                    if not filt.regime_allows:
+                        self.selectivity["regime_blocks"] += 1
                     if filt.passed:
                         entry_px = self.opening_high + buf_long
                         sl = self.opening_low
@@ -240,11 +253,16 @@ class AdaptiveRegimeStrategy:
                         self._record_trade_diagnostic("long", filt, entry_px, sl, tp, bdist)
                         return self._enter_long(entry_px, sl, tp, ts, or_range, filt)
                     else:
+                        if filt.regime_allows:
+                            self.selectivity["filter_blocks"] += 1
                         self._record_skip_diagnostic("long", filt)
 
                 elif direction == "short" and self.cfg.allow_short and low < (self.opening_low - buf_short):
                     bdist = (self.opening_low - buf_short) - low
+                    self.selectivity["entry_attempts"] += 1
                     filt = self._evaluate_filters("short", or_range, features, bar_time, bdist)
+                    if not filt.regime_allows:
+                        self.selectivity["regime_blocks"] += 1
                     if filt.passed:
                         entry_px = self.opening_low - buf_short
                         sl = self.opening_high
@@ -252,6 +270,8 @@ class AdaptiveRegimeStrategy:
                         self._record_trade_diagnostic("short", filt, entry_px, sl, tp, bdist)
                         return self._enter_short(entry_px, sl, tp, ts, or_range, filt)
                     else:
+                        if filt.regime_allows:
+                            self.selectivity["filter_blocks"] += 1
                         self._record_skip_diagnostic("short", filt)
 
         return _no_signal(close, ts)
@@ -274,6 +294,14 @@ class AdaptiveRegimeStrategy:
         self.diagnostics = []
         self._current_day_diag = None
         self._preferred_directions = ["long", "short"]
+        self.selectivity = {
+            "entry_attempts": 0,
+            "regime_blocks": 0,
+            "filter_blocks": 0,
+            "entries_taken": 0,
+            "days_with_range": 0,
+            "days_traded": 0,
+        }
 
     # ------------------------------------------------------------------
     # Filter evaluation
@@ -413,6 +441,8 @@ class AdaptiveRegimeStrategy:
         if self._day_diagnosed:
             return
 
+        self.selectivity["days_with_range"] += 1
+
         or_range = (self.opening_high - self.opening_low) if (
             self.opening_high is not None and self.opening_low is not None
         ) else 0.0
@@ -439,10 +469,21 @@ class AdaptiveRegimeStrategy:
         # Set direction priority based on EMA slope.
         # In a downtrend, check short first so shorts aren't blocked
         # by the long-entry check consuming the one-trade-per-day slot.
+        #
+        # On TREND days with trend_direction_only=True, restrict to
+        # the trend-aligned direction only — eliminates counter-trend
+        # entries that lose money in whipsaw regimes.
+        is_trend = self._regime_diag.regime == Regime.TREND
         if features.ema_slope is not None and features.ema_slope < 0:
-            self._preferred_directions = ["short", "long"]
+            if is_trend and self.cfg.trend_direction_only:
+                self._preferred_directions = ["short"]
+            else:
+                self._preferred_directions = ["short", "long"]
         else:
-            self._preferred_directions = ["long", "short"]
+            if is_trend and self.cfg.trend_direction_only:
+                self._preferred_directions = ["long"]
+            else:
+                self._preferred_directions = ["long", "short"]
 
         # Record diagnostics
         if self._current_day_diag is not None:
@@ -505,6 +546,8 @@ class AdaptiveRegimeStrategy:
         self.entry_price = entry_px
         self.sl = sl
         self.tp = tp
+        self.selectivity["entries_taken"] += 1
+        self.selectivity["days_traded"] += 1
         regime_name = self._regime_diag.regime.name if self._regime_diag else "?"
         logger.debug(
             "LONG entry: px=%.2f sl=%.2f tp=%.2f regime=%s score=%d",
@@ -527,6 +570,8 @@ class AdaptiveRegimeStrategy:
         self.entry_price = entry_px
         self.sl = sl
         self.tp = tp
+        self.selectivity["entries_taken"] += 1
+        self.selectivity["days_traded"] += 1
         regime_name = self._regime_diag.regime.name if self._regime_diag else "?"
         logger.debug(
             "SHORT entry: px=%.2f sl=%.2f tp=%.2f regime=%s score=%d",

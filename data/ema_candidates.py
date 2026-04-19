@@ -97,6 +97,10 @@ def _identify_ema_candidates(df: pd.DataFrame, cfg: EMACandidateConfig) -> pd.Da
     """
     For each session, find the first bar after range close and check EMA condition.
     Mirrors the EMA directional benchmark logic.
+
+    CAUSAL FIX: entry_price is the NEXT bar's open (not the decision bar's
+    open).  Direction is determined by the decision bar's close vs EMA, but
+    the trade can only begin on the following bar.
     """
     range_end_t = pd.Timestamp(f"1970-01-01 {cfg.range_end}").time()
     eod_t = pd.Timestamp(f"1970-01-01 {cfg.eod_exit_time}").time()
@@ -127,27 +131,45 @@ def _identify_ema_candidates(df: pd.DataFrame, cfg: EMACandidateConfig) -> pd.Da
         range_high = bar["f_range_high"]
         range_low = bar["f_range_low"]
         range_size = bar["f_range_size"]
+        session_date = bar["session_date"]
 
         if pd.isna(range_high) or pd.isna(range_low) or range_size <= 0:
             continue
 
-        # EMA directional logic
+        # --- Find the NEXT bar in the same session (entry bar) ---
+        next_bar_mask = (
+            (df["session_date"] == session_date)
+            & (df.index > ts)
+            & (df.index.time <= eod_t)
+        )
+        next_bars = df.loc[next_bar_mask]
+        if next_bars.empty:
+            logger.debug(
+                "No next bar for candidate at %s — skipping (no causal entry possible)", ts
+            )
+            continue
+        entry_bar = next_bars.iloc[0]
+        entry_time = next_bars.index[0]
+        entry_price = float(entry_bar["open"])
+
+        # EMA directional logic (uses decision bar's close)
         if close > ema_val:
             direction = "long"
-            entry_price = float(bar["open"])  # enter at open of decision bar
             stop_loss = float(range_low)
-            take_profit = entry_price + cfg.reward_risk * float(range_size)
+            tp_distance = cfg.reward_risk * float(range_size)
+            take_profit = entry_price + tp_distance
         elif close < ema_val and cfg.allow_shorts:
             direction = "short"
-            entry_price = float(bar["open"])
             stop_loss = float(range_high)
-            take_profit = entry_price - cfg.reward_risk * float(range_size)
+            tp_distance = cfg.reward_risk * float(range_size)
+            take_profit = entry_price - tp_distance
         else:
             continue  # no signal
 
         rows.append({
             "timestamp": ts,
-            "session_date": bar["session_date"],
+            "entry_time": entry_time,
+            "session_date": session_date,
             "direction": direction,
             "entry_price": entry_price,
             "stop_loss": stop_loss,
@@ -155,7 +177,7 @@ def _identify_ema_candidates(df: pd.DataFrame, cfg: EMACandidateConfig) -> pd.Da
             "range_high": float(range_high),
             "range_low": float(range_low),
             "range_size": float(range_size),
-            # Carry all feature columns forward
+            # Carry all feature columns forward (from decision bar — causal)
             **{c: bar[c] for c in bar.index if c.startswith("f_")},
         })
 
@@ -193,11 +215,13 @@ def _label_candidates(
         stop_loss = cand["stop_loss"]
         take_profit = cand["take_profit"]
         session_date = cand["session_date"]
+        entry_time = cand["entry_time"]
 
-        # Get remaining bars in this session after the candidate bar
+        # Get remaining bars in this session AFTER the entry bar
+        # (entry bar is one bar after the decision bar — causal).
         session_mask = (
             (full_bars["session_date"] == session_date)
-            & (full_bars.index > ts)
+            & (full_bars.index > entry_time)
             & (full_bars.index.time <= eod_t)
         )
         future_bars = full_bars.loc[session_mask]
@@ -296,6 +320,26 @@ def _collect_features(candidates: pd.DataFrame) -> pd.DataFrame:
 
     # Direction encoded
     candidates["f_direction_long"] = (candidates["direction"] == "long").astype(int)
+
+    # --- Recent win/loss streak (causal: uses only PRIOR candidates) ---
+    # Must be computed sequentially since each row depends on prior labels
+    if "label_success" in candidates.columns:
+        streak_vals = []
+        streak = 0
+        for label in candidates["label_success"].values:
+            # Record the streak BEFORE this trade (what the trader knows going in)
+            streak_vals.append(streak)
+            # Update streak: positive = consecutive wins, negative = consecutive losses
+            if label == 1:
+                streak = streak + 1 if streak > 0 else 1
+            else:
+                streak = streak - 1 if streak < 0 else -1
+        candidates["f_streak_raw"] = streak_vals
+
+        # Rolling win rate over last N candidates (5, 10)
+        labels = candidates["label_success"].astype(float)
+        candidates["f_recent_wr_5"] = labels.shift(1).rolling(5, min_periods=1).mean()
+        candidates["f_recent_wr_10"] = labels.shift(1).rolling(10, min_periods=1).mean()
 
     return candidates
 

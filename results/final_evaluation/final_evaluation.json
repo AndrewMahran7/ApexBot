@@ -1,0 +1,279 @@
+{
+  "model": {
+    "test_auc": 0.6313,
+    "train_auc": 0.6179,
+    "overfit_gap": -0.0135,
+    "n_features": 16,
+    "train_samples": 761,
+    "test_samples": 254
+  },
+  "ml_threshold": 0.4,
+  "mnq": {
+    "summary": {
+      "ema_total_pnl": -1070.46,
+      "ml_total_pnl": -595.48,
+      "ema_total_trades": 1264,
+      "ml_total_trades": 932,
+      "ema_wr": 36.9,
+      "ml_wr": 37.3
+    },
+    "years": [
+      {
+        "year": 2017,
+        "ema": {
+          "trades": 253,
+          "wins": 82,
+          "win_rate": 32.4,
+          "total_pnl": -1857.92,
+          "avg_pnl": -7.34,
+          "profit_factor": 0.588,
+          "max_dd": 1920.89
+        },
+        "ml": {
+          "trades": 128,
+          "wins": 44,
+          "win_rate": 34.4,
+          "total_pnl": -932.67,
+          "avg_pnl": -7.29,
+          "profit_factor": 0.648,
+          "max_dd": 1040.48
+        },
+        "pnl_delta": 925.25,
+        "wr_delta": 2.0
+      },
+      {
+        "year": 2018,
+        "ema": {
+          "trades": 253,
+          "wins": 90,
+          "win_rate": 35.6,
+          "total_pnl": -978.42,
+          "avg_pnl": -3.87,
+          "profit_factor": 0.885,
+          "max_dd": 1636.08
+        },
+        "ml": {
+          "trades": 205,
+          "wins": 75,
+          "win_rate": 36.6,
+          "total_pnl": -806.95,
+          "avg_pnl": -3.94,
+          "profit_factor": 0.891,
+          "max_dd": 1560.09
+        },
+        "pnl_delta": 171.47,
+        "wr_delta": 1.0
+      },
+      {
+        "year": 2019,
+        "ema": {
+          "trades": 253,
+          "wins": 102,
+          "win_rate": 40.3,
+          "total_pnl": -200.92,
+          "avg_pnl": -0.79,
+          "profit_factor": 0.97,
+          "max_dd": 956.37
+        },
+        "ml": {
+          "trades": 196,
+          "wins": 80,
+          "win_rate": 40.8,
+          "total_pnl": 86.31,
+          "avg_pnl": 0.44,
+          "profit_factor": 1.016,
+          "max_dd": 818.25
+        },
+        "pnl_delta": 287.23,
+        "wr_delta": 0.5
+      },
+      {
+        "year": 2024,
+        "ema": {
+          "trades": 254,
+          "wins": 92,
+          "win_rate": 36.2,
+          "total_pnl": -730.81,
+          "avg_pnl": -2.88,
+          "profit_factor": 0.958,
+          "max_dd": 3121.16
+        },
+        "ml": {
+          "trades": 203,
+          "wins": 72,
+          "win_rate": 35.5,
+          "total_pnl": -25.17,
+          "avg_pnl": -0.12,
+          "profit_factor": 0.998,
+          "max_dd": 2326.37
+        },
+        "pnl_delta": 705.64,
+        "wr_delta": -0.7
+      },
+      {
+        "year": 2025,
+        "ema": {
+          "trades": 251,
+          "wins": 100,
+          "win_rate": 39.8,
+          "total_pnl": 2697.61,
+          "avg_pnl": 10.75,
+          "profit_factor": 1.122,
+          "max_dd": 2894.57
+        },
+        "ml": {
+          "trades": 200,
+          "wins": 77,
+          "win_rate": 38.5,
+          "total_pnl": 1083.0,
+          "avg_pnl": 5.42,
+          "profit_factor": 1.062,
+          "max_dd": 3221.08
+        },
+        "pnl_delta": -1614.61,
+        "wr_delta": -1.3
+      }
+    ]
+  },
+  "mes": {
+    "summary": {
+      "ema_total_pnl": -8468.35,
+      "ml_total_pnl": -596.18,
+      "ema_total_trades": 1265,
+      "ml_total_trades": 271,
+      "ema_wr": 33.5,
+      "ml_wr": 41.3
+    },
+    "years": [
+      {
+        "year": 2017,
+        "ema": {
+          "trades": 253,
+          "wins": 86,
+          "win_rate": 34.0,
+          "total_pnl": -1458.3,
+          "avg_pnl": -5.76,
+          "profit_factor": 0.558,
+          "max_dd": 1501.16
+        },
+        "ml": {
+          "trades": 17,
+          "wins": 8,
+          "win_rate": 47.1,
+          "total_pnl": -32.63,
+          "avg_pnl": -1.92,
+          "profit_factor": 0.859,
+          "max_dd": 129.62
+        },
+        "pnl_delta": 1425.67,
+        "wr_delta": 13.1
+      },
+      {
+        "year": 2018,
+        "ema": {
+          "trades": 253,
+          "wins": 88,
+          "win_rate": 34.8,
+          "total_pnl": -964.55,
+          "avg_pnl": -3.81,
+          "profit_factor": 0.824,
+          "max_dd": 1836.04
+        },
+        "ml": {
+          "trades": 36,
+          "wins": 9,
+          "win_rate": 25.0,
+          "total_pnl": -732.66,
+          "avg_pnl": -20.35,
+          "profit_factor": 0.426,
+          "max_dd": 845.98
+        },
+        "pnl_delta": 231.89,
+        "wr_delta": -9.8
+      },
+      {
+        "year": 2019,
+        "ema": {
+          "trades": 253,
+          "wins": 86,
+          "win_rate": 34.0,
+          "total_pnl": -1408.92,
+          "avg_pnl": -5.57,
+          "profit_factor": 0.718,
+          "max_dd": 1801.62
+        },
+        "ml": {
+          "trades": 33,
+          "wins": 18,
+          "win_rate": 54.5,
+          "total_pnl": 516.25,
+          "avg_pnl": 15.64,
+          "profit_factor": 1.91,
+          "max_dd": 140.7
+        },
+        "pnl_delta": 1925.17,
+        "wr_delta": 20.5
+      },
+      {
+        "year": 2024,
+        "ema": {
+          "trades": 254,
+          "wins": 69,
+          "win_rate": 27.2,
+          "total_pnl": -3579.18,
+          "avg_pnl": -14.09,
+          "profit_factor": 0.591,
+          "max_dd": 3658.05
+        },
+        "ml": {
+          "trades": 59,
+          "wins": 21,
+          "win_rate": 35.6,
+          "total_pnl": -1086.88,
+          "avg_pnl": -18.42,
+          "profit_factor": 0.649,
+          "max_dd": 1206.81
+        },
+        "pnl_delta": 2492.3,
+        "wr_delta": 8.4
+      },
+      {
+        "year": 2025,
+        "ema": {
+          "trades": 252,
+          "wins": 95,
+          "win_rate": 37.7,
+          "total_pnl": -1057.4,
+          "avg_pnl": -4.2,
+          "profit_factor": 0.91,
+          "max_dd": 3170.87
+        },
+        "ml": {
+          "trades": 126,
+          "wins": 56,
+          "win_rate": 44.4,
+          "total_pnl": 739.74,
+          "avg_pnl": 5.87,
+          "profit_factor": 1.107,
+          "max_dd": 1839.44
+        },
+        "pnl_delta": 1797.14,
+        "wr_delta": 6.7
+      }
+    ]
+  },
+  "classification": {
+    "classification": "FRAGILE",
+    "score": -2,
+    "reasons": [
+      "+1: ML profitable 2/5 years",
+      "-2: ML total PnL negative ($-595.48)",
+      "-1: EMA-only profitable only 1/5 years",
+      "+1: ML improves over EMA-only",
+      " 0: Worst ML year = $-932.67 (-18.7%)",
+      "-1: MES weak: only 0/5 profitable"
+    ],
+    "ml_profitable_years": 2,
+    "ema_profitable_years": 1
+  }
+}

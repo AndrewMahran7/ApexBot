@@ -1,0 +1,92 @@
+{
+  "mes": {
+    "symbol": "MES",
+    "n": 1015,
+    "wins": 357,
+    "win_rate": 0.3517,
+    "total_pnl": -5203.97,
+    "avg_pnl": -5.13,
+    "median_pnl": -25.89,
+    "std_pnl": 83.35,
+    "profit_factor": 0.859,
+    "avg_pnl_pts": 0.15,
+    "median_pnl_pts": -4.0,
+    "avg_win_pts": 18.81,
+    "avg_loss_pts": -9.97,
+    "avg_range_size": 14.27,
+    "median_range_size": 12.5,
+    "avg_risk_points": 11.44,
+    "avg_atr": 4.9284,
+    "avg_range_vs_atr": 2.9235,
+    "avg_ema_slope": 0.006923,
+    "avg_trend_dir": 0.0581,
+    "avg_vol_relative": 2.9243,
+    "pct_long": 0.5222,
+    "exit_TP": 300,
+    "exit_SL": 644,
+    "exit_EOD": 71,
+    "exit_TP_pct": 29.6,
+    "exit_SL_pct": 63.4,
+    "exit_EOD_pct": 7.0,
+    "cost_per_trade": 5.89,
+    "cost_as_pct_of_range": 8.25
+  },
+  "mnq": {
+    "symbol": "MNQ",
+    "n": 1015,
+    "wins": 384,
+    "win_rate": 0.3783,
+    "total_pnl": 2973.15,
+    "avg_pnl": 2.93,
+    "median_pnl": -41.64,
+    "std_pnl": 172.29,
+    "profit_factor": 1.042,
+    "avg_pnl_pts": 4.03,
+    "median_pnl_pts": -18.25,
+    "avg_win_pts": 97.6,
+    "avg_loss_pts": -52.91,
+    "avg_range_size": 77.52,
+    "median_range_size": 69.75,
+    "avg_risk_points": 62.82,
+    "avg_atr": 23.6025,
+    "avg_range_vs_atr": 3.3344,
+    "avg_ema_slope": -0.027515,
+    "avg_trend_dir": -0.0325,
+    "avg_vol_relative": 2.7632,
+    "pct_long": 0.5005,
+    "exit_TP": 279,
+    "exit_SL": 589,
+    "exit_EOD": 147,
+    "exit_TP_pct": 27.5,
+    "exit_SL_pct": 58.0,
+    "exit_EOD_pct": 14.5,
+    "cost_per_trade": 5.14,
+    "cost_as_pct_of_range": 3.32
+  },
+  "per_year": {
+    "2021": {
+      "mes_wr": 0.4409,
+      "mnq_wr": 0.4291,
+      "mes_pnl": 1308.94,
+      "mnq_pnl": 3951.19
+    },
+    "2022": {
+      "mes_wr": 0.3661,
+      "mnq_wr": 0.3661,
+      "mes_pnl": -901.06,
+      "mnq_pnl": -570.81
+    },
+    "2023": {
+      "mes_wr": 0.3202,
+      "mnq_wr": 0.3557,
+      "mes_pnl": -2740.17,
+      "mnq_pnl": -472.17
+    },
+    "2024": {
+      "mes_wr": 0.2795,
+      "mnq_wr": 0.3622,
+      "mes_pnl": -2871.68,
+      "mnq_pnl": 64.94
+    }
+  }
+}

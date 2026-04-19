@@ -1,0 +1,58 @@
+{
+  "year": 2022,
+  "symbol": "MNQ",
+  "metrics": {
+    "total_trades": 196,
+    "winning_trades": 82,
+    "losing_trades": 114,
+    "win_rate_pct": 41.84,
+    "total_pnl_dollars": 474.0,
+    "total_pnl_points": 776.0,
+    "total_return_pct": 1.9,
+    "gross_profit": 24042.5,
+    "gross_loss": 23568.5,
+    "profit_factor": 1.0201,
+    "avg_win": 293.2,
+    "avg_loss": -206.74,
+    "expectancy": 2.42,
+    "largest_win": 977.5,
+    "largest_loss": -457.0,
+    "max_drawdown_dollars": 3000.75,
+    "max_drawdown_pct": 12.0,
+    "sharpe_ratio": 0.1771,
+    "avg_trade_duration_min": 189.3,
+    "total_commission": 882.0,
+    "total_slippage": 196.0,
+    "initial_capital": 25000.0,
+    "final_equity": 25474.0,
+    "bars_processed": 70467,
+    "pnl_by_weekday": {
+      "Wednesday": -2329.5,
+      "Thursday": 471.0,
+      "Monday": 22.0,
+      "Tuesday": 2012.5,
+      "Friday": 298.0
+    },
+    "long_trades": 95,
+    "short_trades": 101,
+    "long_win_rate_pct": 40.0,
+    "short_win_rate_pct": 43.56,
+    "long_pnl_dollars": -249.0,
+    "short_pnl_dollars": 723.0
+  },
+  "selectivity": {
+    "entry_attempts": 7123,
+    "regime_blocks": 6803,
+    "filter_blocks": 124,
+    "entries_taken": 196,
+    "days_with_range": 254,
+    "days_traded": 196
+  },
+  "regime_breakdown": {
+    "NO_RANGE": 56,
+    "RANGE": 27,
+    "DEAD": 30,
+    "TREND": 190,
+    "BREAKOUT": 6
+  }
+}

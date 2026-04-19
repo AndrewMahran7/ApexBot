@@ -1,0 +1,129 @@
+{
+  "pass_rate": 0.405,
+  "fail_rate": 0.595,
+  "incomplete_rate": 0.0,
+  "avg_trades_to_pass": 39.6,
+  "avg_trades_to_fail": 32.1,
+  "median_trades_to_pass": 35.0,
+  "median_trades_to_fail": 27.0,
+  "mean_final_equity": 25381.4,
+  "median_final_equity": 25008.25,
+  "std_final_equity": 1134.14,
+  "drawdown_stats": {
+    "mean_max_dd": 889.32,
+    "median_max_dd": 1022.5,
+    "p95_max_dd": 1208.12,
+    "p99_max_dd": 1311.55,
+    "mean_largest_loss_streak": 4.6,
+    "median_largest_loss_streak": 4.0,
+    "p95_largest_loss_streak": 8.0,
+    "pct_time_near_boundary": 0.7082
+  },
+  "n_simulations": 2000,
+  "max_trades": 500,
+  "starting_capital": 25000.0,
+  "profit_target": 1500.0,
+  "max_drawdown": 1000.0,
+  "position_scale": 1.0,
+  "block_size": 7,
+  "source_trade_count": 1311,
+  "source_win_rate": 0.4584,
+  "source_mean_pnl": 13.29,
+  "source_std_pnl": 206.21,
+  "sensitivity": [
+    {
+      "scale": 0.25,
+      "pass_rate": 0.634,
+      "fail_rate": 0.1275,
+      "avg_trades_to_pass": 284.7,
+      "avg_max_dd": 623.17
+    },
+    {
+      "scale": 0.5,
+      "pass_rate": 0.5735,
+      "fail_rate": 0.426,
+      "avg_trades_to_pass": 125.9,
+      "avg_max_dd": 794.99
+    },
+    {
+      "scale": 0.75,
+      "pass_rate": 0.454,
+      "fail_rate": 0.546,
+      "avg_trades_to_pass": 62.2,
+      "avg_max_dd": 853.62
+    },
+    {
+      "scale": 1.0,
+      "pass_rate": 0.405,
+      "fail_rate": 0.595,
+      "avg_trades_to_pass": 39.6,
+      "avg_max_dd": 889.32
+    },
+    {
+      "scale": 1.25,
+      "pass_rate": 0.3845,
+      "fail_rate": 0.6155,
+      "avg_trades_to_pass": 27.8,
+      "avg_max_dd": 908.48
+    },
+    {
+      "scale": 1.5,
+      "pass_rate": 0.378,
+      "fail_rate": 0.622,
+      "avg_trades_to_pass": 21.6,
+      "avg_max_dd": 923.39
+    },
+    {
+      "scale": 2.0,
+      "pass_rate": 0.3675,
+      "fail_rate": 0.6325,
+      "avg_trades_to_pass": 13.7,
+      "avg_max_dd": 938.73
+    }
+  ],
+  "label": "MNQ",
+  "risk_diagnostics": {
+    "loss_streak_distribution": {
+      "pct_streak_ge_3": 0.898,
+      "pct_streak_ge_4": 0.718,
+      "pct_streak_ge_5": 0.471,
+      "pct_streak_ge_6": 0.2695,
+      "pct_streak_ge_7": 0.1255,
+      "pct_streak_ge_8": 0.0585,
+      "pct_streak_ge_10": 0.018
+    },
+    "early_failure_probability": {
+      "fail_within_10_trades": 0.078,
+      "fail_within_20_trades": 0.203,
+      "fail_within_50_trades": 0.4905,
+      "fail_within_100_trades": 0.5895
+    },
+    "source_trade_stats": {
+      "total_trades": 1311,
+      "win_rate": 0.4584,
+      "avg_win": 185.4,
+      "avg_loss": -132.4,
+      "largest_win": 1424.5,
+      "largest_loss": -495.5,
+      "median_pnl": -21.0,
+      "std_pnl": 206.21,
+      "expectancy": 13.29,
+      "profit_factor": 1.19
+    },
+    "timing_percentiles": {
+      "pass_p10_trades": 13,
+      "pass_p25_trades": 21,
+      "pass_p75_trades": 52,
+      "pass_p90_trades": 71,
+      "fail_p10_trades": 9,
+      "fail_p25_trades": 16,
+      "fail_p75_trades": 43,
+      "fail_p90_trades": 61
+    },
+    "peak_before_fail": {
+      "mean_peak_before_fail": 25595.7,
+      "median_peak_before_fail": 25550.0,
+      "pct_failed_after_profit": 0.8975
+    }
+  }
+}

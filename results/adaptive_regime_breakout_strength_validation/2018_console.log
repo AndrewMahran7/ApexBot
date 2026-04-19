@@ -1,0 +1,53 @@
+======================================================================
+  YEAR 2018  —  Volatile, regime-shift year (Feb vol-spike, Q4 selloff)
+======================================================================
+
+--- MES 2018 ---
+  Bars loaded: 69719
+  Date range: 2018-01-01 18:00:00-05:00 to 2018-12-31 16:55:00-05:00
+  Trades:        70
+  Win Rate:      41.4%
+  Avg Trade:     $-6.73
+  Total PnL:     $-471.25
+  Profit Factor: 0.79
+  Max Drawdown:  $900.00
+  Final Equity:  $24528.75
+  Peak Equity:   $25358.25
+  Sharpe:        -0.73
+  Long trades:   42, win 38.1%
+  Short trades:  28, win 46.43%
+  Regimes: {'NO_RANGE': 59, 'RANGE': 111, 'BREAKOUT': 68, 'DEAD': 69, 'TREND': 4}
+  Selectivity:
+    Days with range: 253
+    Days traded:     70
+    Entry attempts:  18807
+    Regime blocks:   18599
+    Filter blocks:   138
+    Entries taken:   70
+    Trade rate:      27.7% of range-days
+  Trades saved: results\adaptive_regime_breakout_strength_validation\2018_mes_trades.csv
+
+--- MNQ 2018 ---
+  Bars loaded: 69626
+  Date range: 2018-01-01 18:00:00-05:00 to 2018-12-31 16:55:00-05:00
+  Trades:        154
+  Win Rate:      39.6%
+  Avg Trade:     $-10.39
+  Total PnL:     $-1599.50
+  Profit Factor: 0.79
+  Max Drawdown:  $1776.50
+  Final Equity:  $23400.50
+  Peak Equity:   $25177.00
+  Sharpe:        -1.13
+  Long trades:   80, win 42.5%
+  Short trades:  74, win 36.49%
+  Regimes: {'NO_RANGE': 59, 'TREND': 101, 'BREAKOUT': 53, 'RANGE': 71, 'DEAD': 27}
+  Selectivity:
+    Days with range: 253
+    Days traded:     154
+    Entry attempts:  11213
+    Regime blocks:   10971
+    Filter blocks:   88
+    Entries taken:   154
+    Trade rate:      60.9% of range-days
+  Trades saved: results\adaptive_regime_breakout_strength_validation\2018_mnq_trades.csv

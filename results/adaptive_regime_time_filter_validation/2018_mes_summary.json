@@ -1,0 +1,58 @@
+{
+  "year": 2018,
+  "symbol": "MES",
+  "metrics": {
+    "total_trades": 70,
+    "winning_trades": 29,
+    "losing_trades": 41,
+    "win_rate_pct": 41.43,
+    "total_pnl_dollars": -471.25,
+    "total_pnl_points": 3.75,
+    "total_return_pct": -1.88,
+    "gross_profit": 1752.0,
+    "gross_loss": 2223.25,
+    "profit_factor": 0.788,
+    "avg_win": 60.41,
+    "avg_loss": -54.23,
+    "expectancy": -6.73,
+    "largest_win": 195.5,
+    "largest_loss": -120.75,
+    "max_drawdown_dollars": 900.0,
+    "max_drawdown_pct": 3.55,
+    "sharpe_ratio": -0.7251,
+    "avg_trade_duration_min": 210.8,
+    "total_commission": 315.0,
+    "total_slippage": 175.0,
+    "initial_capital": 25000.0,
+    "final_equity": 24528.75,
+    "bars_processed": 69719,
+    "pnl_by_weekday": {
+      "Wednesday": 60.25,
+      "Thursday": -494.5,
+      "Friday": 5.25,
+      "Monday": 16.75,
+      "Tuesday": -59.0
+    },
+    "long_trades": 42,
+    "short_trades": 28,
+    "long_win_rate_pct": 38.1,
+    "short_win_rate_pct": 46.43,
+    "long_pnl_dollars": -749.0,
+    "short_pnl_dollars": 277.75
+  },
+  "selectivity": {
+    "entry_attempts": 18807,
+    "regime_blocks": 18599,
+    "filter_blocks": 138,
+    "entries_taken": 70,
+    "days_with_range": 253,
+    "days_traded": 70
+  },
+  "regime_breakdown": {
+    "NO_RANGE": 59,
+    "RANGE": 111,
+    "BREAKOUT": 68,
+    "DEAD": 69,
+    "TREND": 4
+  }
+}

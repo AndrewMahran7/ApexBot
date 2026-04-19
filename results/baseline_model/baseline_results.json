@@ -1,0 +1,140 @@
+{
+  "logistic_regression": {
+    "roc_auc": 0.5748,
+    "precision": 0.3333,
+    "recall": 0.0563,
+    "f1": 0.0964,
+    "brier_score": 0.2053,
+    "train_auc": 0.6887,
+    "overfit_gap": 0.1139,
+    "confusion_matrix": [
+      [
+        175,
+        8
+      ],
+      [
+        67,
+        4
+      ]
+    ],
+    "calibration": [
+      {
+        "bin_mean_predicted": 0.13115407178187638,
+        "bin_fraction_positive": 0.23728813559322035
+      },
+      {
+        "bin_mean_predicted": 0.291109604534678,
+        "bin_fraction_positive": 0.2589928057553957
+      },
+      {
+        "bin_mean_predicted": 0.44760616449662066,
+        "bin_fraction_positive": 0.37254901960784315
+      },
+      {
+        "bin_mean_predicted": 0.6766810096326832,
+        "bin_fraction_positive": 0.4
+      }
+    ],
+    "prob_distribution": {
+      "mean": 0.293,
+      "std": 0.1271,
+      "min": 0.021,
+      "max": 0.7761
+    },
+    "feature_importance": {
+      "f_price_ema": 0.010767837317236779,
+      "f_price_ema_dist": -0.6859302902346268,
+      "f_price_ema_dist_pct": 0.383178699275951,
+      "f_price_ema_slope": 0.26567836665558797,
+      "f_price_ret_12bar": 0.10176543573878527,
+      "f_price_bar_range": -0.2561489014455683,
+      "f_price_rolling_range": -0.17159031479609488,
+      "f_price_gap": -0.1860921666261678,
+      "f_price_gap_pct": 0.3090900629760341,
+      "f_vol_avg": -0.25440340154689844,
+      "f_vol_relative": 0.18068243407085363,
+      "f_vol_expansion": -0.09297810005756299,
+      "f_vola_tr": -0.36007469237033723,
+      "f_vola_atr": -0.19920274100736393,
+      "f_vola_atr_norm": 0.5133843916104246,
+      "f_vola_realized": -0.05019791524923999,
+      "f_time_weekday": -0.08590799980923969,
+      "f_range_high": -0.029681134310766688,
+      "f_range_low": -0.021924531830600537,
+      "f_range_size": -0.2769940163947143,
+      "f_range_dist_above": 0.26853184449201434,
+      "f_range_dist_below": -0.04162623164777156,
+      "f_range_size_vs_atr": -0.014518512459593192,
+      "f_regime_trend_strength": 0.22663086605559657,
+      "f_regime_trend_direction": 0.27947516682526635,
+      "f_regime_compression": -0.09570240506551696,
+      "f_regime_breakout_strength": 0.17252527893213787,
+      "f_regime_vol_trend": -0.11767785551916533,
+      "f_ema_distance": -0.6049014871797777,
+      "f_ema_distance_pct": 0.45843281339953784,
+      "f_risk_points": 0.9106951215131687,
+      "f_range_vs_atr": -0.014518512459593192,
+      "f_direction_long": -0.04686510406102626
+    },
+    "n_train": 761,
+    "n_test": 254,
+    "train_success_rate": 0.3758,
+    "test_success_rate": 0.2795
+  },
+  "decision_tree_d3": {
+    "roc_auc": 0.4972,
+    "precision": 0.2857,
+    "recall": 0.0563,
+    "f1": 0.0941,
+    "brier_score": 0.2275,
+    "train_auc": 0.688,
+    "overfit_gap": 0.1907,
+    "confusion_matrix": [
+      [
+        173,
+        10
+      ],
+      [
+        67,
+        4
+      ]
+    ],
+    "calibration": [
+      {
+        "bin_mean_predicted": 0.24632966714306473,
+        "bin_fraction_positive": 0.2781954887218045
+      },
+      {
+        "bin_mean_predicted": 0.42666875272538474,
+        "bin_fraction_positive": 0.2803738317757009
+      },
+      {
+        "bin_mean_predicted": 0.7941176470588235,
+        "bin_fraction_positive": 0.16666666666666666
+      },
+      {
+        "bin_mean_predicted": 0.8499999999999999,
+        "bin_fraction_positive": 0.375
+      }
+    ],
+    "prob_distribution": {
+      "mean": 0.3543,
+      "std": 0.144,
+      "min": 0.2452,
+      "max": 0.85
+    },
+    "feature_importance": {
+      "f_price_ema_dist": 0.09687125902711657,
+      "f_price_ret_12bar": 0.237646697436717,
+      "f_price_bar_range": 0.15396746942841652,
+      "f_vol_relative": 0.11637799732700913,
+      "f_vola_tr": 0.12618579282572787,
+      "f_range_dist_below": 0.1393761021608085,
+      "f_regime_trend_strength": 0.12957468179420442
+    },
+    "n_train": 761,
+    "n_test": 254,
+    "train_success_rate": 0.3758,
+    "test_success_rate": 0.2795
+  }
+}

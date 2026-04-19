@@ -1,0 +1,46 @@
+{
+  "years": [
+    2017,
+    2018,
+    2019,
+    2024,
+    2025
+  ],
+  "n_features": 33,
+  "n_consistent": 13,
+  "n_overfit": 10,
+  "consistent_features": [
+    "f_direction_long",
+    "f_risk_points",
+    "f_regime_trend_direction",
+    "f_regime_vol_trend",
+    "f_price_ema_slope",
+    "f_price_ema_dist_pct",
+    "f_ema_distance_pct",
+    "f_vol_relative",
+    "f_price_ema_dist",
+    "f_ema_distance",
+    "f_range_vs_atr",
+    "f_range_size_vs_atr",
+    "f_price_ret_12bar"
+  ],
+  "overfit_features": [
+    "f_price_ret_12bar",
+    "f_vola_atr_norm",
+    "f_price_rolling_range",
+    "f_vola_atr",
+    "f_time_weekday",
+    "f_vol_expansion",
+    "f_price_bar_range",
+    "f_vola_tr",
+    "f_vol_avg",
+    "f_vola_realized"
+  ],
+  "year_sample_sizes": {
+    "2017": 253,
+    "2018": 253,
+    "2019": 254,
+    "2024": 254,
+    "2025": 252
+  }
+}

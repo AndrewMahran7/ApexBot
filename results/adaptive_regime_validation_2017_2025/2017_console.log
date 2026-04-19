@@ -1,0 +1,37 @@
+======================================================================
+  YEAR 2017  —  Low vol, grind higher, difficult breakout year
+======================================================================
+
+--- MES 2017 ---
+  Bars loaded: 69452
+  Date range: 2017-01-02 18:00:00-05:00 to 2017-12-29 16:55:00-05:00
+  Trades:        239
+  Win Rate:      43.9%
+  Avg Trade:     $-3.76
+  Total PnL:     $-898.00
+  Profit Factor: 0.72
+  Max Drawdown:  $978.00
+  Final Equity:  $24098.50
+  Peak Equity:   $25041.25
+  Sharpe:        -1.94
+  Long trades:   137, win 49.64%
+  Short trades:  102, win 36.27%
+  Regimes: {'NO_RANGE': 56, 'BREAKOUT': 247, 'RANGE': 5}
+  Trades saved: results\adaptive_regime_validation_2017_2025\2017_mes_trades.csv
+
+--- MNQ 2017 ---
+  Bars loaded: 69322
+  Date range: 2017-01-02 18:00:00-05:00 to 2017-12-29 16:55:00-05:00
+  Trades:        248
+  Win Rate:      40.3%
+  Avg Trade:     $-4.85
+  Total PnL:     $-1202.00
+  Profit Factor: 0.75
+  Max Drawdown:  $1303.25
+  Final Equity:  $23798.00
+  Peak Equity:   $25021.50
+  Sharpe:        -1.70
+  Long trades:   130, win 43.85%
+  Short trades:  118, win 36.44%
+  Regimes: {'NO_RANGE': 56, 'BREAKOUT': 248, 'RANGE': 4}
+  Trades saved: results\adaptive_regime_validation_2017_2025\2017_mnq_trades.csv

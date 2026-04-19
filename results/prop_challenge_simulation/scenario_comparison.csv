@@ -1,0 +1,4 @@
+scenario,source_trades,source_win_rate,source_mean_pnl,pass_rate,fail_rate,avg_trades_to_pass,median_trades_to_pass,mean_max_dd,p95_max_dd
+Combined,1901,0.4671,11.42,0.407,0.593,39.9,35.0,875.36,1230.75
+MNQ,1311,0.4584,13.29,0.405,0.595,39.6,35.0,889.32,1208.12
+MES,590,0.4864,7.27,0.616,0.384,117.8,105.0,803.67,1103.79

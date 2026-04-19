@@ -1,0 +1,986 @@
+======================================================================
+  PROP RISK LAYER VALIDATION
+  Date: 2026-04-18 16:16:39
+  Capital: $25,000  Target: +$1,500  DD: -$1,000
+  Simulations: 2,000 per scenario, block size 7
+======================================================================
+
+[STEP 1] Generating trades from AdaptiveRegimeStrategy...
+
+============================================================
+  SCENARIO: Combined (1901 trades)
+============================================================
+
+  --- Baseline (fixed size 1.0x) ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     1901
+  Source win rate:   46.7%
+  Source mean PnL:   $11.42
+  Source std PnL:    $182.81
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    1.00x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          40.7%
+  P(fail before pass):          59.3%
+  P(incomplete @ 500 trades):  0.0%
+
+  --- TIMING ---
+  Avg trades to pass:    40
+  Median trades to pass: 35
+  Avg trades to fail:    33
+  Median trades to fail: 28
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $25,361.13
+  Median final equity: $25,018.88
+  Std final equity:    $1,137.46
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $875.36
+  Median max DD: $1,018.50
+  95th %-ile DD: $1,230.75
+  99th %-ile DD: $1,395.00
+  Mean loss streak:   5.2
+  Median loss streak: 5.0
+  95th %-ile streak:  9
+
+============================================================
+
+  --- Fixed size 0.25x ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     1901
+  Source win rate:   46.7%
+  Source mean PnL:   $11.42
+  Source std PnL:    $182.81
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    0.25x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          56.8%
+  P(fail before pass):          19.9%
+  P(incomplete @ 500 trades):  23.3%
+
+  --- TIMING ---
+  Avg trades to pass:    297
+  Median trades to pass: 298
+  Avg trades to fail:    270
+  Median trades to fail: 261
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $25,963.87
+  Median final equity: $26,505.00
+  Std final equity:    $818.26
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $670.00
+  Median max DD: $648.91
+  95th %-ile DD: $1,031.51
+  99th %-ile DD: $1,064.25
+  Mean loss streak:   9.7
+  Median loss streak: 9.0
+  95th %-ile streak:  14
+
+============================================================
+
+  --- Fixed size 0.35x ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     1901
+  Source win rate:   46.7%
+  Source mean PnL:   $11.42
+  Source std PnL:    $182.81
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    0.35x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          63.5%
+  P(fail before pass):          32.7%
+  P(incomplete @ 500 trades):  3.8%
+
+  --- TIMING ---
+  Avg trades to pass:    221
+  Median trades to pass: 207
+  Avg trades to fail:    187
+  Median trades to fail: 164
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $25,892.34
+  Median final equity: $26,513.53
+  Std final equity:    $947.53
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $748.33
+  Median max DD: $783.04
+  95th %-ile DD: $1,061.29
+  99th %-ile DD: $1,098.30
+  Mean loss streak:   8.8
+  Median loss streak: 9.0
+  95th %-ile streak:  13
+
+============================================================
+
+  --- Fixed size 0.50x ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     1901
+  Source win rate:   46.7%
+  Source mean PnL:   $11.42
+  Source std PnL:    $182.81
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    0.50x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          52.8%
+  P(fail before pass):          47.2%
+  P(incomplete @ 500 trades):  0.1%
+
+  --- TIMING ---
+  Avg trades to pass:    130
+  Median trades to pass: 117
+  Avg trades to fail:    107
+  Median trades to fail: 91
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $25,633.52
+  Median final equity: $26,503.62
+  Std final equity:    $1,053.46
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $814.03
+  Median max DD: $954.19
+  95th %-ile DD: $1,098.77
+  99th %-ile DD: $1,154.64
+  Mean loss streak:   7.5
+  Median loss streak: 7.0
+  95th %-ile streak:  12
+
+============================================================
+
+  --- Dynamic Challenge Mode ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     1901
+  Source win rate:   46.7%
+  Source mean PnL:   $11.42
+  Source std PnL:    $182.81
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    1.00x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          63.5%
+  P(fail before pass):          32.7%
+  P(incomplete @ 500 trades):  3.8%
+
+  --- TIMING ---
+  Avg trades to pass:    221
+  Median trades to pass: 207
+  Avg trades to fail:    187
+  Median trades to fail: 164
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $25,892.34
+  Median final equity: $26,513.53
+  Std final equity:    $947.53
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $748.33
+  Median max DD: $783.04
+  95th %-ile DD: $1,061.29
+  99th %-ile DD: $1,098.30
+  Mean loss streak:   8.8
+  Median loss streak: 9.0
+  95th %-ile streak:  13
+
+============================================================
+
+  --- Dynamic Challenge Mode (extended 1500 trades) ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     1901
+  Source win rate:   46.7%
+  Source mean PnL:   $11.42
+  Source std PnL:    $182.81
+
+  Simulations:       2,000
+  Max trades/sim:    1500
+  Position scale:    1.00x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          64.2%
+  P(fail before pass):          35.8%
+  P(incomplete @ 1500 trades):  0.0%
+
+  --- TIMING ---
+  Avg trades to pass:    230
+  Median trades to pass: 208
+  Avg trades to fail:    201
+  Median trades to fail: 176
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $25,873.78
+  Median final equity: $26,514.97
+  Std final equity:    $962.17
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $754.23
+  Median max DD: $793.58
+  95th %-ile DD: $1,064.11
+  99th %-ile DD: $1,106.46
+  Mean loss streak:   8.8
+  Median loss streak: 9.0
+  95th %-ile streak:  13
+
+============================================================
+
+============================================================
+  SCENARIO: MES (590 trades)
+============================================================
+
+  --- Baseline (fixed size 1.0x) ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     590
+  Source win rate:   48.6%
+  Source mean PnL:   $7.27
+  Source std PnL:    $114.73
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    1.00x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          61.6%
+  P(fail before pass):          38.4%
+  P(incomplete @ 500 trades):  0.0%
+
+  --- TIMING ---
+  Avg trades to pass:    118
+  Median trades to pass: 105
+  Avg trades to fail:    96
+  Median trades to fail: 84
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $25,833.20
+  Median final equity: $26,520.00
+  Std final equity:    $1,005.99
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $803.67
+  Median max DD: $857.00
+  95th %-ile DD: $1,103.79
+  99th %-ile DD: $1,153.77
+  Mean loss streak:   6.0
+  Median loss streak: 6.0
+  95th %-ile streak:  9
+
+============================================================
+
+  --- Fixed size 0.25x ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     590
+  Source win rate:   48.6%
+  Source mean PnL:   $7.27
+  Source std PnL:    $114.73
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    0.25x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          16.8%
+  P(fail before pass):          0.2%
+  P(incomplete @ 500 trades):  83.0%
+
+  --- TIMING ---
+  Avg trades to pass:    403
+  Median trades to pass: 410
+  Avg trades to fail:    380
+  Median trades to fail: 383
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $25,901.59
+  Median final equity: $25,937.97
+  Std final equity:    $466.68
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $364.27
+  Median max DD: $338.75
+  95th %-ile DD: $616.23
+  99th %-ile DD: $823.82
+  Mean loss streak:   8.4
+  Median loss streak: 8.0
+  95th %-ile streak:  12
+
+============================================================
+
+  --- Fixed size 0.35x ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     590
+  Source win rate:   48.6%
+  Source mean PnL:   $7.27
+  Source std PnL:    $114.73
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    0.35x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          47.9%
+  P(fail before pass):          1.9%
+  P(incomplete @ 500 trades):  50.2%
+
+  --- TIMING ---
+  Avg trades to pass:    356
+  Median trades to pass: 361
+  Avg trades to fail:    347
+  Median trades to fail: 356
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $26,129.56
+  Median final equity: $26,383.37
+  Std final equity:    $525.63
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $482.22
+  Median max DD: $449.97
+  95th %-ile DD: $837.66
+  99th %-ile DD: $1,011.42
+  Mean loss streak:   8.2
+  Median loss streak: 8.0
+  95th %-ile streak:  12
+
+============================================================
+
+  --- Fixed size 0.50x ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     590
+  Source win rate:   48.6%
+  Source mean PnL:   $7.27
+  Source std PnL:    $114.73
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    0.50x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          72.5%
+  P(fail before pass):          9.9%
+  P(incomplete @ 500 trades):  17.5%
+
+  --- TIMING ---
+  Avg trades to pass:    288
+  Median trades to pass: 281
+  Avg trades to fail:    278
+  Median trades to fail: 268
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $26,227.37
+  Median final equity: $26,517.88
+  Std final equity:    $636.60
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $613.58
+  Median max DD: $579.88
+  95th %-ile DD: $1,020.51
+  99th %-ile DD: $1,055.13
+  Mean loss streak:   7.6
+  Median loss streak: 7.0
+  95th %-ile streak:  11
+
+============================================================
+
+  --- Dynamic Challenge Mode ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     590
+  Source win rate:   48.6%
+  Source mean PnL:   $7.27
+  Source std PnL:    $114.73
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    1.00x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          69.2%
+  P(fail before pass):          4.8%
+  P(incomplete @ 500 trades):  26.1%
+
+  --- TIMING ---
+  Avg trades to pass:    286
+  Median trades to pass: 278
+  Avg trades to fail:    352
+  Median trades to fail: 360
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $26,191.52
+  Median final equity: $26,515.86
+  Std final equity:    $638.15
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $607.83
+  Median max DD: $583.34
+  95th %-ile DD: $992.85
+  99th %-ile DD: $1,012.52
+  Mean loss streak:   7.7
+  Median loss streak: 7.0
+  95th %-ile streak:  12
+
+============================================================
+
+  --- Dynamic Challenge Mode (extended 1500 trades) ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     590
+  Source win rate:   48.6%
+  Source mean PnL:   $7.27
+  Source std PnL:    $114.73
+
+  Simulations:       2,000
+  Max trades/sim:    1500
+  Position scale:    1.00x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          89.9%
+  P(fail before pass):          9.7%
+  P(incomplete @ 1500 trades):  0.4%
+
+  --- TIMING ---
+  Avg trades to pass:    400
+  Median trades to pass: 338
+  Avg trades to fail:    498
+  Median trades to fail: 465
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $26,365.28
+  Median final equity: $26,526.97
+  Std final equity:    $560.00
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $633.21
+  Median max DD: $610.38
+  95th %-ile DD: $1,005.37
+  99th %-ile DD: $1,016.25
+  Mean loss streak:   7.9
+  Median loss streak: 8.0
+  95th %-ile streak:  12
+
+============================================================
+
+============================================================
+  SCENARIO: MNQ (1311 trades)
+============================================================
+
+  --- Baseline (fixed size 1.0x) ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     1311
+  Source win rate:   45.8%
+  Source mean PnL:   $13.29
+  Source std PnL:    $206.21
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    1.00x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          40.5%
+  P(fail before pass):          59.5%
+  P(incomplete @ 500 trades):  0.0%
+
+  --- TIMING ---
+  Avg trades to pass:    40
+  Median trades to pass: 35
+  Avg trades to fail:    32
+  Median trades to fail: 27
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $25,381.40
+  Median final equity: $25,008.25
+  Std final equity:    $1,134.14
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $889.32
+  Median max DD: $1,022.50
+  95th %-ile DD: $1,208.12
+  99th %-ile DD: $1,311.55
+  Mean loss streak:   4.6
+  Median loss streak: 4.0
+  95th %-ile streak:  8
+
+============================================================
+
+  --- Fixed size 0.25x ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     1311
+  Source win rate:   45.8%
+  Source mean PnL:   $13.29
+  Source std PnL:    $206.21
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    0.25x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          63.4%
+  P(fail before pass):          12.8%
+  P(incomplete @ 500 trades):  23.8%
+
+  --- TIMING ---
+  Avg trades to pass:    285
+  Median trades to pass: 280
+  Avg trades to fail:    270
+  Median trades to fail: 257
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $26,107.78
+  Median final equity: $26,509.75
+  Std final equity:    $720.65
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $623.17
+  Median max DD: $597.62
+  95th %-ile DD: $1,024.50
+  99th %-ile DD: $1,053.76
+  Mean loss streak:   8.2
+  Median loss streak: 8.0
+  95th %-ile streak:  12
+
+============================================================
+
+  --- Fixed size 0.35x ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     1311
+  Source win rate:   45.8%
+  Source mean PnL:   $13.29
+  Source std PnL:    $206.21
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    0.35x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          68.1%
+  P(fail before pass):          28.6%
+  P(incomplete @ 500 trades):  3.3%
+
+  --- TIMING ---
+  Avg trades to pass:    214
+  Median trades to pass: 194
+  Avg trades to fail:    192
+  Median trades to fail: 173
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $25,993.92
+  Median final equity: $26,521.01
+  Std final equity:    $918.41
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $722.65
+  Median max DD: $740.34
+  95th %-ile DD: $1,053.72
+  99th %-ile DD: $1,083.44
+  Mean loss streak:   7.5
+  Median loss streak: 7.0
+  95th %-ile streak:  11
+
+============================================================
+
+  --- Fixed size 0.50x ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     1311
+  Source win rate:   45.8%
+  Source mean PnL:   $13.29
+  Source std PnL:    $206.21
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    0.50x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          57.4%
+  P(fail before pass):          42.6%
+  P(incomplete @ 500 trades):  0.1%
+
+  --- TIMING ---
+  Avg trades to pass:    126
+  Median trades to pass: 115
+  Avg trades to fail:    108
+  Median trades to fail: 90
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $25,748.83
+  Median final equity: $26,512.38
+  Std final equity:    $1,044.47
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $794.99
+  Median max DD: $886.75
+  95th %-ile DD: $1,094.53
+  99th %-ile DD: $1,150.26
+  Mean loss streak:   6.5
+  Median loss streak: 6.0
+  95th %-ile streak:  10
+
+============================================================
+
+  --- Dynamic Challenge Mode ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     1311
+  Source win rate:   45.8%
+  Source mean PnL:   $13.29
+  Source std PnL:    $206.21
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    1.00x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          68.1%
+  P(fail before pass):          28.6%
+  P(incomplete @ 500 trades):  3.3%
+
+  --- TIMING ---
+  Avg trades to pass:    214
+  Median trades to pass: 194
+  Avg trades to fail:    192
+  Median trades to fail: 173
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $25,993.92
+  Median final equity: $26,521.01
+  Std final equity:    $918.41
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $722.65
+  Median max DD: $740.34
+  95th %-ile DD: $1,053.72
+  99th %-ile DD: $1,083.44
+  Mean loss streak:   7.5
+  Median loss streak: 7.0
+  95th %-ile streak:  11
+
+============================================================
+
+  --- Dynamic Challenge Mode (extended 1500 trades) ---
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     1311
+  Source win rate:   45.8%
+  Source mean PnL:   $13.29
+  Source std PnL:    $206.21
+
+  Simulations:       2,000
+  Max trades/sim:    1500
+  Position scale:    1.00x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$1,500
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          73.9%
+  P(fail before pass):          26.1%
+  P(incomplete @ 1500 trades):  0.0%
+
+  --- TIMING ---
+  Avg trades to pass:    220
+  Median trades to pass: 197
+  Avg trades to fail:    211
+  Median trades to fail: 190
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $26,080.47
+  Median final equity: $26,527.05
+  Std final equity:    $869.65
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $702.53
+  Median max DD: $692.91
+  95th %-ile DD: $1,055.96
+  99th %-ile DD: $1,085.18
+  Mean loss streak:   7.5
+  Median loss streak: 7.0
+  95th %-ile streak:  11
+
+============================================================
+
+============================================================
+  FUNDED MODE SIMULATION (Combined, 1901 trades)
+============================================================
+
+============================================================
+  MONTE CARLO SIMULATION REPORT
+============================================================
+
+  Source trades:     1901
+  Source win rate:   46.7%
+  Source mean PnL:   $11.42
+  Source std PnL:    $182.81
+
+  Simulations:       2,000
+  Max trades/sim:    500
+  Position scale:    1.00x
+  Block size:        7
+
+  Starting capital:  $25,000
+  Profit target:     +$999,999
+  Max drawdown:      -$1,000
+
+  --- PROBABILITIES ---
+  P(pass before fail):          0.0%
+  P(fail before pass):          78.8%
+  P(incomplete @ 500 trades):  21.2%
+
+  --- TIMING ---
+  Avg trades to pass:    0
+  Median trades to pass: 0
+  Avg trades to fail:    115
+  Median trades to fail: 74
+
+  --- EQUITY DISTRIBUTION ---
+  Mean final equity:   $26,038.42
+  Median final equity: $25,252.20
+  Std final equity:    $2,067.21
+
+  --- DRAWDOWN ANALYSIS ---
+  Mean max DD:   $1,002.71
+  Median max DD: $1,026.55
+  95th %-ile DD: $1,152.49
+  99th %-ile DD: $1,235.74
+  Mean loss streak:   7.9
+  Median loss streak: 8.0
+  95th %-ile streak:  13
+
+============================================================
+
+==========================================================================================
+  BEFORE vs AFTER COMPARISON: Fixed Size vs Dynamic Risk Layer
+==========================================================================================
+
+  Scenario                          Pass%    Fail%   AvgTrd   MedTrd    MeanDD    P95 DD    Givebk    F<20
+  --------------------------------------------------------------------------------------------------------
+  Combined_baseline                 40.7%    59.3%       40       35      $875    $1,231     85.3%   21.1%
+  Combined_fixed_0.25x              56.8%    19.9%      297      298      $670    $1,032     96.5%    0.0%
+  Combined_fixed_0.35x              63.5%    32.7%      221      207      $748    $1,061     95.7%    0.1%
+  Combined_fixed_0.50x              52.8%    47.2%      130      117      $814    $1,099     93.1%    1.2%
+  Combined_dynamic_challenge        63.5%    32.7%      221      207      $748    $1,061     95.7%    0.1%
+  Combined_dynamic_extended         64.2%    35.8%      230      208      $754    $1,064     96.2%    0.0%
+  MES_baseline                      61.6%    38.4%      118      105      $804    $1,104     95.4%    0.9%
+  MES_fixed_0.25x                   16.8%     0.2%      403      410      $364      $616    100.0%    0.0%
+  MES_fixed_0.35x                   47.9%     1.9%      356      361      $482      $838    100.0%    0.0%
+  MES_fixed_0.50x                   72.5%     9.9%      288      281      $614    $1,021     98.0%    0.0%
+  MES_dynamic_challenge             69.2%     4.8%      286      278      $608      $993     99.0%    0.0%
+  MES_dynamic_extended              89.9%     9.7%      400      338      $633    $1,005     99.0%    0.0%
+  MNQ_baseline                      40.5%    59.5%       40       35      $889    $1,208     89.8%   20.3%
+  MNQ_fixed_0.25x                   63.4%    12.8%      285      280      $623    $1,024     97.7%    0.0%
+  MNQ_fixed_0.35x                   68.1%    28.6%      214      194      $723    $1,054     96.5%    0.0%
+  MNQ_fixed_0.50x                   57.4%    42.6%      126      115      $795    $1,095     94.6%    0.9%
+  MNQ_dynamic_challenge             68.1%    28.6%      214      194      $723    $1,054     96.5%    0.0%
+  MNQ_dynamic_extended              73.9%    26.1%      220      197      $703    $1,056     96.9%    0.0%
+
+
+======================================================================
+  FINAL INTERPRETATION
+======================================================================
+
+  1. DYNAMIC SIZING CONFIG
+     Combined/MNQ: base=0.35x, DD prox=OFF, daily loss=$999999
+     MES:          base=0.50x, DD prox=500 zone/0.15x floor, daily loss=$999999
+
+  2. DESIGN RATIONALE
+     - Full sensitivity grid: tested 0.25x, 0.35x, 0.50x, 1.0x per symbol
+     - Combined/MNQ optimal: 0.35x flat → 63-68% pass rate
+     - MES optimal: 0.50x + DD proximity → 68% @ 500 trades, 88% @ 1500
+     - DD proximity HURTS high-variance instruments (MNQ) — creates recovery trap
+
+  3. DID PASS RATE IMPROVE?
+     Baseline:    40.7%
+     Dynamic:     63.5%
+     Delta:       +22.8%
+     Incomplete:  3.8%
+     P(pass|resolved): 66.0% (vs baseline 40.7%)
+     YES — improvement of +22.8%
+
+  4. FAILURE ANALYSIS
+     Giveback rate: 85.3% → 95.7% (+10.4%)
+     Early fail (<20 trades): 21.1% → 0.1%
+     Total fail rate: 59.3% → 32.7% (-26.6%)
+     Mean max DD: $875 → $748
+     P95 DD: $1,231 → $1,061
+
+  5. TIMING
+     Avg trades to pass: 40 → 221
+     Median trades to pass: 35 → 207
+
+  6. FUNDED MODE
+     Fail rate: 78.8% (at 500 trade horizon)
+     Incomplete: 21.2%
+     P95 DD: $1,152
+     Mean final equity: $26,038
+
+  7. RECOMMENDATIONS
+     USE the dynamic config — clear improvement
+     Expected attempts to pass: 1.6 (est. cost: $31)
+
+======================================================================

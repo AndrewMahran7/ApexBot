@@ -1,0 +1,94 @@
+{
+  "audit_name": "causal_entry_fix",
+  "date": "2025-04-17",
+  "bug_description": "Same-bar entry bias: direction determined by bar t's CLOSE but entry at bar t's OPEN. In reality, you cannot know the close before the bar ends, so entering at the open of the same bar uses future information.",
+  "fix_description": "Introduced pending-entry mechanism: signal formed on bar t is stored as pending. On bar t+1, pending executes at that bar's OPEN. TP recomputed from actual entry price. SL stays at absolute opening-range level.",
+  "files_modified": [
+    {
+      "file": "strategy/hybrid_ema_ml.py",
+      "changes": [
+        "Added _pending_entry (dict|None) and _pending_candidates (list) to __init__",
+        "Added clearing of pending state in reset() and _reset_day()",
+        "Rewrote on_bar() single-candidate: pending entry execution before exit checks, entry logic stores pending instead of entering",
+        "Rewrote _on_bar_multi(): pending candidates execution before exit checks, selected candidates stored as pending",
+        "Added decision_time parameter to _enter_long() and _enter_short()",
+        "Added structured CAUSAL ENTRY logging for every entry"
+      ]
+    },
+    {
+      "file": "data/ema_candidates.py",
+      "changes": [
+        "Changed _identify_ema_candidates(): entry_price now uses NEXT bar's open (not decision bar's open)",
+        "Added entry_time field to candidate rows for causal forward scan",
+        "TP recomputed from actual entry price",
+        "Changed _label_candidates(): forward scan starts from entry_time (not decision time)"
+      ]
+    },
+    {
+      "file": "strategy/orb.py",
+      "changes": [
+        "Added decision_time: Optional[datetime.datetime] to Signal dataclass"
+      ]
+    },
+    {
+      "file": "strategy/strategy_engine.py",
+      "changes": [
+        "Added decision_time to LiveSignal dataclass",
+        "Propagated decision_time in _signal_to_live() converter"
+      ]
+    },
+    {
+      "file": "strategy/paper_engine.py",
+      "changes": [
+        "Stored decision_time in open_positions dict",
+        "Propagated decision_time to Trade construction"
+      ]
+    },
+    {
+      "file": "backtest/engine.py",
+      "changes": [
+        "Added decision_time to Trade dataclass",
+        "Stored decision_time in open_positions dict during entry",
+        "Propagated decision_time to Trade construction in normal exit and _force_close"
+      ]
+    }
+  ],
+  "tests_created": "tests/test_causal_entry.py",
+  "tests_passed": 8,
+  "test_names": [
+    "test_no_same_bar_entry — entry on bar after decision, not same bar",
+    "test_entry_at_next_bar_open — entry price is execution bar open",
+    "test_decision_time_populated — Signal.decision_time set to decision bar timestamp",
+    "test_tp_recomputed_from_actual_entry — TP = actual_entry + RR * range",
+    "test_sl_at_absolute_range_level — SL stays at opening range boundary",
+    "test_short_entry_causal — short entries also deferred to next bar",
+    "test_pending_discarded_on_new_day — cross-day pending entries discarded",
+    "test_same_bar_entry_and_exit — entry bar can also trigger SL/TP exit"
+  ],
+  "model_retrained": true,
+  "model_training_data": {
+    "candidates": 1015,
+    "success_rate": "35.2%",
+    "note": "Lower than pre-fix because causal entry (next-bar open) reduces edge vs same-bar open"
+  },
+  "validation_backtest": {
+    "period": "2024-01-01 to 2024-12-31",
+    "trades": 27,
+    "win_rate": "25.9%",
+    "net_pnl": "$-328.48",
+    "profit_factor": 0.66,
+    "max_drawdown": "$383.07",
+    "note": "System is no longer profitable with current ML threshold (0.60). This confirms the old results were inflated by same-bar entry bias. The system is now truthful and needs re-optimization."
+  },
+  "stop_target_anchoring": {
+    "option": "B",
+    "sl": "Absolute opening range level (unchanged)",
+    "tp": "Recomputed from actual entry: actual_entry ± RR × range_size"
+  },
+  "invariant": "A signal formed on bar t may only enter on bar t+1 or later. decision_time < entry timestamp for every trade.",
+  "notes": [
+    "ML model MUST be retrained after this fix (labels change)",
+    "The system needs re-optimization: lower ML threshold, different features, or different strategy parameters",
+    "EMA Directional benchmark (no ML) earned $1,133 in same period for comparison"
+  ]
+}

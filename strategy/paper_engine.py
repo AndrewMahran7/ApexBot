@@ -348,6 +348,7 @@ class PaperEngine:
             "entry_slip": entry_slip,
             "entry_comm": entry_comm,
             "strategy_type": sig.strategy_type,
+            "decision_time": getattr(sig, 'decision_time', None),
         }
 
         logger.info(
@@ -419,6 +420,7 @@ class PaperEngine:
             contracts=contracts,
             position_size=pos["position_size"],
             strategy_type=pos["strategy_type"],
+            decision_time=pos.get("decision_time"),
         )
         self._trades.append(trade)
 

@@ -1,0 +1,53 @@
+======================================================================
+  YEAR 2021  —  Strong trend, expansion, low-vol breakout-friendly
+======================================================================
+
+--- MES 2021 ---
+  Bars loaded: 70332
+  Date range: 2021-01-03 18:00:00-05:00 to 2021-12-31 16:55:00-05:00
+  Trades:        81
+  Win Rate:      53.1%
+  Avg Trade:     $6.21
+  Total PnL:     $503.00
+  Profit Factor: 1.18
+  Max Drawdown:  $553.00
+  Final Equity:  $25503.00
+  Peak Equity:   $25521.25
+  Sharpe:        0.60
+  Long trades:   42, win 59.52%
+  Short trades:  39, win 46.15%
+  Regimes: {'NO_RANGE': 57, 'TREND': 15, 'BREAKOUT': 66, 'RANGE': 111, 'DEAD': 61}
+  Selectivity:
+    Days with range: 254
+    Days traded:     81
+    Entry attempts:  18867
+    Regime blocks:   18733
+    Filter blocks:   53
+    Entries taken:   81
+    Trade rate:      31.9% of range-days
+  Trades saved: results\adaptive_regime_refined_validation\2021_mes_trades.csv
+
+--- MNQ 2021 ---
+  Bars loaded: 70341
+  Date range: 2021-01-03 18:00:00-05:00 to 2021-12-31 16:55:00-05:00
+  Trades:        181
+  Win Rate:      54.7%
+  Avg Trade:     $37.45
+  Total PnL:     $6779.00
+  Profit Factor: 1.57
+  Max Drawdown:  $1084.75
+  Final Equity:  $31779.00
+  Peak Equity:   $31923.50
+  Sharpe:        2.35
+  Long trades:   102, win 56.86%
+  Short trades:  79, win 51.9%
+  Regimes: {'NO_RANGE': 57, 'TREND': 155, 'DEAD': 34, 'BREAKOUT': 26, 'RANGE': 38}
+  Selectivity:
+    Days with range: 254
+    Days traded:     181
+    Entry attempts:  8347
+    Regime blocks:   8068
+    Filter blocks:   98
+    Entries taken:   181
+    Trade rate:      71.3% of range-days
+  Trades saved: results\adaptive_regime_refined_validation\2021_mnq_trades.csv

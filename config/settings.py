@@ -69,7 +69,7 @@ class AdaptiveRegimeConfig:
     range_end_time: str = "09:45"
 
     # Entry limits
-    max_entry_time: str = "14:00"
+    max_entry_time: str = "12:00"
     one_trade_per_day: bool = True
 
     # Direction
@@ -92,7 +92,7 @@ class AdaptiveRegimeConfig:
     # Volume filter
     volume_filter_enabled: bool = True
     volume_lookback: int = 20
-    volume_threshold_ratio: float = 0.8
+    volume_threshold_ratio: float = 1.0
 
     # ATR filter
     atr_filter_enabled: bool = True
@@ -109,13 +109,16 @@ class AdaptiveRegimeConfig:
 
     # Regime classification thresholds
     regime_atr_lookback: int = 20
-    regime_ema_slope_threshold: float = 0.15   # min EMA slope for trend
-    regime_range_ratio_threshold: float = 1.5  # OR/ATR ratio for breakout detection
+    regime_ema_slope_threshold: float = 0.50   # min EMA slope for trend (was 0.15 — too permissive)
+    regime_range_ratio_threshold: float = 3.5  # OR/ATR ratio for breakout (was 1.5 — median is ~3.5)
     regime_volume_ratio_threshold: float = 1.0 # vol/avg for dead detection
-    regime_dead_atr_ratio: float = 0.4         # OR/ATR below this = dead
+    regime_dead_atr_ratio: float = 2.5         # OR/ATR below this = dead (was 0.4 — never triggered)
+
+    # TREND regime entry restriction
+    trend_direction_only: bool = False  # tested True: -$4,248 cumulative, counter-trend entries are net profitable
 
     # Confirmation scoring — shared baseline
-    min_confirmation_score: int = 4            # fallback if per-direction scores not set
+    min_confirmation_score: int = 5            # fallback if per-direction scores not set (was 4)
 
     # Asymmetric thresholds (long vs short)
     long_min_score: Optional[int] = None       # None = use min_confirmation_score
@@ -124,13 +127,30 @@ class AdaptiveRegimeConfig:
     short_ema_slope_min: Optional[float] = 0.05  # min abs(slope) for short entries
 
     # Minimum breakout strength (points beyond buffer the bar must exceed)
-    min_breakout_strength: float = 0.5
+    min_breakout_strength: float = 1.0
 
     # Strict-shorts mode: raise short bar even further
     strict_shorts: bool = False
     strict_short_min_score: int = 8            # override short_min_score when strict
     strict_short_buffer: float = 2.0           # override short buffer when strict
     strict_short_ema_slope_min: float = 0.20   # min abs(EMA slope) when strict
+
+    @classmethod
+    def for_symbol(cls, symbol: str) -> "AdaptiveRegimeConfig":
+        """Return instrument-aware defaults.
+
+        MNQ is the primary edge source — use standard defaults.
+        MES requires stricter confirmation to avoid chop losses.
+        """
+        cfg = cls()
+        if symbol == "MES":
+            cfg.min_confirmation_score = 6   # require extra filter pass
+            cfg.min_breakout_strength = 1.5  # stricter breakout quality
+        elif symbol == "MNQ":
+            cfg.min_breakout_strength = 2.0  # filter marginal breakouts (tested: +$3,317 cumulative)
+            cfg.max_entry_time = "10:30"     # penalize midday entries (tested: +$1,169 cumulative)
+        # Other symbols use base defaults
+        return cfg
 
 
 @dataclass

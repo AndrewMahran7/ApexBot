@@ -65,6 +65,7 @@ class Trade:
     contracts: int
     position_size: float = 1.0  # ML-based sizing multiplier (0-1)
     strategy_type: str = ""     # e.g. "ema50_breakout" (multi-candidate mode)
+    decision_time: Optional[datetime.datetime] = None  # when direction was decided
 
 
 @dataclass
@@ -209,6 +210,7 @@ class BacktestEngine:
                         "entry_slip": e_slip,
                         "entry_comm": e_comm,
                         "strategy_type": getattr(signal, 'strategy_type', ''),
+                        "decision_time": getattr(signal, 'decision_time', None),
                     }
                     logger.debug(
                         "ENTRY %s %s @ %.2f (sl=%.2f tp=%.2f size=%.2f) [%s]",
@@ -274,6 +276,7 @@ class BacktestEngine:
                         contracts=contracts,
                         position_size=pos_size,
                         strategy_type=pos.get("strategy_type", ""),
+                        decision_time=pos.get("decision_time"),
                     )
                     result.trades.append(trade)
 
@@ -316,7 +319,8 @@ class BacktestEngine:
                             ts, slippage_per_side, commission_per_side,
                             contracts, p["entry_slip"], p["entry_comm"], "Eval PASS",
                             self.inst.point_value, p["position_size"],
-                            p.get("strategy_type", ""))
+                            p.get("strategy_type", ""),
+                            p.get("decision_time"))
                     eval_result.status = "PASS"
                     eval_result.pass_timestamp = ts.isoformat()
                     eval_result.peak_equity = eval_peak
@@ -337,7 +341,8 @@ class BacktestEngine:
                             ts, slippage_per_side, commission_per_side,
                             contracts, p["entry_slip"], p["entry_comm"], "Eval FAIL",
                             self.inst.point_value, p["position_size"],
-                            p.get("strategy_type", ""))
+                            p.get("strategy_type", ""),
+                            p.get("decision_time"))
                     eval_result.status = "FAIL"
                     eval_result.fail_timestamp = ts.isoformat()
                     eval_result.peak_equity = eval_peak
@@ -378,7 +383,7 @@ class BacktestEngine:
     def _force_close(result, equity, entry_price, entry_time, sl, tp,
                      direction, close_price, ts, slip_per_side, comm_per_side,
                      contracts, entry_slip, entry_comm, reason, point_value,
-                     position_size=1.0, strategy_type=""):
+                     position_size=1.0, strategy_type="", decision_time=None):
         """Force-close an open position (used by eval mode)."""
         exit_slip = slip_per_side * contracts * position_size
         exit_comm = comm_per_side * contracts * position_size
@@ -407,6 +412,7 @@ class BacktestEngine:
             contracts=contracts,
             position_size=position_size,
             strategy_type=strategy_type,
+            decision_time=decision_time,
         )
         result.trades.append(trade)
         return equity

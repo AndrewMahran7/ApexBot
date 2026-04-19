@@ -1,0 +1,383 @@
+{
+  "feature_ranking": [
+    {
+      "feature": "f_risk_points",
+      "stability_score": 1.725627,
+      "stab_rank": 2.0,
+      "analysis_rank": 1.0,
+      "combined_rank": 1.5
+    },
+    {
+      "feature": "f_regime_vol_trend",
+      "stability_score": 1.379117,
+      "stab_rank": 4.0,
+      "analysis_rank": 3.0,
+      "combined_rank": 3.5
+    },
+    {
+      "feature": "f_ema_distance_pct",
+      "stability_score": 0.915958,
+      "stab_rank": 7.0,
+      "analysis_rank": 4.0,
+      "combined_rank": 5.5
+    },
+    {
+      "feature": "f_price_ret_12bar",
+      "stability_score": 0.699818,
+      "stab_rank": 13.0,
+      "analysis_rank": 2.0,
+      "combined_rank": 7.5
+    },
+    {
+      "feature": "f_vol_relative",
+      "stability_score": 0.877508,
+      "stab_rank": 8.0,
+      "analysis_rank": 8.5,
+      "combined_rank": 8.25
+    },
+    {
+      "feature": "f_price_ema_dist",
+      "stability_score": 0.854043,
+      "stab_rank": 9.0,
+      "analysis_rank": 8.5,
+      "combined_rank": 8.75
+    },
+    {
+      "feature": "f_price_ema_dist_pct",
+      "stability_score": 0.917611,
+      "stab_rank": 6.0,
+      "analysis_rank": 14.0,
+      "combined_rank": 10.0
+    },
+    {
+      "feature": "f_ema_distance",
+      "stability_score": 0.852557,
+      "stab_rank": 10.0,
+      "analysis_rank": 10.5,
+      "combined_rank": 10.25
+    },
+    {
+      "feature": "f_range_high",
+      "stability_score": 0.528126,
+      "stab_rank": 15.0,
+      "analysis_rank": 6.0,
+      "combined_rank": 10.5
+    },
+    {
+      "feature": "f_regime_trend_direction",
+      "stability_score": 1.522839,
+      "stab_rank": 3.0,
+      "analysis_rank": 19.0,
+      "combined_rank": 11.0
+    },
+    {
+      "feature": "f_price_ema",
+      "stability_score": 0.50707,
+      "stab_rank": 17.0,
+      "analysis_rank": 6.0,
+      "combined_rank": 11.5
+    },
+    {
+      "feature": "f_range_size_vs_atr",
+      "stability_score": 0.704209,
+      "stab_rank": 11.5,
+      "analysis_rank": 12.5,
+      "combined_rank": 12.0
+    },
+    {
+      "feature": "f_price_ema_slope",
+      "stability_score": 0.945901,
+      "stab_rank": 5.0,
+      "analysis_rank": 21.5,
+      "combined_rank": 13.25
+    },
+    {
+      "feature": "f_direction_long",
+      "stability_score": 1.829821,
+      "stab_rank": 1.0,
+      "analysis_rank": 27.0,
+      "combined_rank": 14.0
+    },
+    {
+      "feature": "f_range_vs_atr",
+      "stability_score": 0.704209,
+      "stab_rank": 11.5,
+      "analysis_rank": 16.5,
+      "combined_rank": 14.0
+    },
+    {
+      "feature": "f_range_low",
+      "stability_score": 0.526604,
+      "stab_rank": 16.0,
+      "analysis_rank": 16.5,
+      "combined_rank": 16.25
+    },
+    {
+      "feature": "f_vola_atr",
+      "stability_score": 0.106327,
+      "stab_rank": 23.0,
+      "analysis_rank": 10.5,
+      "combined_rank": 16.75
+    },
+    {
+      "feature": "f_price_rolling_range",
+      "stability_score": 0.107603,
+      "stab_rank": 22.0,
+      "analysis_rank": 12.5,
+      "combined_rank": 17.25
+    },
+    {
+      "feature": "f_range_dist_above",
+      "stability_score": 0.159214,
+      "stab_rank": 20.0,
+      "analysis_rank": 16.5,
+      "combined_rank": 18.25
+    },
+    {
+      "feature": "f_range_dist_below",
+      "stability_score": 0.569987,
+      "stab_rank": 14.0,
+      "analysis_rank": 23.0,
+      "combined_rank": 18.5
+    },
+    {
+      "feature": "f_price_gap_pct",
+      "stability_score": 0.006336,
+      "stab_rank": 32.0,
+      "analysis_rank": 6.0,
+      "combined_rank": 19.0
+    },
+    {
+      "feature": "f_regime_trend_strength",
+      "stability_score": 0.227135,
+      "stab_rank": 18.0,
+      "analysis_rank": 21.5,
+      "combined_rank": 19.75
+    },
+    {
+      "feature": "f_range_size",
+      "stability_score": 0.220647,
+      "stab_rank": 19.0,
+      "analysis_rank": 24.0,
+      "combined_rank": 21.5
+    },
+    {
+      "feature": "f_price_gap",
+      "stability_score": 0.009596,
+      "stab_rank": 30.0,
+      "analysis_rank": 16.5,
+      "combined_rank": 23.25
+    },
+    {
+      "feature": "f_price_bar_range",
+      "stability_score": 0.035112,
+      "stab_rank": 28.0,
+      "analysis_rank": 20.0,
+      "combined_rank": 24.0
+    },
+    {
+      "feature": "f_vola_atr_norm",
+      "stability_score": 0.157623,
+      "stab_rank": 21.0,
+      "analysis_rank": 28.0,
+      "combined_rank": 24.5
+    },
+    {
+      "feature": "f_vola_tr",
+      "stability_score": 0.02935,
+      "stab_rank": 29.0,
+      "analysis_rank": 25.0,
+      "combined_rank": 27.0
+    },
+    {
+      "feature": "f_regime_compression",
+      "stability_score": 0.044019,
+      "stab_rank": 27.0,
+      "analysis_rank": 29.0,
+      "combined_rank": 28.0
+    },
+    {
+      "feature": "f_regime_breakout_strength",
+      "stability_score": 0.082882,
+      "stab_rank": 25.0,
+      "analysis_rank": 31.5,
+      "combined_rank": 28.25
+    },
+    {
+      "feature": "f_vol_avg",
+      "stability_score": 0.009353,
+      "stab_rank": 31.0,
+      "analysis_rank": 26.0,
+      "combined_rank": 28.5
+    },
+    {
+      "feature": "f_time_weekday",
+      "stability_score": 0.088465,
+      "stab_rank": 24.0,
+      "analysis_rank": 33.0,
+      "combined_rank": 28.5
+    },
+    {
+      "feature": "f_vol_expansion",
+      "stability_score": 0.077137,
+      "stab_rank": 26.0,
+      "analysis_rank": 31.5,
+      "combined_rank": 28.75
+    },
+    {
+      "feature": "f_vola_realized",
+      "stability_score": 0.005808,
+      "stab_rank": 33.0,
+      "analysis_rank": 30.0,
+      "combined_rank": 31.5
+    }
+  ],
+  "top_features": [
+    "f_risk_points",
+    "f_regime_vol_trend",
+    "f_ema_distance_pct",
+    "f_price_ret_12bar",
+    "f_vol_relative",
+    "f_price_ema_dist",
+    "f_price_ema_dist_pct",
+    "f_ema_distance",
+    "f_range_high",
+    "f_regime_trend_direction",
+    "f_price_ema",
+    "f_range_size_vs_atr",
+    "f_price_ema_slope",
+    "f_direction_long",
+    "f_range_vs_atr",
+    "f_range_low"
+  ],
+  "dropped_features": [
+    "f_vola_atr",
+    "f_price_rolling_range",
+    "f_range_dist_above",
+    "f_range_dist_below",
+    "f_price_gap_pct",
+    "f_regime_trend_strength",
+    "f_range_size",
+    "f_price_gap",
+    "f_price_bar_range",
+    "f_vola_atr_norm",
+    "f_vola_tr",
+    "f_regime_compression",
+    "f_regime_breakout_strength",
+    "f_vol_avg",
+    "f_time_weekday",
+    "f_vol_expansion",
+    "f_vola_realized"
+  ],
+  "results": {
+    "full_33_features": {
+      "n_features": 33,
+      "features": [
+        "f_price_ema",
+        "f_price_ema_dist",
+        "f_price_ema_dist_pct",
+        "f_price_ema_slope",
+        "f_price_ret_12bar",
+        "f_price_bar_range",
+        "f_price_rolling_range",
+        "f_price_gap",
+        "f_price_gap_pct",
+        "f_vol_avg",
+        "f_vol_relative",
+        "f_vol_expansion",
+        "f_vola_tr",
+        "f_vola_atr",
+        "f_vola_atr_norm",
+        "f_vola_realized",
+        "f_time_weekday",
+        "f_range_high",
+        "f_range_low",
+        "f_range_size",
+        "f_range_dist_above",
+        "f_range_dist_below",
+        "f_range_size_vs_atr",
+        "f_regime_trend_strength",
+        "f_regime_trend_direction",
+        "f_regime_compression",
+        "f_regime_breakout_strength",
+        "f_regime_vol_trend",
+        "f_ema_distance",
+        "f_ema_distance_pct",
+        "f_risk_points",
+        "f_range_vs_atr",
+        "f_direction_long"
+      ],
+      "roc_auc": 0.5748,
+      "precision": 0.3333,
+      "recall": 0.0563,
+      "f1": 0.0964,
+      "brier_score": 0.2053,
+      "train_auc": 0.6887,
+      "overfit_gap": 0.1139,
+      "calibration": [
+        {
+          "pred": 0.131,
+          "actual": 0.237
+        },
+        {
+          "pred": 0.291,
+          "actual": 0.259
+        },
+        {
+          "pred": 0.448,
+          "actual": 0.373
+        },
+        {
+          "pred": 0.677,
+          "actual": 0.4
+        }
+      ]
+    },
+    "reduced_16_features": {
+      "n_features": 16,
+      "features": [
+        "f_risk_points",
+        "f_regime_vol_trend",
+        "f_ema_distance_pct",
+        "f_price_ret_12bar",
+        "f_vol_relative",
+        "f_price_ema_dist",
+        "f_price_ema_dist_pct",
+        "f_ema_distance",
+        "f_range_high",
+        "f_regime_trend_direction",
+        "f_price_ema",
+        "f_range_size_vs_atr",
+        "f_price_ema_slope",
+        "f_direction_long",
+        "f_range_vs_atr",
+        "f_range_low"
+      ],
+      "roc_auc": 0.6313,
+      "precision": 0.2941,
+      "recall": 0.0704,
+      "f1": 0.1136,
+      "brier_score": 0.2058,
+      "train_auc": 0.6179,
+      "overfit_gap": -0.0135,
+      "calibration": [
+        {
+          "pred": 0.336,
+          "actual": 0.215
+        },
+        {
+          "pred": 0.446,
+          "actual": 0.443
+        },
+        {
+          "pred": 0.662,
+          "actual": 0.167
+        },
+        {
+          "pred": 0.839,
+          "actual": 1.0
+        }
+      ]
+    }
+  }
+}

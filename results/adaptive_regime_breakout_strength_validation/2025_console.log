@@ -1,0 +1,53 @@
+======================================================================
+  YEAR 2025  —  Strong trend, recent out-of-sample year
+======================================================================
+
+--- MES 2025 ---
+  Bars loaded: 69882
+  Date range: 2025-01-01 19:00:00-05:00 to 2025-12-30 18:55:00-05:00
+  Trades:        86
+  Win Rate:      46.5%
+  Avg Trade:     $15.17
+  Total PnL:     $1304.25
+  Profit Factor: 1.24
+  Max Drawdown:  $768.50
+  Final Equity:  $26304.25
+  Peak Equity:   $26353.00
+  Sharpe:        0.75
+  Long trades:   47, win 48.94%
+  Short trades:  39, win 43.59%
+  Regimes: {'NO_RANGE': 59, 'TREND': 50, 'DEAD': 83, 'BREAKOUT': 36, 'RANGE': 82}
+  Selectivity:
+    Days with range: 252
+    Days traded:     86
+    Entry attempts:  19950
+    Regime blocks:   19717
+    Filter blocks:   147
+    Entries taken:   86
+    Trade rate:      34.1% of range-days
+  Trades saved: results\adaptive_regime_breakout_strength_validation\2025_mes_trades.csv
+
+--- MNQ 2025 ---
+  Bars loaded: 69882
+  Date range: 2025-01-01 19:00:00-05:00 to 2025-12-30 18:55:00-05:00
+  Trades:        182
+  Win Rate:      50.0%
+  Avg Trade:     $46.80
+  Total PnL:     $8518.00
+  Profit Factor: 1.46
+  Max Drawdown:  $2683.50
+  Final Equity:  $33512.50
+  Peak Equity:   $34576.25
+  Sharpe:        1.90
+  Long trades:   81, win 48.15%
+  Short trades:  101, win 51.49%
+  Regimes: {'NO_RANGE': 59, 'TREND': 172, 'BREAKOUT': 11, 'DEAD': 37, 'RANGE': 31}
+  Selectivity:
+    Days with range: 252
+    Days traded:     184
+    Entry attempts:  8710
+    Regime blocks:   8455
+    Filter blocks:   71
+    Entries taken:   184
+    Trade rate:      73.0% of range-days
+  Trades saved: results\adaptive_regime_breakout_strength_validation\2025_mnq_trades.csv

@@ -1,0 +1,195 @@
+2026-04-18 16:32:59,023 [INFO] execution.fail_safes — FailSafeState initialized: mode=dry_run, max_open=1, cooldown=60s, kill=False
+2026-04-18 16:32:59,023 [INFO] execution.risk_bridge — RiskBridge initialized: mode=challenge, base_contracts=1, min=1, max=5
+2026-04-18 16:32:59,023 [INFO] execution.openclaw_driver — OpenClawDriver initialized (dry_run=True)
+2026-04-18 16:32:59,052 [INFO] execution.execution_controller — ExecutionController initialized: mode=dry_run, account=(any), symbols=(default)
+2026-04-18 16:32:59,053 [INFO] execution.audit_logger — [signal_received] signal=40e301be symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:32:59,054 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:32:59,054 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:32:59,055 [INFO] execution.audit_logger — [validation_failed] signal=40e301be symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:32:59,055 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:32:59,055 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:32:59,055 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_40e301be
+2026-04-18 16:32:59,055 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:32:59,056 [INFO] execution.fail_safes — Session counters reset
+2026-04-18 16:32:59,056 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — session reset
+2026-04-18 16:32:59,058 [INFO] execution.audit_logger — [signal_received] signal=57bc3f45 symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:32:59,058 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:32:59,058 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:32:59,058 [INFO] execution.audit_logger — [validation_failed] signal=57bc3f45 symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:32:59,059 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:32:59,059 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:32:59,059 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_57bc3f45
+2026-04-18 16:32:59,059 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:32:59,060 [INFO] execution.audit_logger — [signal_received] signal=a5983884 symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:32:59,060 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:32:59,060 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:32:59,060 [INFO] execution.audit_logger — [validation_failed] signal=a5983884 symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:32:59,061 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:32:59,061 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:32:59,061 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_a5983884
+2026-04-18 16:32:59,061 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:32:59,061 [INFO] execution.fail_safes — Session counters reset
+2026-04-18 16:32:59,062 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — session reset
+2026-04-18 16:32:59,063 [INFO] execution.audit_logger — [signal_received] signal=N/A symbol= side= qty=0 mode= — blocked by sizing (0 contracts)
+2026-04-18 16:32:59,063 [INFO] execution.fail_safes — Session counters reset
+2026-04-18 16:32:59,064 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — session reset
+2026-04-18 16:32:59,065 [CRITICAL] execution.fail_safes — KILL SWITCH ACTIVATED: test kill switch
+2026-04-18 16:32:59,065 [INFO] execution.audit_logger — [kill_switch_activated] signal=N/A symbol= side= qty=0 mode= — test kill switch
+2026-04-18 16:32:59,065 [CRITICAL] execution.execution_controller — [ALERT CRITICAL] Kill switch activated: test kill switch
+2026-04-18 16:32:59,066 [INFO] execution.audit_logger — [signal_received] signal=1abb929f symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:32:59,066 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:32:59,066 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:32:59,067 [INFO] execution.audit_logger — [validation_failed] signal=1abb929f symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:32:59,067 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:32:59,067 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:32:59,099 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_1abb929f
+2026-04-18 16:32:59,099 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:32:59,099 [WARNING] execution.fail_safes — Kill switch reset by operator
+2026-04-18 16:32:59,100 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — kill switch reset by operator
+2026-04-18 16:32:59,100 [INFO] execution.audit_logger — [signal_received] signal=2636d273 symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:32:59,101 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:32:59,101 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:32:59,101 [INFO] execution.audit_logger — [validation_failed] signal=2636d273 symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:32:59,101 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:32:59,102 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:32:59,102 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_2636d273
+2026-04-18 16:32:59,102 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:32:59,102 [INFO] execution.fail_safes — Session counters reset
+2026-04-18 16:32:59,102 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — session reset
+2026-04-18 16:32:59,162 [INFO] execution.audit_logger — [signal_received] signal=3df28552 symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:32:59,162 [INFO] execution.audit_logger — [signal_expired] signal=3df28552 symbol=MNQ side=BUY qty=1 mode=challenge — signal expired at 2026-04-18T23:31:29.103303+00:00
+2026-04-18 16:33:14,646 [INFO] execution.fail_safes — FailSafeState initialized: mode=dry_run, max_open=1, cooldown=60s, kill=False
+2026-04-18 16:33:14,646 [INFO] execution.risk_bridge — RiskBridge initialized: mode=challenge, base_contracts=1, min=1, max=5
+2026-04-18 16:33:14,646 [INFO] execution.openclaw_driver — OpenClawDriver initialized (dry_run=True)
+2026-04-18 16:33:14,646 [INFO] execution.audit_logger — AuditLogger initialized -> C:\Users\andre\Desktop\Apex\results\openclaw_execution
+2026-04-18 16:33:14,646 [INFO] execution.execution_controller — ExecutionController initialized: mode=dry_run, account=(any), symbols=(default)
+2026-04-18 16:33:14,646 [INFO] execution.risk_bridge — Converted LiveSignal -> ExecutionSignal: id=57b20bf4 sym=MNQ side=BUY contracts=1 mode=challenge
+2026-04-18 16:33:14,647 [INFO] execution.audit_logger — [signal_received] signal=57b20bf4 symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:33:14,647 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:14,647 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:33:14,648 [INFO] execution.audit_logger — [validation_failed] signal=57b20bf4 symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:14,648 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:14,648 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:33:14,648 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_57b20bf4
+2026-04-18 16:33:14,648 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:14,648 [INFO] execution.fail_safes — Session counters reset
+2026-04-18 16:33:14,649 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — session reset
+2026-04-18 16:33:14,649 [INFO] execution.risk_bridge — Converted LiveSignal -> ExecutionSignal: id=6649f8cc sym=MNQ side=BUY contracts=1 mode=challenge
+2026-04-18 16:33:14,649 [INFO] execution.audit_logger — [signal_received] signal=6649f8cc symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:33:14,649 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:14,649 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:33:14,650 [INFO] execution.audit_logger — [validation_failed] signal=6649f8cc symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:14,650 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:14,650 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:33:14,650 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_6649f8cc
+2026-04-18 16:33:14,650 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:14,650 [INFO] execution.risk_bridge — Converted LiveSignal -> ExecutionSignal: id=1aa6ffb2 sym=MNQ side=BUY contracts=1 mode=challenge
+2026-04-18 16:33:14,650 [INFO] execution.audit_logger — [signal_received] signal=1aa6ffb2 symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:33:14,651 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:14,651 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:33:14,651 [INFO] execution.audit_logger — [validation_failed] signal=1aa6ffb2 symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:14,651 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:14,651 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:33:14,652 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_1aa6ffb2
+2026-04-18 16:33:14,652 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:14,652 [INFO] execution.fail_safes — Session counters reset
+2026-04-18 16:33:14,652 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — session reset
+2026-04-18 16:33:14,653 [INFO] execution.audit_logger — [signal_received] signal=N/A symbol= side= qty=0 mode= — blocked by sizing (0 contracts)
+2026-04-18 16:33:14,654 [INFO] execution.fail_safes — Session counters reset
+2026-04-18 16:33:14,654 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — session reset
+2026-04-18 16:33:14,654 [CRITICAL] execution.fail_safes — KILL SWITCH ACTIVATED: test kill switch
+2026-04-18 16:33:14,654 [INFO] execution.audit_logger — [kill_switch_activated] signal=N/A symbol= side= qty=0 mode= — test kill switch
+2026-04-18 16:33:14,654 [CRITICAL] execution.execution_controller — [ALERT CRITICAL] Kill switch activated: test kill switch
+2026-04-18 16:33:14,654 [INFO] execution.risk_bridge — Converted LiveSignal -> ExecutionSignal: id=381ea98a sym=MNQ side=BUY contracts=1 mode=challenge
+2026-04-18 16:33:14,654 [INFO] execution.audit_logger — [signal_received] signal=381ea98a symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:33:14,656 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:14,656 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:33:14,656 [INFO] execution.audit_logger — [validation_failed] signal=381ea98a symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:14,657 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:14,657 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:33:14,657 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_381ea98a
+2026-04-18 16:33:14,657 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:14,657 [WARNING] execution.fail_safes — Kill switch reset by operator
+2026-04-18 16:33:14,657 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — kill switch reset by operator
+2026-04-18 16:33:14,657 [INFO] execution.risk_bridge — Converted LiveSignal -> ExecutionSignal: id=1d35a5b6 sym=MNQ side=BUY contracts=1 mode=challenge
+2026-04-18 16:33:14,657 [INFO] execution.audit_logger — [signal_received] signal=1d35a5b6 symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:33:14,658 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:14,658 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:33:14,658 [INFO] execution.audit_logger — [validation_failed] signal=1d35a5b6 symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:14,658 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:14,658 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:33:14,658 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_1d35a5b6
+2026-04-18 16:33:14,658 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:14,658 [INFO] execution.fail_safes — Session counters reset
+2026-04-18 16:33:14,658 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — session reset
+2026-04-18 16:33:14,658 [INFO] execution.risk_bridge — Converted LiveSignal -> ExecutionSignal: id=c3f7792d sym=MNQ side=BUY contracts=1 mode=challenge
+2026-04-18 16:33:14,660 [INFO] execution.audit_logger — [signal_received] signal=c3f7792d symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:33:14,660 [INFO] execution.audit_logger — [signal_expired] signal=c3f7792d symbol=MNQ side=BUY qty=1 mode=challenge — signal expired at 2026-04-18T23:31:44.658388+00:00
+2026-04-18 16:33:23,014 [INFO] execution.fail_safes — FailSafeState initialized: mode=dry_run, max_open=1, cooldown=60s, kill=False
+2026-04-18 16:33:23,014 [INFO] execution.risk_bridge — RiskBridge initialized: mode=challenge, base_contracts=1, min=1, max=5
+2026-04-18 16:33:23,014 [INFO] execution.openclaw_driver — OpenClawDriver initialized (dry_run=True)
+2026-04-18 16:33:23,014 [INFO] execution.audit_logger — AuditLogger initialized -> C:\Users\andre\Desktop\Apex\results\openclaw_execution
+2026-04-18 16:33:23,014 [INFO] execution.execution_controller — ExecutionController initialized: mode=dry_run, account=(any), symbols=(default)
+2026-04-18 16:33:23,015 [INFO] execution.risk_bridge — Converted LiveSignal -> ExecutionSignal: id=ddf2caf0 sym=MNQ side=BUY contracts=1 mode=challenge
+2026-04-18 16:33:23,016 [INFO] execution.audit_logger — [signal_received] signal=ddf2caf0 symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:33:23,016 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:23,018 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:33:23,018 [INFO] execution.audit_logger — [validation_failed] signal=ddf2caf0 symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:23,018 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:23,018 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:33:23,018 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_ddf2caf0
+2026-04-18 16:33:23,018 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:23,019 [INFO] execution.fail_safes — Session counters reset
+2026-04-18 16:33:23,019 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — session reset
+2026-04-18 16:33:23,019 [INFO] execution.risk_bridge — Converted LiveSignal -> ExecutionSignal: id=aefa0c53 sym=MNQ side=BUY contracts=1 mode=challenge
+2026-04-18 16:33:23,020 [INFO] execution.audit_logger — [signal_received] signal=aefa0c53 symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:33:23,021 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:23,021 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:33:23,022 [INFO] execution.audit_logger — [validation_failed] signal=aefa0c53 symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:23,022 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:23,023 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:33:23,023 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_aefa0c53
+2026-04-18 16:33:23,023 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:23,023 [INFO] execution.risk_bridge — Converted LiveSignal -> ExecutionSignal: id=30b18b54 sym=MNQ side=BUY contracts=1 mode=challenge
+2026-04-18 16:33:23,023 [INFO] execution.audit_logger — [signal_received] signal=30b18b54 symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:33:23,023 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:23,023 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:33:23,025 [INFO] execution.audit_logger — [validation_failed] signal=30b18b54 symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:23,025 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:23,025 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:33:23,026 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_30b18b54
+2026-04-18 16:33:23,026 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:23,026 [INFO] execution.fail_safes — Session counters reset
+2026-04-18 16:33:23,027 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — session reset
+2026-04-18 16:33:23,027 [INFO] execution.risk_bridge — Trade blocked by sizing: size_mult=0.00 -> 0 contracts
+2026-04-18 16:33:23,028 [INFO] execution.audit_logger — [signal_received] signal=N/A symbol= side= qty=0 mode= — blocked by sizing (0 contracts)
+2026-04-18 16:33:23,028 [INFO] execution.fail_safes — Session counters reset
+2026-04-18 16:33:23,028 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — session reset
+2026-04-18 16:33:23,029 [CRITICAL] execution.fail_safes — KILL SWITCH ACTIVATED: test kill switch
+2026-04-18 16:33:23,029 [INFO] execution.audit_logger — [kill_switch_activated] signal=N/A symbol= side= qty=0 mode= — test kill switch
+2026-04-18 16:33:23,030 [CRITICAL] execution.execution_controller — [ALERT CRITICAL] Kill switch activated: test kill switch
+2026-04-18 16:33:23,030 [INFO] execution.risk_bridge — Converted LiveSignal -> ExecutionSignal: id=394c1a41 sym=MNQ side=BUY contracts=1 mode=challenge
+2026-04-18 16:33:23,030 [INFO] execution.audit_logger — [signal_received] signal=394c1a41 symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:33:23,031 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:23,031 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:33:23,031 [INFO] execution.audit_logger — [validation_failed] signal=394c1a41 symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:23,032 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:23,032 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:33:23,032 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_394c1a41
+2026-04-18 16:33:23,032 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:23,032 [WARNING] execution.fail_safes — Kill switch reset by operator
+2026-04-18 16:33:23,033 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — kill switch reset by operator
+2026-04-18 16:33:23,033 [INFO] execution.risk_bridge — Converted LiveSignal -> ExecutionSignal: id=785f34e0 sym=MNQ side=BUY contracts=1 mode=challenge
+2026-04-18 16:33:23,033 [INFO] execution.audit_logger — [signal_received] signal=785f34e0 symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:33:23,034 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:23,034 [INFO] execution.validators — Pre-trade validation: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors (5/10 checks passed)
+2026-04-18 16:33:23,034 [INFO] execution.audit_logger — [validation_failed] signal=785f34e0 symbol=MNQ side=BUY qty=1 mode=challenge — FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:23,035 [ERROR] execution.openclaw_driver — OpenClaw is not installed. Install with: pip install openclaw
+2026-04-18 16:33:23,035 [WARNING] execution.openclaw_driver — Cannot take screenshot — window not found
+2026-04-18 16:33:23,035 [INFO] execution.audit_logger — [screenshot_saved] signal=N/A symbol= side= qty=0 mode= — pre_validation_fail_785f34e0
+2026-04-18 16:33:23,035 [WARNING] execution.execution_controller — [ALERT WARNING] Pre-trade validation failed: FAILED: window_present, correct_symbol, correct_quantity, action_button_visible, no_read_errors
+2026-04-18 16:33:23,035 [INFO] execution.fail_safes — Session counters reset
+2026-04-18 16:33:23,035 [INFO] execution.audit_logger — [fail_safe_triggered] signal=N/A symbol= side= qty=0 mode= — session reset
+2026-04-18 16:33:23,036 [INFO] execution.risk_bridge — Converted LiveSignal -> ExecutionSignal: id=2df57098 sym=MNQ side=BUY contracts=1 mode=challenge
+2026-04-18 16:33:23,036 [INFO] execution.audit_logger — [signal_received] signal=2df57098 symbol=MNQ side=BUY qty=1 mode=challenge — synthetic long for dry-run test
+2026-04-18 16:33:23,036 [INFO] execution.audit_logger — [signal_expired] signal=2df57098 symbol=MNQ side=BUY qty=1 mode=challenge — signal expired at 2026-04-18T23:31:53.036408+00:00

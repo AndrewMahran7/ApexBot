@@ -1,0 +1,722 @@
+{
+  "BASELINE_MNQ_2017": {
+    "trades": 145,
+    "pnl": -158.0,
+    "wr": 44.1,
+    "pf": 0.94,
+    "max_dd": 764.75,
+    "sharpe": -0.26,
+    "days_traded": 145
+  },
+  "BASELINE_MES_2017": {
+    "trades": 61,
+    "pnl": 11.75,
+    "wr": 49.2,
+    "pf": 1.02,
+    "max_dd": 403.75,
+    "sharpe": 0.05,
+    "days_traded": 61
+  },
+  "BASELINE_MNQ_2018": {
+    "trades": 154,
+    "pnl": -1599.5,
+    "wr": 39.6,
+    "pf": 0.79,
+    "max_dd": 1776.5,
+    "sharpe": -1.13,
+    "days_traded": 154
+  },
+  "BASELINE_MES_2018": {
+    "trades": 70,
+    "pnl": -471.25,
+    "wr": 41.4,
+    "pf": 0.79,
+    "max_dd": 900.0,
+    "sharpe": -0.73,
+    "days_traded": 70
+  },
+  "BASELINE_MNQ_2019": {
+    "trades": 136,
+    "pnl": 281.5,
+    "wr": 42.6,
+    "pf": 1.07,
+    "max_dd": 609.75,
+    "sharpe": 0.29,
+    "days_traded": 137
+  },
+  "BASELINE_MES_2019": {
+    "trades": 79,
+    "pnl": 652.0,
+    "wr": 51.9,
+    "pf": 1.45,
+    "max_dd": 232.75,
+    "sharpe": 1.19,
+    "days_traded": 79
+  },
+  "BASELINE_MNQ_2021": {
+    "trades": 181,
+    "pnl": 6778.0,
+    "wr": 54.7,
+    "pf": 1.57,
+    "max_dd": 1084.75,
+    "sharpe": 2.35,
+    "days_traded": 181
+  },
+  "BASELINE_MES_2021": {
+    "trades": 81,
+    "pnl": 503.0,
+    "wr": 53.1,
+    "pf": 1.18,
+    "max_dd": 553.0,
+    "sharpe": 0.6,
+    "days_traded": 81
+  },
+  "BASELINE_MNQ_2022": {
+    "trades": 196,
+    "pnl": 474.0,
+    "wr": 41.8,
+    "pf": 1.02,
+    "max_dd": 3000.75,
+    "sharpe": 0.18,
+    "days_traded": 196
+  },
+  "BASELINE_MES_2022": {
+    "trades": 95,
+    "pnl": 2663.75,
+    "wr": 55.8,
+    "pf": 1.46,
+    "max_dd": 666.5,
+    "sharpe": 1.47,
+    "days_traded": 95
+  },
+  "BASELINE_MNQ_2023": {
+    "trades": 158,
+    "pnl": 1653.0,
+    "wr": 44.9,
+    "pf": 1.14,
+    "max_dd": 1500.25,
+    "sharpe": 0.68,
+    "days_traded": 159
+  },
+  "BASELINE_MES_2023": {
+    "trades": 61,
+    "pnl": 261.75,
+    "wr": 44.3,
+    "pf": 1.11,
+    "max_dd": 349.25,
+    "sharpe": 0.34,
+    "days_traded": 61
+  },
+  "BASELINE_MNQ_2024": {
+    "trades": 162,
+    "pnl": 310.0,
+    "wr": 44.4,
+    "pf": 1.02,
+    "max_dd": 1488.75,
+    "sharpe": 0.15,
+    "days_traded": 162
+  },
+  "BASELINE_MES_2024": {
+    "trades": 57,
+    "pnl": -635.25,
+    "wr": 42.1,
+    "pf": 0.79,
+    "max_dd": 884.5,
+    "sharpe": -0.63,
+    "days_traded": 57
+  },
+  "BASELINE_MNQ_2025": {
+    "trades": 182,
+    "pnl": 8518.0,
+    "wr": 50.0,
+    "pf": 1.46,
+    "max_dd": 2683.5,
+    "sharpe": 1.9,
+    "days_traded": 184
+  },
+  "BASELINE_MES_2025": {
+    "trades": 86,
+    "pnl": 1304.25,
+    "wr": 46.5,
+    "pf": 1.24,
+    "max_dd": 768.5,
+    "sharpe": 0.75,
+    "days_traded": 86
+  },
+  "A_MNQ1030_MNQ_2017": {
+    "trades": 144,
+    "pnl": -42.5,
+    "wr": 45.1,
+    "pf": 0.98,
+    "max_dd": 713.75,
+    "sharpe": -0.06,
+    "days_traded": 144
+  },
+  "A_MNQ1030_MES_2017": {
+    "trades": 61,
+    "pnl": 11.75,
+    "wr": 49.2,
+    "pf": 1.02,
+    "max_dd": 403.75,
+    "sharpe": 0.05,
+    "days_traded": 61
+  },
+  "A_MNQ1030_MNQ_2018": {
+    "trades": 154,
+    "pnl": -1139.0,
+    "wr": 40.3,
+    "pf": 0.84,
+    "max_dd": 1484.25,
+    "sharpe": -0.77,
+    "days_traded": 154
+  },
+  "A_MNQ1030_MES_2018": {
+    "trades": 70,
+    "pnl": -471.25,
+    "wr": 41.4,
+    "pf": 0.79,
+    "max_dd": 900.0,
+    "sharpe": -0.73,
+    "days_traded": 70
+  },
+  "A_MNQ1030_MNQ_2019": {
+    "trades": 135,
+    "pnl": 198.0,
+    "wr": 42.2,
+    "pf": 1.05,
+    "max_dd": 609.75,
+    "sharpe": 0.21,
+    "days_traded": 136
+  },
+  "A_MNQ1030_MES_2019": {
+    "trades": 79,
+    "pnl": 652.0,
+    "wr": 51.9,
+    "pf": 1.45,
+    "max_dd": 232.75,
+    "sharpe": 1.19,
+    "days_traded": 79
+  },
+  "A_MNQ1030_MNQ_2021": {
+    "trades": 181,
+    "pnl": 6778.0,
+    "wr": 54.7,
+    "pf": 1.57,
+    "max_dd": 1084.75,
+    "sharpe": 2.35,
+    "days_traded": 181
+  },
+  "A_MNQ1030_MES_2021": {
+    "trades": 81,
+    "pnl": 503.0,
+    "wr": 53.1,
+    "pf": 1.18,
+    "max_dd": 553.0,
+    "sharpe": 0.6,
+    "days_traded": 81
+  },
+  "A_MNQ1030_MNQ_2022": {
+    "trades": 196,
+    "pnl": 474.0,
+    "wr": 41.8,
+    "pf": 1.02,
+    "max_dd": 3000.75,
+    "sharpe": 0.18,
+    "days_traded": 196
+  },
+  "A_MNQ1030_MES_2022": {
+    "trades": 95,
+    "pnl": 2663.75,
+    "wr": 55.8,
+    "pf": 1.46,
+    "max_dd": 666.5,
+    "sharpe": 1.47,
+    "days_traded": 95
+  },
+  "A_MNQ1030_MNQ_2023": {
+    "trades": 158,
+    "pnl": 1817.5,
+    "wr": 45.6,
+    "pf": 1.16,
+    "max_dd": 1500.25,
+    "sharpe": 0.75,
+    "days_traded": 159
+  },
+  "A_MNQ1030_MES_2023": {
+    "trades": 61,
+    "pnl": 261.75,
+    "wr": 44.3,
+    "pf": 1.11,
+    "max_dd": 349.25,
+    "sharpe": 0.34,
+    "days_traded": 61
+  },
+  "A_MNQ1030_MNQ_2024": {
+    "trades": 162,
+    "pnl": 919.0,
+    "wr": 45.7,
+    "pf": 1.06,
+    "max_dd": 1488.75,
+    "sharpe": 0.35,
+    "days_traded": 162
+  },
+  "A_MNQ1030_MES_2024": {
+    "trades": 57,
+    "pnl": -635.25,
+    "wr": 42.1,
+    "pf": 0.79,
+    "max_dd": 884.5,
+    "sharpe": -0.63,
+    "days_traded": 57
+  },
+  "A_MNQ1030_MNQ_2025": {
+    "trades": 181,
+    "pnl": 8420.5,
+    "wr": 49.7,
+    "pf": 1.45,
+    "max_dd": 2781.0,
+    "sharpe": 1.88,
+    "days_traded": 183
+  },
+  "A_MNQ1030_MES_2025": {
+    "trades": 86,
+    "pnl": 1304.25,
+    "wr": 46.5,
+    "pf": 1.24,
+    "max_dd": 768.5,
+    "sharpe": 0.75,
+    "days_traded": 86
+  },
+  "B_MNQ1100_MNQ_2017": {
+    "trades": 145,
+    "pnl": -93.5,
+    "wr": 44.8,
+    "pf": 0.96,
+    "max_dd": 764.75,
+    "sharpe": -0.15,
+    "days_traded": 145
+  },
+  "B_MNQ1100_MES_2017": {
+    "trades": 61,
+    "pnl": 11.75,
+    "wr": 49.2,
+    "pf": 1.02,
+    "max_dd": 403.75,
+    "sharpe": 0.05,
+    "days_traded": 61
+  },
+  "B_MNQ1100_MNQ_2018": {
+    "trades": 154,
+    "pnl": -1599.5,
+    "wr": 39.6,
+    "pf": 0.79,
+    "max_dd": 1776.5,
+    "sharpe": -1.13,
+    "days_traded": 154
+  },
+  "B_MNQ1100_MES_2018": {
+    "trades": 70,
+    "pnl": -471.25,
+    "wr": 41.4,
+    "pf": 0.79,
+    "max_dd": 900.0,
+    "sharpe": -0.73,
+    "days_traded": 70
+  },
+  "B_MNQ1100_MNQ_2019": {
+    "trades": 136,
+    "pnl": 281.5,
+    "wr": 42.6,
+    "pf": 1.07,
+    "max_dd": 609.75,
+    "sharpe": 0.29,
+    "days_traded": 137
+  },
+  "B_MNQ1100_MES_2019": {
+    "trades": 79,
+    "pnl": 652.0,
+    "wr": 51.9,
+    "pf": 1.45,
+    "max_dd": 232.75,
+    "sharpe": 1.19,
+    "days_traded": 79
+  },
+  "B_MNQ1100_MNQ_2021": {
+    "trades": 181,
+    "pnl": 6778.0,
+    "wr": 54.7,
+    "pf": 1.57,
+    "max_dd": 1084.75,
+    "sharpe": 2.35,
+    "days_traded": 181
+  },
+  "B_MNQ1100_MES_2021": {
+    "trades": 81,
+    "pnl": 503.0,
+    "wr": 53.1,
+    "pf": 1.18,
+    "max_dd": 553.0,
+    "sharpe": 0.6,
+    "days_traded": 81
+  },
+  "B_MNQ1100_MNQ_2022": {
+    "trades": 196,
+    "pnl": 474.0,
+    "wr": 41.8,
+    "pf": 1.02,
+    "max_dd": 3000.75,
+    "sharpe": 0.18,
+    "days_traded": 196
+  },
+  "B_MNQ1100_MES_2022": {
+    "trades": 95,
+    "pnl": 2663.75,
+    "wr": 55.8,
+    "pf": 1.46,
+    "max_dd": 666.5,
+    "sharpe": 1.47,
+    "days_traded": 95
+  },
+  "B_MNQ1100_MNQ_2023": {
+    "trades": 158,
+    "pnl": 1653.0,
+    "wr": 44.9,
+    "pf": 1.14,
+    "max_dd": 1500.25,
+    "sharpe": 0.68,
+    "days_traded": 159
+  },
+  "B_MNQ1100_MES_2023": {
+    "trades": 61,
+    "pnl": 261.75,
+    "wr": 44.3,
+    "pf": 1.11,
+    "max_dd": 349.25,
+    "sharpe": 0.34,
+    "days_traded": 61
+  },
+  "B_MNQ1100_MNQ_2024": {
+    "trades": 162,
+    "pnl": 110.5,
+    "wr": 44.4,
+    "pf": 1.01,
+    "max_dd": 1488.75,
+    "sharpe": 0.09,
+    "days_traded": 162
+  },
+  "B_MNQ1100_MES_2024": {
+    "trades": 57,
+    "pnl": -635.25,
+    "wr": 42.1,
+    "pf": 0.79,
+    "max_dd": 884.5,
+    "sharpe": -0.63,
+    "days_traded": 57
+  },
+  "B_MNQ1100_MNQ_2025": {
+    "trades": 181,
+    "pnl": 8420.5,
+    "wr": 49.7,
+    "pf": 1.45,
+    "max_dd": 2781.0,
+    "sharpe": 1.88,
+    "days_traded": 183
+  },
+  "B_MNQ1100_MES_2025": {
+    "trades": 86,
+    "pnl": 1304.25,
+    "wr": 46.5,
+    "pf": 1.24,
+    "max_dd": 768.5,
+    "sharpe": 0.75,
+    "days_traded": 86
+  },
+  "C_BOTH1100_MNQ_2017": {
+    "trades": 145,
+    "pnl": -93.5,
+    "wr": 44.8,
+    "pf": 0.96,
+    "max_dd": 764.75,
+    "sharpe": -0.15,
+    "days_traded": 145
+  },
+  "C_BOTH1100_MES_2017": {
+    "trades": 61,
+    "pnl": 11.75,
+    "wr": 49.2,
+    "pf": 1.02,
+    "max_dd": 403.75,
+    "sharpe": 0.05,
+    "days_traded": 61
+  },
+  "C_BOTH1100_MNQ_2018": {
+    "trades": 154,
+    "pnl": -1599.5,
+    "wr": 39.6,
+    "pf": 0.79,
+    "max_dd": 1776.5,
+    "sharpe": -1.13,
+    "days_traded": 154
+  },
+  "C_BOTH1100_MES_2018": {
+    "trades": 70,
+    "pnl": -471.25,
+    "wr": 41.4,
+    "pf": 0.79,
+    "max_dd": 900.0,
+    "sharpe": -0.73,
+    "days_traded": 70
+  },
+  "C_BOTH1100_MNQ_2019": {
+    "trades": 136,
+    "pnl": 281.5,
+    "wr": 42.6,
+    "pf": 1.07,
+    "max_dd": 609.75,
+    "sharpe": 0.29,
+    "days_traded": 137
+  },
+  "C_BOTH1100_MES_2019": {
+    "trades": 79,
+    "pnl": 652.0,
+    "wr": 51.9,
+    "pf": 1.45,
+    "max_dd": 232.75,
+    "sharpe": 1.19,
+    "days_traded": 79
+  },
+  "C_BOTH1100_MNQ_2021": {
+    "trades": 181,
+    "pnl": 6778.0,
+    "wr": 54.7,
+    "pf": 1.57,
+    "max_dd": 1084.75,
+    "sharpe": 2.35,
+    "days_traded": 181
+  },
+  "C_BOTH1100_MES_2021": {
+    "trades": 81,
+    "pnl": 503.0,
+    "wr": 53.1,
+    "pf": 1.18,
+    "max_dd": 553.0,
+    "sharpe": 0.6,
+    "days_traded": 81
+  },
+  "C_BOTH1100_MNQ_2022": {
+    "trades": 196,
+    "pnl": 474.0,
+    "wr": 41.8,
+    "pf": 1.02,
+    "max_dd": 3000.75,
+    "sharpe": 0.18,
+    "days_traded": 196
+  },
+  "C_BOTH1100_MES_2022": {
+    "trades": 95,
+    "pnl": 2663.75,
+    "wr": 55.8,
+    "pf": 1.46,
+    "max_dd": 666.5,
+    "sharpe": 1.47,
+    "days_traded": 95
+  },
+  "C_BOTH1100_MNQ_2023": {
+    "trades": 158,
+    "pnl": 1653.0,
+    "wr": 44.9,
+    "pf": 1.14,
+    "max_dd": 1500.25,
+    "sharpe": 0.68,
+    "days_traded": 159
+  },
+  "C_BOTH1100_MES_2023": {
+    "trades": 61,
+    "pnl": 261.75,
+    "wr": 44.3,
+    "pf": 1.11,
+    "max_dd": 349.25,
+    "sharpe": 0.34,
+    "days_traded": 61
+  },
+  "C_BOTH1100_MNQ_2024": {
+    "trades": 162,
+    "pnl": 110.5,
+    "wr": 44.4,
+    "pf": 1.01,
+    "max_dd": 1488.75,
+    "sharpe": 0.09,
+    "days_traded": 162
+  },
+  "C_BOTH1100_MES_2024": {
+    "trades": 57,
+    "pnl": -635.25,
+    "wr": 42.1,
+    "pf": 0.79,
+    "max_dd": 884.5,
+    "sharpe": -0.63,
+    "days_traded": 57
+  },
+  "C_BOTH1100_MNQ_2025": {
+    "trades": 181,
+    "pnl": 8420.5,
+    "wr": 49.7,
+    "pf": 1.45,
+    "max_dd": 2781.0,
+    "sharpe": 1.88,
+    "days_traded": 183
+  },
+  "C_BOTH1100_MES_2025": {
+    "trades": 85,
+    "pnl": 1200.0,
+    "wr": 45.9,
+    "pf": 1.22,
+    "max_dd": 768.5,
+    "sharpe": 0.69,
+    "days_traded": 85
+  },
+  "D_BOTH1030_MNQ_2017": {
+    "trades": 144,
+    "pnl": -42.5,
+    "wr": 45.1,
+    "pf": 0.98,
+    "max_dd": 713.75,
+    "sharpe": -0.06,
+    "days_traded": 144
+  },
+  "D_BOTH1030_MES_2017": {
+    "trades": 61,
+    "pnl": 11.75,
+    "wr": 49.2,
+    "pf": 1.02,
+    "max_dd": 403.75,
+    "sharpe": 0.05,
+    "days_traded": 61
+  },
+  "D_BOTH1030_MNQ_2018": {
+    "trades": 154,
+    "pnl": -1139.0,
+    "wr": 40.3,
+    "pf": 0.84,
+    "max_dd": 1484.25,
+    "sharpe": -0.77,
+    "days_traded": 154
+  },
+  "D_BOTH1030_MES_2018": {
+    "trades": 70,
+    "pnl": -471.25,
+    "wr": 41.4,
+    "pf": 0.79,
+    "max_dd": 900.0,
+    "sharpe": -0.73,
+    "days_traded": 70
+  },
+  "D_BOTH1030_MNQ_2019": {
+    "trades": 135,
+    "pnl": 198.0,
+    "wr": 42.2,
+    "pf": 1.05,
+    "max_dd": 609.75,
+    "sharpe": 0.21,
+    "days_traded": 136
+  },
+  "D_BOTH1030_MES_2019": {
+    "trades": 79,
+    "pnl": 652.0,
+    "wr": 51.9,
+    "pf": 1.45,
+    "max_dd": 232.75,
+    "sharpe": 1.19,
+    "days_traded": 79
+  },
+  "D_BOTH1030_MNQ_2021": {
+    "trades": 181,
+    "pnl": 6778.0,
+    "wr": 54.7,
+    "pf": 1.57,
+    "max_dd": 1084.75,
+    "sharpe": 2.35,
+    "days_traded": 181
+  },
+  "D_BOTH1030_MES_2021": {
+    "trades": 81,
+    "pnl": 503.0,
+    "wr": 53.1,
+    "pf": 1.18,
+    "max_dd": 553.0,
+    "sharpe": 0.6,
+    "days_traded": 81
+  },
+  "D_BOTH1030_MNQ_2022": {
+    "trades": 196,
+    "pnl": 474.0,
+    "wr": 41.8,
+    "pf": 1.02,
+    "max_dd": 3000.75,
+    "sharpe": 0.18,
+    "days_traded": 196
+  },
+  "D_BOTH1030_MES_2022": {
+    "trades": 93,
+    "pnl": 2102.75,
+    "wr": 54.8,
+    "pf": 1.37,
+    "max_dd": 666.5,
+    "sharpe": 1.21,
+    "days_traded": 93
+  },
+  "D_BOTH1030_MNQ_2023": {
+    "trades": 158,
+    "pnl": 1817.5,
+    "wr": 45.6,
+    "pf": 1.16,
+    "max_dd": 1500.25,
+    "sharpe": 0.75,
+    "days_traded": 159
+  },
+  "D_BOTH1030_MES_2023": {
+    "trades": 61,
+    "pnl": 261.75,
+    "wr": 44.3,
+    "pf": 1.11,
+    "max_dd": 349.25,
+    "sharpe": 0.34,
+    "days_traded": 61
+  },
+  "D_BOTH1030_MNQ_2024": {
+    "trades": 162,
+    "pnl": 919.0,
+    "wr": 45.7,
+    "pf": 1.06,
+    "max_dd": 1488.75,
+    "sharpe": 0.35,
+    "days_traded": 162
+  },
+  "D_BOTH1030_MES_2024": {
+    "trades": 57,
+    "pnl": -635.25,
+    "wr": 42.1,
+    "pf": 0.79,
+    "max_dd": 884.5,
+    "sharpe": -0.63,
+    "days_traded": 57
+  },
+  "D_BOTH1030_MNQ_2025": {
+    "trades": 181,
+    "pnl": 8420.5,
+    "wr": 49.7,
+    "pf": 1.45,
+    "max_dd": 2781.0,
+    "sharpe": 1.88,
+    "days_traded": 183
+  },
+  "D_BOTH1030_MES_2025": {
+    "trades": 85,
+    "pnl": 1200.0,
+    "wr": 45.9,
+    "pf": 1.22,
+    "max_dd": 768.5,
+    "sharpe": 0.69,
+    "days_traded": 85
+  }
+}

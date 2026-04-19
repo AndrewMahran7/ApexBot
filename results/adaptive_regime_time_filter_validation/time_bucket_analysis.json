@@ -1,0 +1,1038 @@
+{
+  "MNQ_2017": {
+    "total_trades": 145,
+    "total_pnl": -158.0,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 68,
+        "win_rate": 39.7,
+        "avg_pnl": -1.03,
+        "total_pnl": -70.0,
+        "profit_factor": 0.95,
+        "longs": 29,
+        "shorts": 39
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 42,
+        "win_rate": 47.6,
+        "avg_pnl": -2.19,
+        "total_pnl": -92.0,
+        "profit_factor": 0.88,
+        "longs": 24,
+        "shorts": 18
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 15,
+        "win_rate": 53.3,
+        "avg_pnl": -4.1,
+        "total_pnl": -61.5,
+        "profit_factor": 0.77,
+        "longs": 8,
+        "shorts": 7
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 7,
+        "win_rate": 28.6,
+        "avg_pnl": -8.43,
+        "total_pnl": -59.0,
+        "profit_factor": 0.51,
+        "longs": 4,
+        "shorts": 3
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 3,
+        "win_rate": 33.3,
+        "avg_pnl": -14.33,
+        "total_pnl": -43.0,
+        "profit_factor": 0.2,
+        "longs": 2,
+        "shorts": 1
+      },
+      {
+        "bucket": "other",
+        "trades": 10,
+        "win_rate": 60.0,
+        "avg_pnl": 16.75,
+        "total_pnl": 167.5,
+        "profit_factor": 4.42,
+        "longs": 8,
+        "shorts": 2
+      }
+    ]
+  },
+  "MNQ_2018": {
+    "total_trades": 154,
+    "total_pnl": -1599.5,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 91,
+        "win_rate": 37.4,
+        "avg_pnl": -14.21,
+        "total_pnl": -1293.5,
+        "profit_factor": 0.73,
+        "longs": 46,
+        "shorts": 45
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 45,
+        "win_rate": 42.2,
+        "avg_pnl": -4.79,
+        "total_pnl": -215.5,
+        "profit_factor": 0.89,
+        "longs": 24,
+        "shorts": 21
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 10,
+        "win_rate": 40.0,
+        "avg_pnl": -9.55,
+        "total_pnl": -95.5,
+        "profit_factor": 0.79,
+        "longs": 6,
+        "shorts": 4
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 3,
+        "win_rate": 100.0,
+        "avg_pnl": 48.67,
+        "total_pnl": 146.0,
+        "profit_factor": Infinity,
+        "longs": 1,
+        "shorts": 2
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 3,
+        "win_rate": 0.0,
+        "avg_pnl": -52.17,
+        "total_pnl": -156.5,
+        "profit_factor": 0.0,
+        "longs": 2,
+        "shorts": 1
+      },
+      {
+        "bucket": "other",
+        "trades": 2,
+        "win_rate": 50.0,
+        "avg_pnl": 7.75,
+        "total_pnl": 15.5,
+        "profit_factor": 4.44,
+        "longs": 1,
+        "shorts": 1
+      }
+    ]
+  },
+  "MNQ_2019": {
+    "total_trades": 136,
+    "total_pnl": 281.5,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 76,
+        "win_rate": 44.7,
+        "avg_pnl": 3.64,
+        "total_pnl": 276.5,
+        "profit_factor": 1.1,
+        "longs": 44,
+        "shorts": 32
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 37,
+        "win_rate": 37.8,
+        "avg_pnl": -3.24,
+        "total_pnl": -120.0,
+        "profit_factor": 0.89,
+        "longs": 21,
+        "shorts": 16
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 7,
+        "win_rate": 57.1,
+        "avg_pnl": 22.79,
+        "total_pnl": 159.5,
+        "profit_factor": 2.76,
+        "longs": 3,
+        "shorts": 4
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 1,
+        "win_rate": 100.0,
+        "avg_pnl": 24.0,
+        "total_pnl": 24.0,
+        "profit_factor": Infinity,
+        "longs": 1,
+        "shorts": 0
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 1,
+        "win_rate": 0.0,
+        "avg_pnl": -54.5,
+        "total_pnl": -54.5,
+        "profit_factor": 0.0,
+        "longs": 1,
+        "shorts": 0
+      },
+      {
+        "bucket": "other",
+        "trades": 14,
+        "win_rate": 35.7,
+        "avg_pnl": -0.29,
+        "total_pnl": -4.0,
+        "profit_factor": 0.98,
+        "longs": 7,
+        "shorts": 7
+      }
+    ]
+  },
+  "MNQ_2021": {
+    "total_trades": 181,
+    "total_pnl": 6778.0,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 116,
+        "win_rate": 52.6,
+        "avg_pnl": 36.31,
+        "total_pnl": 4212.0,
+        "profit_factor": 1.5,
+        "longs": 66,
+        "shorts": 50
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 51,
+        "win_rate": 56.9,
+        "avg_pnl": 33.5,
+        "total_pnl": 1708.5,
+        "profit_factor": 1.56,
+        "longs": 26,
+        "shorts": 25
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 6,
+        "win_rate": 83.3,
+        "avg_pnl": 122.0,
+        "total_pnl": 732.0,
+        "profit_factor": 113.62,
+        "longs": 2,
+        "shorts": 4
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 2,
+        "win_rate": 50.0,
+        "avg_pnl": 58.75,
+        "total_pnl": 117.5,
+        "profit_factor": 2.58,
+        "longs": 2,
+        "shorts": 0
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 3,
+        "win_rate": 66.7,
+        "avg_pnl": 44.0,
+        "total_pnl": 132.0,
+        "profit_factor": 2.36,
+        "longs": 3,
+        "shorts": 0
+      },
+      {
+        "bucket": "other",
+        "trades": 3,
+        "win_rate": 33.3,
+        "avg_pnl": -41.33,
+        "total_pnl": -124.0,
+        "profit_factor": 0.44,
+        "longs": 2,
+        "shorts": 1
+      }
+    ]
+  },
+  "MNQ_2022": {
+    "total_trades": 196,
+    "total_pnl": 474.0,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 141,
+        "win_rate": 41.8,
+        "avg_pnl": -0.51,
+        "total_pnl": -72.0,
+        "profit_factor": 1.0,
+        "longs": 65,
+        "shorts": 76
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 46,
+        "win_rate": 39.1,
+        "avg_pnl": -2.39,
+        "total_pnl": -110.0,
+        "profit_factor": 0.98,
+        "longs": 23,
+        "shorts": 23
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 7,
+        "win_rate": 42.9,
+        "avg_pnl": 14.29,
+        "total_pnl": 100.0,
+        "profit_factor": 1.14,
+        "longs": 5,
+        "shorts": 2
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 2,
+        "win_rate": 100.0,
+        "avg_pnl": 278.0,
+        "total_pnl": 556.0,
+        "profit_factor": Infinity,
+        "longs": 2,
+        "shorts": 0
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 0,
+        "win_rate": 0,
+        "avg_pnl": 0,
+        "total_pnl": 0,
+        "profit_factor": 0,
+        "longs": 0,
+        "shorts": 0
+      }
+    ]
+  },
+  "MNQ_2023": {
+    "total_trades": 158,
+    "total_pnl": 1653.0,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 109,
+        "win_rate": 39.4,
+        "avg_pnl": 0.33,
+        "total_pnl": 36.0,
+        "profit_factor": 1.0,
+        "longs": 58,
+        "shorts": 51
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 38,
+        "win_rate": 55.3,
+        "avg_pnl": 46.14,
+        "total_pnl": 1753.5,
+        "profit_factor": 1.82,
+        "longs": 18,
+        "shorts": 20
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 10,
+        "win_rate": 60.0,
+        "avg_pnl": -28.35,
+        "total_pnl": -283.5,
+        "profit_factor": 0.54,
+        "longs": 6,
+        "shorts": 4
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 1,
+        "win_rate": 100.0,
+        "avg_pnl": 147.0,
+        "total_pnl": 147.0,
+        "profit_factor": Infinity,
+        "longs": 1,
+        "shorts": 0
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 0,
+        "win_rate": 0,
+        "avg_pnl": 0,
+        "total_pnl": 0,
+        "profit_factor": 0,
+        "longs": 0,
+        "shorts": 0
+      }
+    ]
+  },
+  "MNQ_2024": {
+    "total_trades": 162,
+    "total_pnl": 310.0,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 106,
+        "win_rate": 42.5,
+        "avg_pnl": 4.68,
+        "total_pnl": 496.5,
+        "profit_factor": 1.05,
+        "longs": 53,
+        "shorts": 53
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 40,
+        "win_rate": 52.5,
+        "avg_pnl": 15.18,
+        "total_pnl": 607.0,
+        "profit_factor": 1.2,
+        "longs": 22,
+        "shorts": 18
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 10,
+        "win_rate": 20.0,
+        "avg_pnl": -116.05,
+        "total_pnl": -1160.5,
+        "profit_factor": 0.16,
+        "longs": 7,
+        "shorts": 3
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 0,
+        "win_rate": 0,
+        "avg_pnl": 0,
+        "total_pnl": 0,
+        "profit_factor": 0,
+        "longs": 0,
+        "shorts": 0
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 2,
+        "win_rate": 100.0,
+        "avg_pnl": 222.75,
+        "total_pnl": 445.5,
+        "profit_factor": Infinity,
+        "longs": 1,
+        "shorts": 1
+      },
+      {
+        "bucket": "other",
+        "trades": 4,
+        "win_rate": 50.0,
+        "avg_pnl": -19.62,
+        "total_pnl": -78.5,
+        "profit_factor": 0.75,
+        "longs": 1,
+        "shorts": 3
+      }
+    ]
+  },
+  "MNQ_2025": {
+    "total_trades": 182,
+    "total_pnl": 8518.0,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 137,
+        "win_rate": 46.7,
+        "avg_pnl": 20.47,
+        "total_pnl": 2805.0,
+        "profit_factor": 1.18,
+        "longs": 62,
+        "shorts": 75
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 32,
+        "win_rate": 68.8,
+        "avg_pnl": 182.88,
+        "total_pnl": 5852.0,
+        "profit_factor": 3.44,
+        "longs": 16,
+        "shorts": 16
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 8,
+        "win_rate": 37.5,
+        "avg_pnl": -4.75,
+        "total_pnl": -38.0,
+        "profit_factor": 0.95,
+        "longs": 1,
+        "shorts": 7
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 1,
+        "win_rate": 0.0,
+        "avg_pnl": -45.5,
+        "total_pnl": -45.5,
+        "profit_factor": 0.0,
+        "longs": 1,
+        "shorts": 0
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 1,
+        "win_rate": 100.0,
+        "avg_pnl": 97.5,
+        "total_pnl": 97.5,
+        "profit_factor": Infinity,
+        "longs": 0,
+        "shorts": 1
+      },
+      {
+        "bucket": "other",
+        "trades": 3,
+        "win_rate": 33.3,
+        "avg_pnl": -51.0,
+        "total_pnl": -153.0,
+        "profit_factor": 0.27,
+        "longs": 1,
+        "shorts": 2
+      }
+    ]
+  },
+  "MES_2017": {
+    "total_trades": 61,
+    "total_pnl": 11.75,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 6,
+        "win_rate": 50.0,
+        "avg_pnl": -13.25,
+        "total_pnl": -79.5,
+        "profit_factor": 0.34,
+        "longs": 3,
+        "shorts": 3
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 19,
+        "win_rate": 42.1,
+        "avg_pnl": -0.68,
+        "total_pnl": -13.0,
+        "profit_factor": 0.95,
+        "longs": 9,
+        "shorts": 10
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 15,
+        "win_rate": 53.3,
+        "avg_pnl": 3.92,
+        "total_pnl": 58.75,
+        "profit_factor": 1.36,
+        "longs": 8,
+        "shorts": 7
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 6,
+        "win_rate": 50.0,
+        "avg_pnl": 0.5,
+        "total_pnl": 3.0,
+        "profit_factor": 1.04,
+        "longs": 3,
+        "shorts": 3
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 3,
+        "win_rate": 33.3,
+        "avg_pnl": -11.17,
+        "total_pnl": -33.5,
+        "profit_factor": 0.26,
+        "longs": 2,
+        "shorts": 1
+      },
+      {
+        "bucket": "other",
+        "trades": 12,
+        "win_rate": 58.3,
+        "avg_pnl": 6.33,
+        "total_pnl": 76.0,
+        "profit_factor": 5.34,
+        "longs": 7,
+        "shorts": 5
+      }
+    ]
+  },
+  "MES_2018": {
+    "total_trades": 70,
+    "total_pnl": -471.25,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 19,
+        "win_rate": 42.1,
+        "avg_pnl": 7.87,
+        "total_pnl": 149.5,
+        "profit_factor": 1.26,
+        "longs": 10,
+        "shorts": 9
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 23,
+        "win_rate": 43.5,
+        "avg_pnl": -3.36,
+        "total_pnl": -77.25,
+        "profit_factor": 0.89,
+        "longs": 12,
+        "shorts": 11
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 16,
+        "win_rate": 37.5,
+        "avg_pnl": -16.61,
+        "total_pnl": -265.75,
+        "profit_factor": 0.54,
+        "longs": 8,
+        "shorts": 8
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 4,
+        "win_rate": 25.0,
+        "avg_pnl": -56.06,
+        "total_pnl": -224.25,
+        "profit_factor": 0.09,
+        "longs": 4,
+        "shorts": 0
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 2,
+        "win_rate": 50.0,
+        "avg_pnl": 1.75,
+        "total_pnl": 3.5,
+        "profit_factor": 1.26,
+        "longs": 2,
+        "shorts": 0
+      },
+      {
+        "bucket": "other",
+        "trades": 6,
+        "win_rate": 50.0,
+        "avg_pnl": -9.5,
+        "total_pnl": -57.0,
+        "profit_factor": 0.52,
+        "longs": 6,
+        "shorts": 0
+      }
+    ]
+  },
+  "MES_2019": {
+    "total_trades": 79,
+    "total_pnl": 652.0,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 24,
+        "win_rate": 62.5,
+        "avg_pnl": 27.01,
+        "total_pnl": 648.25,
+        "profit_factor": 2.71,
+        "longs": 15,
+        "shorts": 9
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 26,
+        "win_rate": 50.0,
+        "avg_pnl": 6.37,
+        "total_pnl": 165.5,
+        "profit_factor": 1.32,
+        "longs": 11,
+        "shorts": 15
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 10,
+        "win_rate": 50.0,
+        "avg_pnl": 3.38,
+        "total_pnl": 33.75,
+        "profit_factor": 1.21,
+        "longs": 6,
+        "shorts": 4
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 4,
+        "win_rate": 50.0,
+        "avg_pnl": -13.88,
+        "total_pnl": -55.5,
+        "profit_factor": 0.46,
+        "longs": 3,
+        "shorts": 1
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 5,
+        "win_rate": 20.0,
+        "avg_pnl": -21.75,
+        "total_pnl": -108.75,
+        "profit_factor": 0.36,
+        "longs": 2,
+        "shorts": 3
+      },
+      {
+        "bucket": "other",
+        "trades": 10,
+        "win_rate": 50.0,
+        "avg_pnl": -3.12,
+        "total_pnl": -31.25,
+        "profit_factor": 0.76,
+        "longs": 6,
+        "shorts": 4
+      }
+    ]
+  },
+  "MES_2021": {
+    "total_trades": 81,
+    "total_pnl": 503.0,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 45,
+        "win_rate": 55.6,
+        "avg_pnl": 9.42,
+        "total_pnl": 423.75,
+        "profit_factor": 1.25,
+        "longs": 23,
+        "shorts": 22
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 20,
+        "win_rate": 45.0,
+        "avg_pnl": -3.25,
+        "total_pnl": -65.0,
+        "profit_factor": 0.92,
+        "longs": 9,
+        "shorts": 11
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 6,
+        "win_rate": 50.0,
+        "avg_pnl": 13.62,
+        "total_pnl": 81.75,
+        "profit_factor": 2.22,
+        "longs": 3,
+        "shorts": 3
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 3,
+        "win_rate": 66.7,
+        "avg_pnl": 18.83,
+        "total_pnl": 56.5,
+        "profit_factor": 1.76,
+        "longs": 3,
+        "shorts": 0
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 1,
+        "win_rate": 100.0,
+        "avg_pnl": 18.0,
+        "total_pnl": 18.0,
+        "profit_factor": Infinity,
+        "longs": 1,
+        "shorts": 0
+      },
+      {
+        "bucket": "other",
+        "trades": 6,
+        "win_rate": 50.0,
+        "avg_pnl": -2.0,
+        "total_pnl": -12.0,
+        "profit_factor": 0.91,
+        "longs": 3,
+        "shorts": 3
+      }
+    ]
+  },
+  "MES_2022": {
+    "total_trades": 95,
+    "total_pnl": 2663.75,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 53,
+        "win_rate": 52.8,
+        "avg_pnl": 8.73,
+        "total_pnl": 462.75,
+        "profit_factor": 1.13,
+        "longs": 25,
+        "shorts": 28
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 29,
+        "win_rate": 55.2,
+        "avg_pnl": 35.8,
+        "total_pnl": 1038.25,
+        "profit_factor": 1.61,
+        "longs": 13,
+        "shorts": 16
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 7,
+        "win_rate": 85.7,
+        "avg_pnl": 149.07,
+        "total_pnl": 1043.5,
+        "profit_factor": 8.83,
+        "longs": 1,
+        "shorts": 6
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 3,
+        "win_rate": 66.7,
+        "avg_pnl": 59.25,
+        "total_pnl": 177.75,
+        "profit_factor": 2.32,
+        "longs": 2,
+        "shorts": 1
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 2,
+        "win_rate": 0.0,
+        "avg_pnl": -87.62,
+        "total_pnl": -175.25,
+        "profit_factor": 0.0,
+        "longs": 1,
+        "shorts": 1
+      },
+      {
+        "bucket": "other",
+        "trades": 1,
+        "win_rate": 100.0,
+        "avg_pnl": 116.75,
+        "total_pnl": 116.75,
+        "profit_factor": Infinity,
+        "longs": 0,
+        "shorts": 1
+      }
+    ]
+  },
+  "MES_2023": {
+    "total_trades": 61,
+    "total_pnl": 261.75,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 25,
+        "win_rate": 32.0,
+        "avg_pnl": -33.45,
+        "total_pnl": -836.25,
+        "profit_factor": 0.44,
+        "longs": 13,
+        "shorts": 12
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 20,
+        "win_rate": 50.0,
+        "avg_pnl": 32.44,
+        "total_pnl": 648.75,
+        "profit_factor": 2.21,
+        "longs": 11,
+        "shorts": 9
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 9,
+        "win_rate": 66.7,
+        "avg_pnl": 32.31,
+        "total_pnl": 290.75,
+        "profit_factor": 2.57,
+        "longs": 4,
+        "shorts": 5
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 2,
+        "win_rate": 50.0,
+        "avg_pnl": 41.12,
+        "total_pnl": 82.25,
+        "profit_factor": 19.28,
+        "longs": 1,
+        "shorts": 1
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 2,
+        "win_rate": 100.0,
+        "avg_pnl": 70.5,
+        "total_pnl": 141.0,
+        "profit_factor": Infinity,
+        "longs": 2,
+        "shorts": 0
+      },
+      {
+        "bucket": "other",
+        "trades": 3,
+        "win_rate": 0.0,
+        "avg_pnl": -21.58,
+        "total_pnl": -64.75,
+        "profit_factor": 0.0,
+        "longs": 3,
+        "shorts": 0
+      }
+    ]
+  },
+  "MES_2024": {
+    "total_trades": 57,
+    "total_pnl": -635.25,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 22,
+        "win_rate": 27.3,
+        "avg_pnl": -45.58,
+        "total_pnl": -1002.75,
+        "profit_factor": 0.44,
+        "longs": 11,
+        "shorts": 11
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 22,
+        "win_rate": 54.5,
+        "avg_pnl": 25.22,
+        "total_pnl": 554.75,
+        "profit_factor": 1.61,
+        "longs": 6,
+        "shorts": 16
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 6,
+        "win_rate": 33.3,
+        "avg_pnl": -20.54,
+        "total_pnl": -123.25,
+        "profit_factor": 0.53,
+        "longs": 4,
+        "shorts": 2
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 3,
+        "win_rate": 66.7,
+        "avg_pnl": 7.17,
+        "total_pnl": 21.5,
+        "profit_factor": 11.75,
+        "longs": 0,
+        "shorts": 3
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 1,
+        "win_rate": 100.0,
+        "avg_pnl": 3.0,
+        "total_pnl": 3.0,
+        "profit_factor": Infinity,
+        "longs": 1,
+        "shorts": 0
+      },
+      {
+        "bucket": "other",
+        "trades": 3,
+        "win_rate": 33.3,
+        "avg_pnl": -29.5,
+        "total_pnl": -88.5,
+        "profit_factor": 0.28,
+        "longs": 1,
+        "shorts": 2
+      }
+    ]
+  },
+  "MES_2025": {
+    "total_trades": 86,
+    "total_pnl": 1304.25,
+    "buckets": [
+      {
+        "bucket": "09:45-10:00",
+        "trades": 48,
+        "win_rate": 58.3,
+        "avg_pnl": 39.09,
+        "total_pnl": 1876.5,
+        "profit_factor": 1.76,
+        "longs": 28,
+        "shorts": 20
+      },
+      {
+        "bucket": "10:00-10:30",
+        "trades": 27,
+        "win_rate": 29.6,
+        "avg_pnl": -26.86,
+        "total_pnl": -725.25,
+        "profit_factor": 0.7,
+        "longs": 15,
+        "shorts": 12
+      },
+      {
+        "bucket": "10:30-11:00",
+        "trades": 5,
+        "win_rate": 40.0,
+        "avg_pnl": 49.25,
+        "total_pnl": 246.25,
+        "profit_factor": 2.06,
+        "longs": 1,
+        "shorts": 4
+      },
+      {
+        "bucket": "11:00-11:30",
+        "trades": 3,
+        "win_rate": 0.0,
+        "avg_pnl": -24.08,
+        "total_pnl": -72.25,
+        "profit_factor": 0.0,
+        "longs": 2,
+        "shorts": 1
+      },
+      {
+        "bucket": "11:30-12:00",
+        "trades": 1,
+        "win_rate": 100.0,
+        "avg_pnl": 104.25,
+        "total_pnl": 104.25,
+        "profit_factor": Infinity,
+        "longs": 1,
+        "shorts": 0
+      },
+      {
+        "bucket": "other",
+        "trades": 2,
+        "win_rate": 50.0,
+        "avg_pnl": -62.62,
+        "total_pnl": -125.25,
+        "profit_factor": 0.21,
+        "longs": 0,
+        "shorts": 2
+      }
+    ]
+  }
+}

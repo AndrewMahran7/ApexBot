@@ -1,0 +1,33 @@
+{
+  "challenge_mode": {
+    "base_size": 0.35,
+    "dd_caution_zone": 0.0,
+    "dd_min_size": 0.35,
+    "streak_threshold": 99,
+    "streak_reduction_per": 0.15,
+    "profit_lock_threshold": 999999.0,
+    "profit_lock_size": 1.0,
+    "giveback_halt_amount": 500.0,
+    "daily_loss_limit": 999999.0,
+    "progress_zones": [
+      [
+        -999.0,
+        999.0,
+        1.0
+      ]
+    ],
+    "symbol_challenge_preference": {
+      "MES": 1.0,
+      "MNQ": 1.0
+    }
+  },
+  "funded_mode": {
+    "base_size": 0.75,
+    "dd_caution_zone": 0.0,
+    "dd_min_size": 0.35,
+    "profit_lock_threshold": 2000.0,
+    "profit_lock_size": 0.5,
+    "giveback_halt_amount": 1000.0,
+    "daily_loss_limit": 500.0
+  }
+}

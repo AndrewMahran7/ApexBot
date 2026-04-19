@@ -1,0 +1,58 @@
+{
+  "year": 2021,
+  "symbol": "MNQ",
+  "metrics": {
+    "total_trades": 181,
+    "winning_trades": 99,
+    "losing_trades": 82,
+    "win_rate_pct": 54.7,
+    "total_pnl_dollars": 6778.0,
+    "total_pnl_points": 3886.75,
+    "total_return_pct": 27.11,
+    "gross_profit": 18688.5,
+    "gross_loss": 11910.5,
+    "profit_factor": 1.5691,
+    "avg_win": 188.77,
+    "avg_loss": -145.25,
+    "expectancy": 37.45,
+    "largest_win": 628.5,
+    "largest_loss": -391.5,
+    "max_drawdown_dollars": 1084.75,
+    "max_drawdown_pct": 4.02,
+    "sharpe_ratio": 2.3476,
+    "avg_trade_duration_min": 212.1,
+    "total_commission": 814.5,
+    "total_slippage": 181.0,
+    "initial_capital": 25000.0,
+    "final_equity": 31778.0,
+    "bars_processed": 70341,
+    "pnl_by_weekday": {
+      "Monday": 1974.5,
+      "Tuesday": 1259.0,
+      "Thursday": 994.0,
+      "Friday": 1248.0,
+      "Wednesday": 1302.5
+    },
+    "long_trades": 101,
+    "short_trades": 80,
+    "long_win_rate_pct": 57.43,
+    "short_win_rate_pct": 51.25,
+    "long_pnl_dollars": 3699.5,
+    "short_pnl_dollars": 3078.5
+  },
+  "selectivity": {
+    "entry_attempts": 8402,
+    "regime_blocks": 8068,
+    "filter_blocks": 153,
+    "entries_taken": 181,
+    "days_with_range": 254,
+    "days_traded": 181
+  },
+  "regime_breakdown": {
+    "NO_RANGE": 57,
+    "TREND": 155,
+    "DEAD": 34,
+    "BREAKOUT": 26,
+    "RANGE": 38
+  }
+}

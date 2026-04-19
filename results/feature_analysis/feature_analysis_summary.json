@@ -1,0 +1,39 @@
+{
+  "dataset": "data/ema_candidates.csv",
+  "n_samples": 1015,
+  "n_features": 33,
+  "success_rate": 35.2,
+  "constant_features_dropped": [
+    "f_time_minutes_since_open",
+    "f_time_minutes_since_range_close",
+    "f_time_minutes_to_close"
+  ],
+  "significant_p05": 6,
+  "significant_p01": 3,
+  "max_abs_pb_corr": 0.1602,
+  "max_mi": 0.0322,
+  "top_10": [
+    "f_risk_points",
+    "f_price_ret_12bar",
+    "f_regime_vol_trend",
+    "f_ema_distance_pct",
+    "f_range_high",
+    "f_price_gap_pct",
+    "f_price_ema",
+    "f_vol_relative",
+    "f_price_ema_dist",
+    "f_vola_atr"
+  ],
+  "bottom_10": [
+    "f_range_size",
+    "f_vola_tr",
+    "f_vol_avg",
+    "f_direction_long",
+    "f_vola_atr_norm",
+    "f_regime_compression",
+    "f_vola_realized",
+    "f_vol_expansion",
+    "f_regime_breakout_strength",
+    "f_time_weekday"
+  ]
+}

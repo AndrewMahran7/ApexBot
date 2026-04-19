@@ -133,14 +133,18 @@ def classify_regime(
     ratio_str = f"OR/ATR={or_atr_ratio:.2f}" if or_atr_ratio is not None else "OR/ATR=N/A"
     vol_str = f"relVol={features.relative_volume:.2f}" if features.relative_volume is not None else "relVol=N/A"
 
-    # Priority: TREND if slope is strong, BREAKOUT if range expanding, else RANGE
-    if is_trending and is_breakout:
-        diag.regime = Regime.BREAKOUT  # trending + expanding = breakout day
-        diag.reason = (f"BREAKOUT+TREND: {slope_str} (>={ema_slope_threshold}), "
-                       f"{ratio_str} (>={range_ratio_threshold}), {vol_str}")
-    elif is_trending:
-        diag.regime = Regime.TREND
-        diag.reason = f"TREND: {slope_str} (>={ema_slope_threshold}), {ratio_str}, {vol_str}"
+    # Priority: TREND wins if slope is strong (even with range expansion),
+    # BREAKOUT for range expansion without trend, else RANGE.
+    # Rationale: trending + expanding range = trend continuation day (trade with trend).
+    # Pure breakout = range expansion without directional bias (less reliable).
+    if is_trending:
+        if is_breakout:
+            diag.regime = Regime.TREND
+            diag.reason = (f"TREND+BREAKOUT: {slope_str} (>={ema_slope_threshold}), "
+                           f"{ratio_str} (>={range_ratio_threshold}), {vol_str}")
+        else:
+            diag.regime = Regime.TREND
+            diag.reason = f"TREND: {slope_str} (>={ema_slope_threshold}), {ratio_str}, {vol_str}"
     elif is_breakout:
         diag.regime = Regime.BREAKOUT
         diag.reason = f"BREAKOUT: {ratio_str} (>={range_ratio_threshold}), {vol_str}"

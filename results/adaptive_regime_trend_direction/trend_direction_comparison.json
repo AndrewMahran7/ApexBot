@@ -1,0 +1,402 @@
+[
+  {
+    "year": 2017,
+    "symbol": "MNQ",
+    "trend_direction_only": false,
+    "trades": 146,
+    "pnl": -556.5,
+    "win_rate": 41.1,
+    "profit_factor": 0.81,
+    "regimes": {
+      "NO_RANGE": 56,
+      "BREAKOUT": 113,
+      "TREND": 34,
+      "RANGE": 86,
+      "DEAD": 19
+    },
+    "trend_trade_dirs": {
+      "long": 19,
+      "short": 15
+    },
+    "days_with_range": 253,
+    "days_traded": 146,
+    "entry_attempts": 10619,
+    "regime_blocks": 10421,
+    "filter_blocks": 52
+  },
+  {
+    "year": 2017,
+    "symbol": "MNQ",
+    "trend_direction_only": true,
+    "trades": 141,
+    "pnl": -344.0,
+    "win_rate": 43.3,
+    "profit_factor": 0.88,
+    "regimes": {
+      "NO_RANGE": 56,
+      "BREAKOUT": 113,
+      "TREND": 34,
+      "RANGE": 86,
+      "DEAD": 19
+    },
+    "trend_trade_dirs": {
+      "long": 17,
+      "short": 12
+    },
+    "days_with_range": 253,
+    "days_traded": 141,
+    "entry_attempts": 10595,
+    "regime_blocks": 10421,
+    "filter_blocks": 33
+  },
+  {
+    "year": 2018,
+    "symbol": "MNQ",
+    "trend_direction_only": false,
+    "trades": 154,
+    "pnl": -2222.5,
+    "win_rate": 37.7,
+    "profit_factor": 0.71,
+    "regimes": {
+      "NO_RANGE": 59,
+      "TREND": 101,
+      "BREAKOUT": 53,
+      "RANGE": 71,
+      "DEAD": 27
+    },
+    "trend_trade_dirs": {
+      "long": 51,
+      "short": 50
+    },
+    "days_with_range": 253,
+    "days_traded": 154,
+    "entry_attempts": 11173,
+    "regime_blocks": 10971,
+    "filter_blocks": 48
+  },
+  {
+    "year": 2018,
+    "symbol": "MNQ",
+    "trend_direction_only": true,
+    "trades": 147,
+    "pnl": -1619.0,
+    "win_rate": 38.8,
+    "profit_factor": 0.77,
+    "regimes": {
+      "NO_RANGE": 59,
+      "TREND": 101,
+      "BREAKOUT": 53,
+      "RANGE": 71,
+      "DEAD": 27
+    },
+    "trend_trade_dirs": {
+      "long": 47,
+      "short": 47
+    },
+    "days_with_range": 253,
+    "days_traded": 147,
+    "entry_attempts": 11132,
+    "regime_blocks": 10971,
+    "filter_blocks": 14
+  },
+  {
+    "year": 2019,
+    "symbol": "MNQ",
+    "trend_direction_only": false,
+    "trades": 138,
+    "pnl": 100.0,
+    "win_rate": 42.0,
+    "profit_factor": 1.02,
+    "regimes": {
+      "NO_RANGE": 58,
+      "TREND": 88,
+      "DEAD": 43,
+      "BREAKOUT": 51,
+      "RANGE": 71
+    },
+    "trend_trade_dirs": {
+      "long": 52,
+      "short": 35
+    },
+    "days_with_range": 254,
+    "days_traded": 139,
+    "entry_attempts": 12573,
+    "regime_blocks": 12286,
+    "filter_blocks": 148
+  },
+  {
+    "year": 2019,
+    "symbol": "MNQ",
+    "trend_direction_only": true,
+    "trades": 124,
+    "pnl": -68.5,
+    "win_rate": 41.1,
+    "profit_factor": 0.98,
+    "regimes": {
+      "NO_RANGE": 58,
+      "TREND": 88,
+      "DEAD": 43,
+      "BREAKOUT": 51,
+      "RANGE": 71
+    },
+    "trend_trade_dirs": {
+      "long": 42,
+      "short": 31
+    },
+    "days_with_range": 254,
+    "days_traded": 125,
+    "entry_attempts": 12437,
+    "regime_blocks": 12286,
+    "filter_blocks": 26
+  },
+  {
+    "year": 2021,
+    "symbol": "MNQ",
+    "trend_direction_only": false,
+    "trades": 181,
+    "pnl": 6779.0,
+    "win_rate": 54.7,
+    "profit_factor": 1.57,
+    "regimes": {
+      "NO_RANGE": 57,
+      "TREND": 155,
+      "DEAD": 34,
+      "BREAKOUT": 26,
+      "RANGE": 38
+    },
+    "trend_trade_dirs": {
+      "long": 86,
+      "short": 69
+    },
+    "days_with_range": 254,
+    "days_traded": 181,
+    "entry_attempts": 8347,
+    "regime_blocks": 8068,
+    "filter_blocks": 98
+  },
+  {
+    "year": 2021,
+    "symbol": "MNQ",
+    "trend_direction_only": true,
+    "trades": 154,
+    "pnl": 4524.0,
+    "win_rate": 52.6,
+    "profit_factor": 1.45,
+    "regimes": {
+      "NO_RANGE": 57,
+      "TREND": 155,
+      "DEAD": 34,
+      "BREAKOUT": 26,
+      "RANGE": 38
+    },
+    "trend_trade_dirs": {
+      "long": 72,
+      "short": 56
+    },
+    "days_with_range": 254,
+    "days_traded": 154,
+    "entry_attempts": 8228,
+    "regime_blocks": 8068,
+    "filter_blocks": 6
+  },
+  {
+    "year": 2022,
+    "symbol": "MNQ",
+    "trend_direction_only": false,
+    "trades": 196,
+    "pnl": -246.0,
+    "win_rate": 41.3,
+    "profit_factor": 0.99,
+    "regimes": {
+      "NO_RANGE": 56,
+      "RANGE": 27,
+      "DEAD": 30,
+      "TREND": 190,
+      "BREAKOUT": 6
+    },
+    "trend_trade_dirs": {
+      "long": 90,
+      "short": 99
+    },
+    "days_with_range": 254,
+    "days_traded": 196,
+    "entry_attempts": 7103,
+    "regime_blocks": 6803,
+    "filter_blocks": 104
+  },
+  {
+    "year": 2022,
+    "symbol": "MNQ",
+    "trend_direction_only": true,
+    "trades": 171,
+    "pnl": 241.0,
+    "win_rate": 41.5,
+    "profit_factor": 1.01,
+    "regimes": {
+      "NO_RANGE": 56,
+      "RANGE": 27,
+      "DEAD": 30,
+      "TREND": 190,
+      "BREAKOUT": 6
+    },
+    "trend_trade_dirs": {
+      "long": 68,
+      "short": 96
+    },
+    "days_with_range": 254,
+    "days_traded": 171,
+    "entry_attempts": 6978,
+    "regime_blocks": 6803,
+    "filter_blocks": 4
+  },
+  {
+    "year": 2023,
+    "symbol": "MNQ",
+    "trend_direction_only": false,
+    "trades": 158,
+    "pnl": 1282.0,
+    "win_rate": 44.3,
+    "profit_factor": 1.11,
+    "regimes": {
+      "NO_RANGE": 57,
+      "BREAKOUT": 18,
+      "TREND": 141,
+      "RANGE": 32,
+      "DEAD": 61
+    },
+    "trend_trade_dirs": {
+      "long": 75,
+      "short": 66
+    },
+    "days_with_range": 253,
+    "days_traded": 159,
+    "entry_attempts": 11341,
+    "regime_blocks": 11120,
+    "filter_blocks": 62
+  },
+  {
+    "year": 2023,
+    "symbol": "MNQ",
+    "trend_direction_only": true,
+    "trades": 141,
+    "pnl": -41.5,
+    "win_rate": 44.0,
+    "profit_factor": 1.0,
+    "regimes": {
+      "NO_RANGE": 57,
+      "BREAKOUT": 18,
+      "TREND": 141,
+      "RANGE": 32,
+      "DEAD": 61
+    },
+    "trend_trade_dirs": {
+      "long": 71,
+      "short": 53
+    },
+    "days_with_range": 253,
+    "days_traded": 142,
+    "entry_attempts": 11271,
+    "regime_blocks": 11120,
+    "filter_blocks": 9
+  },
+  {
+    "year": 2024,
+    "symbol": "MNQ",
+    "trend_direction_only": false,
+    "trades": 162,
+    "pnl": -80.5,
+    "win_rate": 43.8,
+    "profit_factor": 0.99,
+    "regimes": {
+      "NO_RANGE": 58,
+      "TREND": 141,
+      "DEAD": 67,
+      "RANGE": 24,
+      "BREAKOUT": 21
+    },
+    "trend_trade_dirs": {
+      "long": 73,
+      "short": 67
+    },
+    "days_with_range": 254,
+    "days_traded": 162,
+    "entry_attempts": 10908,
+    "regime_blocks": 10532,
+    "filter_blocks": 214
+  },
+  {
+    "year": 2024,
+    "symbol": "MNQ",
+    "trend_direction_only": true,
+    "trades": 143,
+    "pnl": -1605.5,
+    "win_rate": 43.4,
+    "profit_factor": 0.88,
+    "regimes": {
+      "NO_RANGE": 58,
+      "TREND": 141,
+      "DEAD": 67,
+      "RANGE": 24,
+      "BREAKOUT": 21
+    },
+    "trend_trade_dirs": {
+      "long": 61,
+      "short": 60
+    },
+    "days_with_range": 254,
+    "days_traded": 143,
+    "entry_attempts": 10677,
+    "regime_blocks": 10532,
+    "filter_blocks": 2
+  },
+  {
+    "year": 2025,
+    "symbol": "MNQ",
+    "trend_direction_only": false,
+    "trades": 182,
+    "pnl": 7885.0,
+    "win_rate": 48.9,
+    "profit_factor": 1.41,
+    "regimes": {
+      "NO_RANGE": 59,
+      "TREND": 172,
+      "BREAKOUT": 11,
+      "DEAD": 37,
+      "RANGE": 31
+    },
+    "trend_trade_dirs": {
+      "long": 78,
+      "short": 94
+    },
+    "days_with_range": 252,
+    "days_traded": 184,
+    "entry_attempts": 8700,
+    "regime_blocks": 8455,
+    "filter_blocks": 61
+  },
+  {
+    "year": 2025,
+    "symbol": "MNQ",
+    "trend_direction_only": true,
+    "trades": 160,
+    "pnl": 7606.5,
+    "win_rate": 50.6,
+    "profit_factor": 1.48,
+    "regimes": {
+      "NO_RANGE": 59,
+      "TREND": 172,
+      "BREAKOUT": 11,
+      "DEAD": 37,
+      "RANGE": 31
+    },
+    "trend_trade_dirs": {
+      "long": 69,
+      "short": 80
+    },
+    "days_with_range": 252,
+    "days_traded": 161,
+    "entry_attempts": 8620,
+    "regime_blocks": 8455,
+    "filter_blocks": 4
+  }
+]

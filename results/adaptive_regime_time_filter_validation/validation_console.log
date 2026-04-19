@@ -1,0 +1,7 @@
+Time filter validation run
+Change: MNQ max_entry_time 12:00 -> 10:30 (soft filter)
+MES: unchanged (max_entry_time stays 12:00)
+
+BEFORE total: 1904 trades, $20547.00
+AFTER  total: 1901 trades, $21715.50
+Delta: $+1168.50

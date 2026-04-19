@@ -1,0 +1,37 @@
+======================================================================
+  YEAR 2018  —  Volatile, regime-shift year (Feb vol-spike, Q4 selloff)
+======================================================================
+
+--- MES 2018 ---
+  Bars loaded: 69719
+  Date range: 2018-01-01 18:00:00-05:00 to 2018-12-31 16:55:00-05:00
+  Trades:        249
+  Win Rate:      39.8%
+  Avg Trade:     $-5.98
+  Total PnL:     $-1488.00
+  Profit Factor: 0.80
+  Max Drawdown:  $1696.00
+  Final Equity:  $23512.00
+  Peak Equity:   $25180.25
+  Sharpe:        -1.36
+  Long trades:   138, win 40.58%
+  Short trades:  111, win 38.74%
+  Regimes: {'NO_RANGE': 59, 'BREAKOUT': 248, 'TREND': 1, 'RANGE': 3}
+  Trades saved: results\adaptive_regime_validation_2017_2025\2018_mes_trades.csv
+
+--- MNQ 2018 ---
+  Bars loaded: 69626
+  Date range: 2018-01-01 18:00:00-05:00 to 2018-12-31 16:55:00-05:00
+  Trades:        251
+  Win Rate:      39.8%
+  Avg Trade:     $-7.46
+  Total PnL:     $-1871.50
+  Profit Factor: 0.83
+  Max Drawdown:  $2386.75
+  Final Equity:  $23128.50
+  Peak Equity:   $25440.00
+  Sharpe:        -1.15
+  Long trades:   131, win 43.51%
+  Short trades:  120, win 35.83%
+  Regimes: {'NO_RANGE': 59, 'BREAKOUT': 250, 'RANGE': 2}
+  Trades saved: results\adaptive_regime_validation_2017_2025\2018_mnq_trades.csv

@@ -1,0 +1,58 @@
+{
+  "year": 2023,
+  "symbol": "MES",
+  "metrics": {
+    "total_trades": 61,
+    "winning_trades": 27,
+    "losing_trades": 34,
+    "win_rate_pct": 44.26,
+    "total_pnl_dollars": 261.75,
+    "total_pnl_points": 137.75,
+    "total_return_pct": 1.05,
+    "gross_profit": 2557.25,
+    "gross_loss": 2295.5,
+    "profit_factor": 1.114,
+    "avg_win": 94.71,
+    "avg_loss": -67.51,
+    "expectancy": 4.29,
+    "largest_win": 173.0,
+    "largest_loss": -197.0,
+    "max_drawdown_dollars": 349.25,
+    "max_drawdown_pct": 1.39,
+    "sharpe_ratio": 0.3447,
+    "avg_trade_duration_min": 210.5,
+    "total_commission": 274.5,
+    "total_slippage": 152.5,
+    "initial_capital": 25000.0,
+    "final_equity": 25261.75,
+    "bars_processed": 70329,
+    "pnl_by_weekday": {
+      "Tuesday": 250.75,
+      "Thursday": 47.25,
+      "Friday": 293.75,
+      "Wednesday": 130.75,
+      "Monday": -460.75
+    },
+    "long_trades": 34,
+    "short_trades": 27,
+    "long_win_rate_pct": 50.0,
+    "short_win_rate_pct": 37.04,
+    "long_pnl_dollars": 382.0,
+    "short_pnl_dollars": -120.25
+  },
+  "selectivity": {
+    "entry_attempts": 22061,
+    "regime_blocks": 21920,
+    "filter_blocks": 80,
+    "entries_taken": 61,
+    "days_with_range": 253,
+    "days_traded": 61
+  },
+  "regime_breakdown": {
+    "NO_RANGE": 57,
+    "BREAKOUT": 41,
+    "RANGE": 97,
+    "TREND": 20,
+    "DEAD": 94
+  }
+}

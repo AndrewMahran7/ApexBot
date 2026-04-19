@@ -1,0 +1,53 @@
+======================================================================
+  YEAR 2024  —  Mixed — broadening, rotational
+======================================================================
+
+--- MES 2024 ---
+  Bars loaded: 70389
+  Date range: 2024-01-01 18:00:00-05:00 to 2024-12-30 18:55:00-05:00
+  Trades:        57
+  Win Rate:      42.1%
+  Avg Trade:     $-11.14
+  Total PnL:     $-635.25
+  Profit Factor: 0.79
+  Max Drawdown:  $884.50
+  Final Equity:  $24364.75
+  Peak Equity:   $25034.25
+  Sharpe:        -0.63
+  Long trades:   23, win 39.13%
+  Short trades:  34, win 44.12%
+  Regimes: {'NO_RANGE': 58, 'RANGE': 86, 'DEAD': 111, 'BREAKOUT': 38, 'TREND': 18}
+  Selectivity:
+    Days with range: 254
+    Days traded:     57
+    Entry attempts:  23134
+    Regime blocks:   23018
+    Filter blocks:   59
+    Entries taken:   57
+    Trade rate:      22.4% of range-days
+  Trades saved: results\adaptive_regime_breakout_strength_validation\2024_mes_trades.csv
+
+--- MNQ 2024 ---
+  Bars loaded: 70389
+  Date range: 2024-01-01 18:00:00-05:00 to 2024-12-30 18:55:00-05:00
+  Trades:        162
+  Win Rate:      44.4%
+  Avg Trade:     $1.91
+  Total PnL:     $310.00
+  Profit Factor: 1.02
+  Max Drawdown:  $1488.75
+  Final Equity:  $25310.00
+  Peak Equity:   $25683.50
+  Sharpe:        0.15
+  Long trades:   84, win 41.67%
+  Short trades:  78, win 47.44%
+  Regimes: {'NO_RANGE': 58, 'TREND': 141, 'DEAD': 67, 'RANGE': 24, 'BREAKOUT': 21}
+  Selectivity:
+    Days with range: 254
+    Days traded:     162
+    Entry attempts:  10922
+    Regime blocks:   10532
+    Filter blocks:   228
+    Entries taken:   162
+    Trade rate:      63.8% of range-days
+  Trades saved: results\adaptive_regime_breakout_strength_validation\2024_mnq_trades.csv

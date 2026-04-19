@@ -1,0 +1,37 @@
+======================================================================
+  YEAR 2024  —  Mixed — broadening, rotational
+======================================================================
+
+--- MES 2024 ---
+  Bars loaded: 70389
+  Date range: 2024-01-01 18:00:00-05:00 to 2024-12-30 18:55:00-05:00
+  Trades:        253
+  Win Rate:      41.1%
+  Avg Trade:     $-2.37
+  Total PnL:     $-599.75
+  Profit Factor: 0.94
+  Max Drawdown:  $1370.00
+  Final Equity:  $24400.25
+  Peak Equity:   $25000.00
+  Sharpe:        -0.34
+  Long trades:   131, win 39.69%
+  Short trades:  122, win 42.62%
+  Regimes: {'NO_RANGE': 58, 'BREAKOUT': 247, 'TREND': 5, 'RANGE': 1}
+  Trades saved: results\adaptive_regime_validation_2017_2025\2024_mes_trades.csv
+
+--- MNQ 2024 ---
+  Bars loaded: 70389
+  Date range: 2024-01-01 18:00:00-05:00 to 2024-12-30 18:55:00-05:00
+  Trades:        253
+  Win Rate:      45.1%
+  Avg Trade:     $14.41
+  Total PnL:     $3645.00
+  Profit Factor: 1.18
+  Max Drawdown:  $970.25
+  Final Equity:  $28645.00
+  Peak Equity:   $28980.50
+  Sharpe:        1.08
+  Long trades:   131, win 46.56%
+  Short trades:  122, win 43.44%
+  Regimes: {'NO_RANGE': 58, 'BREAKOUT': 252, 'TREND': 1}
+  Trades saved: results\adaptive_regime_validation_2017_2025\2024_mnq_trades.csv

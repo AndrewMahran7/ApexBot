@@ -1,0 +1,37 @@
+======================================================================
+  YEAR 2023  —  Mixed — choppy early, stronger trend later
+======================================================================
+
+--- MES 2023 ---
+  Bars loaded: 70329
+  Date range: 2023-01-02 18:00:00-05:00 to 2023-12-29 16:55:00-05:00
+  Trades:        249
+  Win Rate:      38.5%
+  Avg Trade:     $-9.36
+  Total PnL:     $-2330.50
+  Profit Factor: 0.78
+  Max Drawdown:  $2787.50
+  Final Equity:  $22669.50
+  Peak Equity:   $25110.50
+  Sharpe:        -1.53
+  Long trades:   141, win 43.97%
+  Short trades:  108, win 31.48%
+  Regimes: {'NO_RANGE': 57, 'BREAKOUT': 246, 'TREND': 3, 'RANGE': 3}
+  Trades saved: results\adaptive_regime_validation_2017_2025\2023_mes_trades.csv
+
+--- MNQ 2023 ---
+  Bars loaded: 70329
+  Date range: 2023-01-02 18:00:00-05:00 to 2023-12-29 16:55:00-05:00
+  Trades:        252
+  Win Rate:      40.5%
+  Avg Trade:     $2.06
+  Total PnL:     $518.50
+  Profit Factor: 1.03
+  Max Drawdown:  $2190.75
+  Final Equity:  $25515.75
+  Peak Equity:   $25901.25
+  Sharpe:        0.22
+  Long trades:   147, win 43.54%
+  Short trades:  105, win 36.19%
+  Regimes: {'NO_RANGE': 57, 'BREAKOUT': 248, 'TREND': 4}
+  Trades saved: results\adaptive_regime_validation_2017_2025\2023_mnq_trades.csv

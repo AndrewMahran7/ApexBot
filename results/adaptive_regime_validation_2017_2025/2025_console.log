@@ -1,0 +1,37 @@
+======================================================================
+  YEAR 2025  —  Strong trend, recent out-of-sample year
+======================================================================
+
+--- MES 2025 ---
+  Bars loaded: 69882
+  Date range: 2025-01-01 19:00:00-05:00 to 2025-12-30 18:55:00-05:00
+  Trades:        249
+  Win Rate:      42.6%
+  Avg Trade:     $7.27
+  Total PnL:     $1809.50
+  Profit Factor: 1.13
+  Max Drawdown:  $2051.50
+  Final Equity:  $26802.50
+  Peak Equity:   $28521.75
+  Sharpe:        0.76
+  Long trades:   134, win 44.78%
+  Short trades:  115, win 40.0%
+  Regimes: {'NO_RANGE': 59, 'BREAKOUT': 248, 'TREND': 2, 'RANGE': 1}
+  Trades saved: results\adaptive_regime_validation_2017_2025\2025_mes_trades.csv
+
+--- MNQ 2025 ---
+  Bars loaded: 69882
+  Date range: 2025-01-01 19:00:00-05:00 to 2025-12-30 18:55:00-05:00
+  Trades:        249
+  Win Rate:      46.6%
+  Avg Trade:     $27.17
+  Total PnL:     $6765.50
+  Profit Factor: 1.26
+  Max Drawdown:  $3558.00
+  Final Equity:  $31757.25
+  Peak Equity:   $33316.75
+  Sharpe:        1.44
+  Long trades:   124, win 47.58%
+  Short trades:  125, win 45.6%
+  Regimes: {'NO_RANGE': 59, 'BREAKOUT': 250, 'TREND': 1}
+  Trades saved: results\adaptive_regime_validation_2017_2025\2025_mnq_trades.csv

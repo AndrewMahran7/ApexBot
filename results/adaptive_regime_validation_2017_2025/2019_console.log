@@ -1,0 +1,37 @@
+======================================================================
+  YEAR 2019  —  Trending bull year after Q4-2018 selloff
+======================================================================
+
+--- MES 2019 ---
+  Bars loaded: 69656
+  Date range: 2019-01-01 18:00:00-05:00 to 2019-12-31 16:55:00-05:00
+  Trades:        250
+  Win Rate:      41.6%
+  Avg Trade:     $-2.41
+  Total PnL:     $-602.50
+  Profit Factor: 0.90
+  Max Drawdown:  $1055.00
+  Final Equity:  $24394.00
+  Peak Equity:   $25373.75
+  Sharpe:        -0.65
+  Long trades:   138, win 44.2%
+  Short trades:  112, win 38.39%
+  Regimes: {'NO_RANGE': 58, 'BREAKOUT': 251, 'RANGE': 2}
+  Trades saved: results\adaptive_regime_validation_2017_2025\2019_mes_trades.csv
+
+--- MNQ 2019 ---
+  Bars loaded: 69610
+  Date range: 2019-01-01 18:00:00-05:00 to 2019-12-31 16:55:00-05:00
+  Trades:        252
+  Win Rate:      40.9%
+  Avg Trade:     $-1.72
+  Total PnL:     $-434.00
+  Profit Factor: 0.94
+  Max Drawdown:  $1417.75
+  Final Equity:  $24563.25
+  Peak Equity:   $25787.00
+  Sharpe:        -0.33
+  Long trades:   130, win 42.31%
+  Short trades:  122, win 39.34%
+  Regimes: {'NO_RANGE': 58, 'BREAKOUT': 250, 'TREND': 2, 'RANGE': 1}
+  Trades saved: results\adaptive_regime_validation_2017_2025\2019_mnq_trades.csv

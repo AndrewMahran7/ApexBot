@@ -1,0 +1,103 @@
+{
+  "year": 2021,
+  "symbol_results": {
+    "MES": {
+      "total_trades": 81,
+      "winning_trades": 43,
+      "losing_trades": 38,
+      "win_rate_pct": 53.09,
+      "total_pnl_dollars": 503.0,
+      "total_pnl_points": 214.0,
+      "total_return_pct": 2.01,
+      "gross_profit": 3245.25,
+      "gross_loss": 2742.25,
+      "profit_factor": 1.1834,
+      "avg_win": 75.47,
+      "avg_loss": -72.16,
+      "expectancy": 6.21,
+      "largest_win": 185.5,
+      "largest_loss": -164.5,
+      "max_drawdown_dollars": 553.0,
+      "max_drawdown_pct": 2.17,
+      "sharpe_ratio": 0.5982,
+      "avg_trade_duration_min": 231.4,
+      "total_commission": 364.5,
+      "total_slippage": 202.5,
+      "initial_capital": 25000.0,
+      "final_equity": 25503.0,
+      "bars_processed": 70332,
+      "pnl_by_weekday": {
+        "Monday": 544.0,
+        "Tuesday": -239.75,
+        "Wednesday": -87.25,
+        "Thursday": 55.75,
+        "Friday": 230.25
+      },
+      "long_trades": 42,
+      "short_trades": 39,
+      "long_win_rate_pct": 59.52,
+      "short_win_rate_pct": 46.15,
+      "long_pnl_dollars": 467.25,
+      "short_pnl_dollars": 35.75,
+      "peak_equity": 25521.25
+    },
+    "MNQ": {
+      "total_trades": 181,
+      "winning_trades": 99,
+      "losing_trades": 82,
+      "win_rate_pct": 54.7,
+      "total_pnl_dollars": 6779.0,
+      "total_pnl_points": 3887.25,
+      "total_return_pct": 27.12,
+      "gross_profit": 18688.5,
+      "gross_loss": 11909.5,
+      "profit_factor": 1.5692,
+      "avg_win": 188.77,
+      "avg_loss": -145.24,
+      "expectancy": 37.45,
+      "largest_win": 628.5,
+      "largest_loss": -391.5,
+      "max_drawdown_dollars": 1084.75,
+      "max_drawdown_pct": 4.02,
+      "sharpe_ratio": 2.348,
+      "avg_trade_duration_min": 214.3,
+      "total_commission": 814.5,
+      "total_slippage": 181.0,
+      "initial_capital": 25000.0,
+      "final_equity": 31779.0,
+      "bars_processed": 70341,
+      "pnl_by_weekday": {
+        "Monday": 1975.5,
+        "Tuesday": 1259.0,
+        "Thursday": 994.0,
+        "Friday": 1248.0,
+        "Wednesday": 1302.5
+      },
+      "long_trades": 102,
+      "short_trades": 79,
+      "long_win_rate_pct": 56.86,
+      "short_win_rate_pct": 51.9,
+      "long_pnl_dollars": 3529.0,
+      "short_pnl_dollars": 3250.0,
+      "peak_equity": 31923.5
+    }
+  },
+  "selectivity": {
+    "MES": {
+      "entry_attempts": 18867,
+      "regime_blocks": 18733,
+      "filter_blocks": 53,
+      "entries_taken": 81,
+      "days_with_range": 254,
+      "days_traded": 81
+    },
+    "MNQ": {
+      "entry_attempts": 8347,
+      "regime_blocks": 8068,
+      "filter_blocks": 98,
+      "entries_taken": 181,
+      "days_with_range": 254,
+      "days_traded": 181
+    }
+  }
+}

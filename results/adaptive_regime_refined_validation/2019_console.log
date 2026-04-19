@@ -1,0 +1,53 @@
+======================================================================
+  YEAR 2019  —  Trending bull year after Q4-2018 selloff
+======================================================================
+
+--- MES 2019 ---
+  Bars loaded: 69656
+  Date range: 2019-01-01 18:00:00-05:00 to 2019-12-31 16:55:00-05:00
+  Trades:        79
+  Win Rate:      51.9%
+  Avg Trade:     $8.25
+  Total PnL:     $652.00
+  Profit Factor: 1.45
+  Max Drawdown:  $232.75
+  Final Equity:  $25652.00
+  Peak Equity:   $25699.00
+  Sharpe:        1.19
+  Long trades:   43, win 62.79%
+  Short trades:  36, win 38.89%
+  Regimes: {'NO_RANGE': 58, 'RANGE': 99, 'DEAD': 73, 'BREAKOUT': 78, 'TREND': 3}
+  Selectivity:
+    Days with range: 254
+    Days traded:     79
+    Entry attempts:  17303
+    Regime blocks:   17100
+    Filter blocks:   124
+    Entries taken:   79
+    Trade rate:      31.1% of range-days
+  Trades saved: results\adaptive_regime_refined_validation\2019_mes_trades.csv
+
+--- MNQ 2019 ---
+  Bars loaded: 69610
+  Date range: 2019-01-01 18:00:00-05:00 to 2019-12-31 16:55:00-05:00
+  Trades:        138
+  Win Rate:      42.0%
+  Avg Trade:     $0.72
+  Total PnL:     $100.00
+  Profit Factor: 1.02
+  Max Drawdown:  $657.75
+  Final Equity:  $25097.25
+  Peak Equity:   $25657.00
+  Sharpe:        0.11
+  Long trades:   78, win 42.31%
+  Short trades:  60, win 41.67%
+  Regimes: {'NO_RANGE': 58, 'TREND': 88, 'DEAD': 43, 'BREAKOUT': 51, 'RANGE': 71}
+  Selectivity:
+    Days with range: 254
+    Days traded:     139
+    Entry attempts:  12573
+    Regime blocks:   12286
+    Filter blocks:   148
+    Entries taken:   139
+    Trade rate:      54.7% of range-days
+  Trades saved: results\adaptive_regime_refined_validation\2019_mnq_trades.csv

@@ -1,0 +1,58 @@
+{
+  "year": 2018,
+  "symbol": "MNQ",
+  "metrics": {
+    "total_trades": 154,
+    "winning_trades": 62,
+    "losing_trades": 92,
+    "win_rate_pct": 40.26,
+    "total_pnl_dollars": -1139.0,
+    "total_pnl_points": -146.0,
+    "total_return_pct": -4.56,
+    "gross_profit": 6154.5,
+    "gross_loss": 7293.5,
+    "profit_factor": 0.8438,
+    "avg_win": 99.27,
+    "avg_loss": -79.28,
+    "expectancy": -7.4,
+    "largest_win": 299.5,
+    "largest_loss": -201.0,
+    "max_drawdown_dollars": 1484.25,
+    "max_drawdown_pct": 5.9,
+    "sharpe_ratio": -0.7744,
+    "avg_trade_duration_min": 203.9,
+    "total_commission": 693.0,
+    "total_slippage": 154.0,
+    "initial_capital": 25000.0,
+    "final_equity": 23861.0,
+    "bars_processed": 69626,
+    "pnl_by_weekday": {
+      "Tuesday": -216.5,
+      "Wednesday": -200.0,
+      "Thursday": -432.0,
+      "Monday": -447.0,
+      "Friday": 156.5
+    },
+    "long_trades": 81,
+    "short_trades": 73,
+    "long_win_rate_pct": 43.21,
+    "short_win_rate_pct": 36.99,
+    "long_pnl_dollars": -575.5,
+    "short_pnl_dollars": -563.5
+  },
+  "selectivity": {
+    "entry_attempts": 11220,
+    "regime_blocks": 10971,
+    "filter_blocks": 95,
+    "entries_taken": 154,
+    "days_with_range": 253,
+    "days_traded": 154
+  },
+  "regime_breakdown": {
+    "NO_RANGE": 59,
+    "TREND": 101,
+    "BREAKOUT": 53,
+    "RANGE": 71,
+    "DEAD": 27
+  }
+}

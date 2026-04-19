@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apex Execution Monitor</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #c9d1d9;
+    --text-muted: #8b949e;
+    --green: #3fb950;
+    --yellow: #d29922;
+    --red: #f85149;
+    --blue: #58a6ff;
+    --orange: #d18616;
+    --purple: #bc8cff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 16px;
+    line-height: 1.5;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 16px;
+  }
+  .header h1 { font-size: 18px; font-weight: 600; }
+  .header .status-bar { display: flex; gap: 16px; align-items: center; font-size: 13px; }
+  .status-dot {
+    width: 10px; height: 10px; border-radius: 50%; display: inline-block;
+    margin-right: 4px; vertical-align: middle;
+  }
+  .dot-green { background: var(--green); }
+  .dot-yellow { background: var(--yellow); }
+  .dot-red { background: var(--red); animation: pulse 1.5s infinite; }
+  .dot-gray { background: var(--text-muted); }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* Grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .grid-wide { grid-template-columns: 1fr; }
+
+  /* Cards */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .card h2 {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+
+  /* KV table inside cards */
+  .kv { display: grid; grid-template-columns: 140px 1fr; gap: 4px 12px; font-size: 13px; }
+  .kv .label { color: var(--text-muted); }
+  .kv .value { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; word-break: break-all; }
+
+  /* Badges */
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .badge-green { background: rgba(63,185,80,0.15); color: var(--green); }
+  .badge-yellow { background: rgba(210,153,34,0.15); color: var(--yellow); }
+  .badge-red { background: rgba(248,81,73,0.15); color: var(--red); }
+  .badge-blue { background: rgba(88,166,255,0.15); color: var(--blue); }
+  .badge-purple { background: rgba(188,140,255,0.15); color: var(--purple); }
+  .badge-orange { background: rgba(209,134,22,0.15); color: var(--orange); }
+
+  /* Counters row */
+  .counters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .counter-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-align: center;
+    min-width: 120px;
+    flex: 1;
+  }
+  .counter-card .num { font-size: 28px; font-weight: 700; font-family: Consolas, monospace; }
+  .counter-card .lbl { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+  /* Alerts table */
+  .alerts-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .alerts-table th {
+    text-align: left;
+    padding: 6px 8px;
+    font-size: 11px;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+  }
+  .alerts-table td { padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .alerts-table tr:last-child td { border-bottom: none; }
+  .alert-critical td { background: rgba(248,81,73,0.06); }
+  .alert-warning td { background: rgba(210,153,34,0.06); }
+
+  /* Kill switch button */
+  .kill-btn {
+    padding: 8px 20px;
+    border: 2px solid var(--red);
+    background: transparent;
+    color: var(--red);
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+  }
+  .kill-btn:hover { background: var(--red); color: #fff; }
+  .kill-btn.active { background: var(--red); color: #fff; animation: pulse 1.5s infinite; }
+  .unkill-btn {
+    padding: 8px 20px;
+    border: 2px solid var(--green);
+    background: transparent;
+    color: var(--green);
+    font-weight: 700;
+    font-size: 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    margin-left: 8px;
+    display: none;
+  }
+  .unkill-btn:hover { background: var(--green); color: #fff; }
+
+  /* Misc */
+  .muted { color: var(--text-muted); }
+  .mono { font-family: Consolas, 'SFMono-Regular', monospace; }
+  .no-data { color: var(--text-muted); font-style: italic; font-size: 13px; padding: 8px 0; }
+  .last-update { font-size: 11px; color: var(--text-muted); }
+  .connection-err { color: var(--red); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ─── Header ────────────────────────────────────────────────────── -->
+<div class="header">
+  <div>
+    <h1>Apex Execution Monitor</h1>
+    <span class="last-update" id="lastUpdate">Connecting...</span>
+  </div>
+  <div class="status-bar">
+    <span id="connStatus"><span class="status-dot dot-gray"></span> Offline</span>
+    <span id="modeStatus"></span>
+    <span id="runModeStatus"></span>
+    <button class="kill-btn" id="killBtn" onclick="toggleKill()">Kill Switch</button>
+    <button class="unkill-btn" id="unkillBtn" onclick="resetKill()">Reset Kill</button>
+  </div>
+</div>
+
+<!-- ─── Counters ──────────────────────────────────────────────────── -->
+<div class="counters">
+  <div class="counter-card"><div class="num" id="cSignals">-</div><div class="lbl">Signals</div></div>
+  <div class="counter-card"><div class="num" id="cAttempted">-</div><div class="lbl">Attempted</div></div>
+  <div class="counter-card"><div class="num" id="cConfirmed">-</div><div class="lbl">Confirmed</div></div>
+  <div class="counter-card"><div class="num" id="cSkipped">-</div><div class="lbl">Skipped</div></div>
+  <div class="counter-card"><div class="num" id="cBlocked">-</div><div class="lbl">Blocked</div></div>
+  <div class="counter-card"><div class="num" id="cAlerts" style="color:var(--yellow)">-</div><div class="lbl">Alerts</div></div>
+</div>
+
+<!-- ─── Main grid ─────────────────────────────────────────────────── -->
+<div class="grid">
+
+  <!-- Latest Signal -->
+  <div class="card">
+    <h2>Latest Signal</h2>
+    <div id="latestSignal" class="no-data">No signals received</div>
+  </div>
+
+  <!-- Gate Decision -->
+  <div class="card">
+    <h2>Gate Decision</h2>
+    <div id="gateDecision" class="no-data">No gate decisions</div>
+  </div>
+
+  <!-- Last Execution -->
+  <div class="card">
+    <h2>Last Execution</h2>
+    <div id="lastExecution" class="no-data">No executions</div>
+  </div>
+
+  <!-- Fail-Safe State -->
+  <div class="card">
+    <h2>Fail-Safe State</h2>
+    <div id="failSafe" class="no-data">Loading...</div>
+  </div>
+
+  <!-- Account State -->
+  <div class="card">
+    <h2>Account State</h2>
+    <div id="accountState" class="no-data">Not available</div>
+  </div>
+
+  <!-- Last Error -->
+  <div class="card">
+    <h2>Last Error</h2>
+    <div id="lastError" class="no-data">No errors</div>
+  </div>
+
+</div>
+
+<!-- ─── Alerts Feed ───────────────────────────────────────────────── -->
+<div class="grid grid-wide">
+  <div class="card">
+    <h2>Alerts Feed <span class="muted" id="alertCount">(0)</span></h2>
+    <div id="alertsFeed">
+      <div class="no-data">No alerts</div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── Script ────────────────────────────────────────────────────── -->
+<script>
+const POLL_MS = 2000;
+let failCount = 0;
+let killActive = false;
+
+function $(id) { return document.getElementById(id); }
+
+function badge(text, cls) { return `<span class="badge badge-${cls}">${text}</span>`; }
+
+function kvRow(label, value) {
+  return `<div class="label">${label}</div><div class="value">${value}</div>`;
+}
+
+function shortId(id) {
+  if (!id) return '-';
+  return id.length > 12 ? id.substring(0, 8) + '...' : id;
+}
+
+function renderLatestSignal(sig) {
+  if (!sig) { $('latestSignal').innerHTML = '<div class="no-data">No signals received</div>'; return; }
+  const side = sig.side === 'BUY'
+    ? badge('BUY', 'green')
+    : sig.side === 'SELL' ? badge('SELL', 'red') : badge(sig.side || '-', 'blue');
+  $('latestSignal').innerHTML = `<div class="kv">
+    ${kvRow('Signal ID', `<span class="mono">${shortId(sig.signal_id)}</span>`)}
+    ${kvRow('Timestamp', sig.timestamp || '-')}
+    ${kvRow('Symbol', `<strong>${sig.symbol || '-'}</strong>`)}
+    ${kvRow('Side', side)}
+    ${kvRow('Contracts', sig.contracts || '-')}
+    ${kvRow('Mode', sig.mode ? badge(sig.mode, sig.mode === 'funded' ? 'purple' : 'blue') : '-')}
+    ${kvRow('Reason', sig.reason || '-')}
+  </div>`;
+}
+
+function renderGateDecision(gd) {
+  if (!gd) { $('gateDecision').innerHTML = '<div class="no-data">No gate decisions</div>'; return; }
+  const actionColors = { execute: 'green', reduce: 'yellow', skip: 'orange', stop: 'red' };
+  const action = gd.action ? badge(gd.action, actionColors[gd.action] || 'blue') : '-';
+  const reasons = (gd.reasons || []).join(', ') || '-';
+  const comps = gd.components ? Object.entries(gd.components).map(([k,v]) => `${k}=${typeof v === 'number' ? v.toFixed(3) : v}`).join(', ') : '-';
+  $('gateDecision').innerHTML = `<div class="kv">
+    ${kvRow('Action', action)}
+    ${kvRow('Contracts', gd.contracts != null ? gd.contracts : '-')}
+    ${kvRow('Size Mult', gd.size_mult != null ? gd.size_mult.toFixed(4) : '-')}
+    ${kvRow('Profile', gd.profile_label || '-')}
+    ${kvRow('Mode', gd.profile_mode ? badge(gd.profile_mode, gd.profile_mode === 'funded' ? 'purple' : 'blue') : '-')}
+    ${kvRow('Symbol', gd.profile_symbol || '(combined)')}
+    ${kvRow('Reasons', reasons)}
+    ${kvRow('Components', `<span class="mono" style="font-size:11px">${comps}</span>`)}
+  </div>`;
+}
+
+function renderLastExecution(ex) {
+  if (!ex) { $('lastExecution').innerHTML = '<div class="no-data">No executions</div>'; return; }
+  const statusBadge = ex.status === 'confirmed' ? badge('CONFIRMED', 'green')
+    : ex.status === 'dry_run' ? badge('DRY RUN', 'blue')
+    : badge(ex.status || '-', 'yellow');
+  $('lastExecution').innerHTML = `<div class="kv">
+    ${kvRow('Status', statusBadge)}
+    ${kvRow('Signal ID', `<span class="mono">${shortId(ex.signal_id)}</span>`)}
+    ${kvRow('Symbol', ex.symbol || '-')}
+    ${kvRow('Side', ex.side || '-')}
+    ${kvRow('Contracts', ex.contracts || '-')}
+    ${kvRow('Timestamp', ex.timestamp || '-')}
+    ${kvRow('Reason', ex.reason || '-')}
+  </div>`;
+}
+
+function renderFailSafe(ctrl) {
+  if (!ctrl || !ctrl.fail_safe) { $('failSafe').innerHTML = '<div class="no-data">Not available</div>'; return; }
+  const fs = ctrl.fail_safe;
+  const modeMap = { dry_run: 'blue', sim: 'yellow', live: 'red' };
+  const modeBadge = badge(fs.run_mode || '-', modeMap[fs.run_mode] || 'blue');
+  const killBadge = fs.kill_switch ? badge('ENGAGED', 'red') : badge('OFF', 'green');
+
+  $('failSafe').innerHTML = `<div class="kv">
+    ${kvRow('Run Mode', modeBadge)}
+    ${kvRow('Kill Switch', killBadge)}
+    ${kvRow('Kill Reason', fs.kill_reason || '-')}
+    ${kvRow('Emergency Disable', fs.emergency_disable ? badge('YES', 'red') : badge('NO', 'green'))}
+    ${kvRow('Open Trades', `${fs.open_trades} / ${fs.max_open_trades}`)}
+    ${kvRow('Session Execs', `${fs.session_executions} / ${fs.max_session_executions}`)}
+    ${kvRow('Cooldown', `${fs.cooldown_seconds}s`)}
+    ${kvRow('Last Execution', fs.last_execution || '-')}
+  </div>`;
+
+  // Update header badges
+  killActive = !!fs.kill_switch;
+  $('killBtn').className = fs.kill_switch ? 'kill-btn active' : 'kill-btn';
+  $('unkillBtn').style.display = fs.kill_switch ? 'inline-block' : 'none';
+  $('runModeStatus').innerHTML = modeBadge;
+}
+
+function renderAccountState(ctrl) {
+  if (!ctrl || !ctrl.account_state) { $('accountState').innerHTML = '<div class="no-data">Not available (no PropTradeGate)</div>'; return; }
+  const a = ctrl.account_state;
+  const eq = a.equity != null ? '$' + a.equity.toLocaleString(undefined, {minimumFractionDigits:2}) : '-';
+  const dd = a.distance_to_dd != null ? '$' + a.distance_to_dd.toFixed(2) : '-';
+  const prog = a.progress != null ? (a.progress * 100).toFixed(1) + '%' : '-';
+  const ddColor = (a.distance_to_dd != null && a.distance_to_dd < 300) ? 'color:var(--red)' : '';
+  $('accountState').innerHTML = `<div class="kv">
+    ${kvRow('Mode', a.mode ? badge(a.mode, a.mode === 'funded' ? 'purple' : 'blue') : '-')}
+    ${kvRow('Equity', eq)}
+    ${kvRow('Realized PnL', a.realized_pnl != null ? '$' + a.realized_pnl.toFixed(2) : '-')}
+    ${kvRow('Daily PnL', a.daily_pnl != null ? '$' + a.daily_pnl.toFixed(2) : '-')}
+    ${kvRow('Distance to DD', `<span style="${ddColor}">${dd}</span>`)}
+    ${kvRow('Progress', prog)}
+    ${kvRow('Daily Trades', a.daily_trades != null ? a.daily_trades : '-')}
+    ${kvRow('Consec Losses', a.consecutive_losses != null ? a.consecutive_losses : '-')}
+    ${kvRow('Active', ctrl.account_active ? badge('YES', 'green') : badge('NO', 'red'))}
+  </div>`;
+
+  // Update header mode indicator
+  if (a.mode) {
+    $('modeStatus').innerHTML = badge(a.mode, a.mode === 'funded' ? 'purple' : 'blue');
+  }
+}
+
+function renderLastError(err) {
+  if (!err) { $('lastError').innerHTML = '<div class="no-data">No errors</div>'; return; }
+  $('lastError').innerHTML = `<div class="kv" style="color:var(--red)">
+    ${kvRow('Type', badge(err.event_type || '-', 'red'))}
+    ${kvRow('Signal ID', `<span class="mono">${shortId(err.signal_id)}</span>`)}
+    ${kvRow('Symbol', err.symbol || '-')}
+    ${kvRow('Timestamp', err.timestamp || '-')}
+    ${kvRow('Reason', err.reason || '-')}
+  </div>`;
+}
+
+function renderAlerts(alerts) {
+  if (!alerts || alerts.length === 0) {
+    $('alertsFeed').innerHTML = '<div class="no-data">No alerts</div>';
+    $('alertCount').textContent = '(0)';
+    return;
+  }
+  $('alertCount').textContent = `(${alerts.length})`;
+  const rows = alerts.slice(0, 50).map(a => {
+    const cls = a.level === 'critical' ? 'alert-critical' : a.level === 'warning' ? 'alert-warning' : '';
+    const lvl = a.level === 'critical' ? badge(a.level, 'red')
+      : a.level === 'warning' ? badge(a.level, 'yellow')
+      : badge(a.level, 'blue');
+    return `<tr class="${cls}">
+      <td class="mono" style="font-size:11px;white-space:nowrap">${a.timestamp || '-'}</td>
+      <td>${lvl}</td>
+      <td><strong>${a.label || a.event_type || '-'}</strong></td>
+      <td class="mono">${shortId(a.signal_id)}</td>
+      <td>${a.symbol || '-'}</td>
+      <td style="max-width:400px;word-break:break-word">${a.reason || '-'}</td>
+    </tr>`;
+  }).join('');
+  $('alertsFeed').innerHTML = `<table class="alerts-table">
+    <thead><tr><th>Time</th><th>Level</th><th>Alert</th><th>Signal</th><th>Symbol</th><th>Reason</th></tr></thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+async function poll() {
+  try {
+    const resp = await fetch('/api/exec/snapshot');
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    failCount = 0;
+
+    // Connection status
+    $('connStatus').innerHTML = `<span class="status-dot dot-green"></span> Connected`;
+    $('lastUpdate').textContent = 'Updated: ' + new Date().toLocaleTimeString();
+
+    // Counters
+    const c = data.counters || {};
+    $('cSignals').textContent = c.signals_seen || 0;
+    $('cAttempted').textContent = c.executions_attempted || 0;
+    $('cConfirmed').textContent = c.executions_confirmed || 0;
+    $('cSkipped').textContent = c.trades_skipped || 0;
+    $('cBlocked').textContent = c.trades_blocked || 0;
+    const totalAlerts = (data.alerts || []).length;
+    $('cAlerts').textContent = totalAlerts;
+    $('cAlerts').style.color = totalAlerts > 0 ? 'var(--yellow)' : 'var(--text)';
+
+    // Cards
+    renderLatestSignal(data.last_signal);
+    renderGateDecision(data.last_gate_decision);
+    renderLastExecution(data.last_execution_result);
+    renderFailSafe(data.controller);
+    renderAccountState(data.controller);
+    renderLastError(data.last_error);
+    renderAlerts(data.alerts);
+
+  } catch (e) {
+    failCount++;
+    const dot = failCount > 3 ? 'dot-red' : 'dot-yellow';
+    $('connStatus').innerHTML = `<span class="status-dot ${dot}"></span> <span class="connection-err">${e.message}</span>`;
+    $('lastUpdate').textContent = `Connection lost (${failCount} failures)`;
+  }
+}
+
+async function toggleKill() {
+  if (killActive) return;  // already active, use Reset instead
+  if (!confirm('ACTIVATE KILL SWITCH? This stops all trading immediately.')) return;
+  try {
+    await fetch('/api/exec/kill', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ reason: 'Operator kill via dashboard' }),
+    });
+    poll();
+  } catch (e) { alert('Failed: ' + e.message); }
+}
+
+async function resetKill() {
+  if (!confirm('Reset kill switch and allow trading to resume?')) return;
+  try {
+    await fetch('/api/exec/unkill', { method: 'POST' });
+    poll();
+  } catch (e) { alert('Failed: ' + e.message); }
+}
+
+// Start polling
+poll();
+setInterval(poll, POLL_MS);
+</script>
+</body>
+</html>
